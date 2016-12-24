@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `Olga_Store`.`Order` (
   `status` VARCHAR(45) NOT NULL,
   `amount` DOUBLE NOT NULL,
   `User_id` INT NOT NULL,
+  `comment` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Order_User1_idx` (`User_id` ASC),
   CONSTRAINT `fk_Order_User1`
