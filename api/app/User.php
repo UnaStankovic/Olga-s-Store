@@ -1,32 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: miki208
+ * Date: 29/12/2016
+ * Time: 20:02
+ */
 
 namespace App;
 
-use Illuminate\Auth\Authenticatable;
-use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class User extends Model
 {
-    use Authenticatable, Authorizable;
+    protected $fillable = ['id', 'email', 'password', 'name', 'surname', 'address', 'city', 'country', 'telephone',
+        'confirmation_code', 'status'];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email',
-    ];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-    ];
+    public $timestamps = false;
+    protected $table = 'User';
 }
