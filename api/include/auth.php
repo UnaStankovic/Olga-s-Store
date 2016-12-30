@@ -1,48 +1,44 @@
 <?php
 use App\User;
 
-    $error_text = '';
+    function registerUser(array $data) {
+        $response = new stdClass();
 
-    //returns TRUE if registration is successful, otherwise returns FALSE ($error_text is set properly)
-    function registerUser($email, $password, $name = '', $surname = '', $address = '', $city = '', $country = '', $telephone = '') {
-        global $error_text;
-        if(!preg_match('/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/', $email)) {
-            $error_text = 'Email invalid';
-            return FALSE;
+        //email validation
+        if(!isset($data['email']) || !validate($data['email'], '/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/')) {
+            $response->status = 'error';
+            $response->message = 'E-mail is invalid.';
+            $response->error_type = 'email';
+            return $response;
         }
 
-        $user = User::where('email', $email)->get();
-        if(count($user) != 0) {
-            $error_text = 'User already exists';
-            return FALSE;
+        if(count(DB::table('User')->where('email', $data['email'])->get()) != 0) {
+            $response->status = 'error';
+            $response->message = 'User already exists.';
+            $response->error_type = 'email';
+            return $response;
         }
 
-        if(strlen($password) < 8) {
-            $error_text = 'Password must have at least 8 characters';
-            return FALSE;
+        //validate and encrypt password
+        if(strlen($data['password']) < 8) {
+            $response->status = 'error';
+            $response->message = 'Password must have at least 8 characters';
+            $response->error_type = 'password';
+            return $response;
         }
+        $data['password'] = sha1($data['password']);
+        $data['status'] = 'inactive';
+        $data['confirmation_code'] = md5(time());
 
-        $password = sha1($password);
+        DB::table('User')->insert($data);
 
-        $user = new User();
-        $user->email = $email;
-        $user->password = $password;
-        $user->name = $name;
-        $user->surname = $surname;
-        $user->address = $address;
-        $user->city = $city;
-        $user->country = $country;
-        $user->telephone = $telephone;
-        $user->status = 'inactive';
-        $user->confirmation_code = md5(time());
-        $user->save();
-
-        return TRUE;
+        $response->status = 'success';
+        return $response;
     }
 
-    function isValidName($name) {
-        if($name != '' && !preg_match('/[A-Za-z ]+/', $name))
-            return FALSE;
-        return TRUE;
+    function validate($input, $pattern) {
+        if(preg_match($pattern, $input))
+            return TRUE;
+        return FALSE;
     }
 ?>
