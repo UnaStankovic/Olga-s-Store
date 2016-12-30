@@ -15,4 +15,7 @@ $app->get('api/', function () use ($app) {
     return $app->version();
 });
 
+//REST API
 $app->post('api/register','UserController@register');
+
+$app->get('confirm/{id}/{code}', 'UserController@confirm');

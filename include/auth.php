@@ -1,6 +1,4 @@
 <?php
-use App\User;
-
     function registerUser(array $data) {
         $response = new stdClass();
 
@@ -30,7 +28,19 @@ use App\User;
         $data['status'] = 'inactive';
         $data['confirmation_code'] = md5(time());
 
-        DB::table('User')->insert($data);
+        $id = DB::table('User')->insertGetId($data);
+
+        $message = 'Hi ' . ($data['name'] ?: $data['email']) . ',<br>';
+        $message .= 'Thanks so much for joining!<br>To finish registration, you just need to confirm that we got your mail right.<br>';
+        $message .= "Please click <a href='http://localhost/Olga-s-Store/public/confirm/$id/$data[confirmation_code]'>here</a> to confirm your mail.<br><br>";
+        $message .= 'Pozdrav ' . ($data['name'] ?: $data['email']) . ',<br>';
+        $message .= 'Hvala Vam sto ste nam se pridruzili!<br>Da zavrsite registraciju, potrebno je samo da potvrdite da je ovo vas email.<br>';
+        $message .= "Kliknite <a href='http://localhost/Olga-s-Store/public/confirm/$id/$data[confirmation_code]'>ovde</a> da potvrdite vas mail";
+
+        $headers = "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+        mail($data['email'], 'Confirm registration / Potvrda registracije', $message, $headers);
 
         $response->status = 'success';
         return $response;
