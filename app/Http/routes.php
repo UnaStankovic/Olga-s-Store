@@ -11,8 +11,8 @@
 |
 */
 
-$app->get('/', function () use ($app) {
+$app->get('api/', function () use ($app) {
     return $app->version();
 });
 
-$app->post('register','UserController@register');
+$app->post('api/register','UserController@register');
