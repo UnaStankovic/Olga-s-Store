@@ -14,4 +14,12 @@ class UserController extends Controller {
         DB::table('User')->where('id', intval($id))->where('confirmation_code', $code)->update(['status' => 'active']);
         return redirect('main.html');
     }
+
+    public function login(Request $request) {
+        return response()->json(loginUser($request->all()));
+    }
+
+    public function logout() {
+        return response()->json(logoutUser());
+    }
 }

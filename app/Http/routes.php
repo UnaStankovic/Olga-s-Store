@@ -17,5 +17,7 @@ $app->get('api/', function () use ($app) {
 
 //REST API
 $app->post('api/register','UserController@register');
+$app->post('api/login', 'UserController@login');
+$app->get('api/logout', 'UserController@logout');
 
 $app->get('confirm/{id}/{code}', 'UserController@confirm');

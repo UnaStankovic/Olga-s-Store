@@ -5,14 +5,14 @@
         //email validation
         if(!isset($data['email']) || !validate($data['email'], '/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/')) {
             $response->status = 'error';
-            $response->message = 'E-mail is invalid.';
+            $response->message = 'E-mail is invalid';
             $response->error_type = 'email';
             return $response;
         }
 
         if(count(DB::table('User')->where('email', $data['email'])->get()) != 0) {
             $response->status = 'error';
-            $response->message = 'User already exists.';
+            $response->message = 'User already exists';
             $response->error_type = 'email';
             return $response;
         }
@@ -44,6 +44,62 @@
 
         $response->status = 'success';
         return $response;
+    }
+
+    function loginUser($data) {
+        $response = new stdClass();
+
+        //is already logged in?
+        if(isAuthenticated()) {
+            $response->status = 'success';
+            $response->user = new stdClass();
+            $response->user->id = $_SESSION['userId'];
+        }
+
+        if(!isset($data['email']) || !isset($data['password'])) {
+            $response->status = 'error';
+            $response->error_type = 'email,password';
+            $response->message = 'Email and password are required';
+            return $response;
+        }
+
+        $user = DB::table('User')
+            ->select('id', 'email', 'name', 'surname', 'address', 'city', 'country', 'telephone')
+            ->where('email', $data['email'])
+            ->where('password', sha1($data['password']))
+            ->get();
+
+        if(count($user) == 0) {
+            $response->status = 'error';
+            $response->error_type = 'email,password';
+            $response->message = 'Wrong email or password';
+            return $response;
+        }
+
+        $response->status = 'success';
+        $response->user = $user[0];
+
+        $_SESSION['userId'] = $user[0]->id;
+        $_SESSION['username'] = isset($user[0]->name) ? $user[0]->name : $user[0]->email;
+        return $response;
+    }
+
+    function logoutUser() {
+        $response = new stdClass();
+        if(isAuthenticated()) {
+            $_SESSION = array();
+            session_destroy();
+            setcookie('PHPSESSID', '', time() - 3600, '/', '', 0, 0);
+        }
+        $response->status = 'success';
+        return $response;
+    }
+
+    function isAuthenticated() {
+        session_start();
+        if(isset($_SESSION['userId']))
+            return TRUE;
+        return FALSE;
     }
 
     function validate($input, $pattern) {
