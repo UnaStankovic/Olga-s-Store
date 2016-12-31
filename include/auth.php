@@ -64,7 +64,7 @@
         }
 
         $user = DB::table('User')
-            ->select('id', 'email', 'name', 'surname', 'address', 'city', 'country', 'telephone')
+            ->select('id', 'email', 'name', 'surname', 'address', 'city', 'country', 'telephone', 'status')
             ->where('email', $data['email'])
             ->where('password', sha1($data['password']))
             ->get();
@@ -75,6 +75,15 @@
             $response->message = 'Wrong email or password';
             return $response;
         }
+
+        if($user[0]->status == 'inactive') {
+            $response->status = 'error';
+            $response->error_type = 'email';
+            $response->message = 'Email must be confirmed';
+            return $response;
+        }
+
+        unset($user[0]->status);
 
         $response->status = 'success';
         $response->user = $user[0];
