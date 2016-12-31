@@ -30,10 +30,10 @@
 
         $id = DB::table('User')->insertGetId($data);
 
-        $message = 'Hi ' . ((isset($data['name'])) ? data['name'] : $data['email']) . ',<br>';
+        $message = 'Hi ' . ((isset($data['name'])) ? $data['name'] : $data['email']) . ',<br>';
         $message .= 'Thanks so much for joining!<br>To finish registration, you just need to confirm that we got your mail right.<br>';
         $message .= "Please click <a href='http://localhost/Olga-s-Store/public/confirm/$id/$data[confirmation_code]'>here</a> to confirm your mail.<br><br>";
-        $message .= 'Pozdrav ' . ((isset($data['name'])) ? data['name'] : $data['email']) . ',<br>';
+        $message .= 'Pozdrav ' . ((isset($data['name'])) ? $data['name'] : $data['email']) . ',<br>';
         $message .= 'Hvala Vam sto ste nam se pridruzili!<br>Da zavrsite registraciju, potrebno je samo da potvrdite da je ovo vas email.<br>';
         $message .= "Kliknite <a href='http://localhost/Olga-s-Store/public/confirm/$id/$data[confirmation_code]'>ovde</a> da potvrdite vas mail";
 
