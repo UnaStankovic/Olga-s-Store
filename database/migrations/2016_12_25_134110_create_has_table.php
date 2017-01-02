@@ -15,7 +15,7 @@ class CreateHasTable extends Migration
     {
         Schema::create('Has', function($table) {
             $table->integer('User_id')->unsigned();
-            $table->integer('Privilege_id')->unsigned();
+            $table->char('Privilege_id', 1);
 
             $table->primary(['User_id', 'Privilege_id']);
             $table->foreign('User_id')->references('id')->on('User')->onDelete('cascade')->onUpdate('cascade');

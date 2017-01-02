@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrivilegeTable extends Migration
+class InsertIntoPrivilegeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePrivilegeTable extends Migration
      */
     public function up()
     {
-        Schema::create('Privilege', function($table) {
-            $table->char('id', 1);
-            $table->string('description');
-            $table->primary('id');
-        });
+        DB::table('Privilege')->insert([
+            ['id' => 'C', 'description' => 'Customer'],
+            ['id' => 'A', 'description' => 'Administrator']
+        ]);
     }
 
     /**
@@ -27,6 +26,6 @@ class CreatePrivilegeTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Privilege');
+        DB::table('Privilege')->truncate();
     }
 }
