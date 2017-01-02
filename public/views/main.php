@@ -1,3 +1,7 @@
+<?php
+  require_once('../../include/auth.php');
+?>
+
 <!DOCTYPE html>
 <html lang = 'sr' >
 
@@ -45,8 +49,15 @@
             </li>
             <li><a href = '#/history'>Istorijat</a></li>
             <li><a href = '#/contact'>Kontakt</a></li>
-            <li><a href='#'><span class='glyphicon glyphicon-user'></span> Moj nalog</a></li>
-            <li><a href='#'><span class='glyphicon glyphicon-shopping-cart'></span> Korpa</a></li>
+            <?php
+              if(!isAuthenticated()) {
+                echo "<li><a href='#/register'><span class='glyphicon glyphicon-user'></span>Registruj se</a></li>";
+                echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>Prijavi se</a></li>";
+              } else {
+                echo "<li><a href='#'><span class='glyphicon glyphicon-user'></span>Moj nalog</a></li>";
+              }
+            ?>
+            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa</a></li>
           </ul>
         </div>
       </div>
@@ -55,7 +66,7 @@
     <div ng-view></div>
 
     <div class = 'container'>
-      <div class = 'row footer' style = 'background-color: gray;'>
+      <div class = 'row footer' style = "background-color: gray;">
           <div class = 'col-xs-12'>
             <p> </p>
           </div>
