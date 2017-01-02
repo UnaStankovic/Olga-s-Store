@@ -1,0 +1,12 @@
+<div class = 'container'>
+  <div class = 'row text-center'>
+    <div ng-controller = 'StoreController as store'>
+      <div ng-repeat = 'product in store.products'>
+        <h2> {{product.name}} </h2>
+        <h3> {{product.price}} din. </h3>
+        <p> {{product.description}} </p>
+        <button ng-show = "product.canPurchase"> Dodaj u korpu </button>
+      </div>
+    </div>
+  </div>
+</div>
