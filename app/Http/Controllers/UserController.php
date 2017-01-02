@@ -12,7 +12,7 @@ class UserController extends Controller {
 
     public function confirm($id, $code) {
         DB::table('User')->where('id', intval($id))->where('confirmation_code', $code)->update(['status' => 'active']);
-        return redirect('main.html');
+        return redirect('views/main.html');
     }
 
     public function login(Request $request) {
