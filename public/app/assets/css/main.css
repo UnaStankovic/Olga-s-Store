@@ -5,11 +5,10 @@
 .footer a{
   color: black;
 }
-
+/*btn primary is if the "big" menu bar is used*/
 .btn-primary{
   background-color: #E80C39;
   border-color: #E80C39;
-
 }
 
 .btn-primary:hover {
@@ -20,4 +19,12 @@
 #logo{
   width: 60%;
   height: 100%;
+}
+
+.nav.navbar-nav.navbar-right li a{
+  color: #E80C39;
+}
+
+.navbar-header.navbar-brand a{
+  color: #E80C39;
 }
