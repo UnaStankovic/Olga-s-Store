@@ -21,5 +21,6 @@ $app->post('api/login', 'UserController@login');
 $app->get('api/logout', 'UserController@logout');
 $app->get('api/user/{id}', 'UserController@getUser');
 $app->put('api/user/{id}', 'UserController@changeUser');
+$app->delete('api/user/{id}', 'UserController@deleteUser');
 
 $app->get('confirm/{id}/{code}', 'UserController@confirm');

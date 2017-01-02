@@ -107,4 +107,41 @@ class UserController extends Controller {
         $res->user = $user[0];
         return response()->json($res);
     }
+
+    function deleteUser($id) {
+        $res = new \stdClass();
+
+        if(!isAuthenticated()) {
+            $res->status = 'error';
+            $res->error_type = 'permission';
+            $res->message = 'Not authorized';
+            return response()->json($res);
+        } else if(isAuthorized($_SESSION['userId'], 'A')) {
+            //authorized
+        } else if(isAuthorized($_SESSION['userId'], 'C')) {
+            if($_SESSION['userId'] != intval($id)) {
+                $res->status = 'error';
+                $res->error_type = 'permission';
+                $res->message = 'Not authorized';
+                return response()->json($res);
+            }
+        } else {
+            $res->status = 'error';
+            $res->error_type = 'permission';
+            $res->message = 'Not authorized';
+            return response()->json($res);
+        }
+
+        $user = DB::table('User')->where('id', intval($id));
+        if(count($user->get()) == 0) {
+            $res->status = 'error';
+            $res->error_type = 'id';
+            $res->message = 'There is no such user';
+            return response()->json($res);
+        }
+        $user->delete();
+
+        $res->status = 'success';
+        return response()->json($res);
+    }
 }
