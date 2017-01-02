@@ -22,6 +22,12 @@
 			.when('/basket',{
 				templateUrl: '../views/basket.html'
 			})
+			.when('/login',{
+				templateUrl: '../views/login.html'
+			})
+			.when('/register',{
+				templateUrl: '../views/register.html'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});
