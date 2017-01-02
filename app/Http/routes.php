@@ -16,11 +16,16 @@ $app->get('api/', function () use ($app) {
 });
 
 //REST API
+//login/logout/register
 $app->post('api/register','UserController@register');
 $app->post('api/login', 'UserController@login');
 $app->get('api/logout', 'UserController@logout');
+
+//user
+$app->get('api/user', 'UserController@index');
 $app->get('api/user/{id}', 'UserController@getUser');
 $app->put('api/user/{id}', 'UserController@changeUser');
 $app->delete('api/user/{id}', 'UserController@deleteUser');
 
+//frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');

@@ -144,4 +144,21 @@ class UserController extends Controller {
         $res->status = 'success';
         return response()->json($res);
     }
+
+    function index() {
+        $res = new \stdClass();
+
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'C')) {
+            $res->status = 'error';
+            $res->error_type = 'permission';
+            $res->message = 'Not authorized';
+            return response()->json($res);
+        }
+
+        $users = DB::table('User')
+            ->select('id', 'email', 'name', 'surname', 'address', 'city', 'country', 'telephone', 'status')->get();
+        $res->status = 'success';
+        $res->users = $users;
+        return response()->json($res);
+    }
 }
