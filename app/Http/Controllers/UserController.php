@@ -22,4 +22,29 @@ class UserController extends Controller {
     public function logout() {
         return response()->json(logoutUser());
     }
+
+    public function getUser($id) {
+        $res = new \stdClass();
+
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'C')) {
+            $res->status = 'error';
+            $res->error_type = 'permission';
+            $res->message = 'Not authorized';
+            return response()->json($res);
+        }
+
+        $user = DB::table('User')->where('id', intval($id))->get();
+        if(count($user) == 0) {
+            $res->status = 'error';
+            $res->error_type = 'id';
+            $res->message = 'There is no such user';
+            return response()->json($res);
+        }
+        unset($user[0]->password);
+        unset($user[0]->confirmation_code);
+        $res->status = 'success';
+        $res->user = $user[0];
+
+        return response()->json($res);
+    }
 }

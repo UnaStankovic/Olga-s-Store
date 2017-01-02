@@ -111,6 +111,17 @@
         return FALSE;
     }
 
+    function isAuthorized($userid, $privileges) {
+        $privileges = str_split($privileges);
+        foreach($privileges as $privilege) {
+            $user = DB::table('Has')->where('User_id', $userid)->where('Privilege_id', $privilege);
+            if(count($user) == 0)
+                return FALSE;
+        }
+
+        return TRUE;
+    }
+
     function validate($input, $pattern) {
         if(preg_match($pattern, $input))
             return TRUE;
