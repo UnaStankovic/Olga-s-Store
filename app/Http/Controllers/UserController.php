@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -28,18 +27,12 @@ class UserController extends Controller {
         $res = new \stdClass();
 
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'C')) {
-            $res->status = 'error';
-            $res->error_type = 'permission';
-            $res->message = 'Not authorized';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
 
         $user = DB::table('User')->where('id', intval($id))->get();
         if(count($user) == 0) {
-            $res->status = 'error';
-            $res->error_type = 'id';
-            $res->message = 'There is no such user';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'There is no such user', 'id'));
         }
         unset($user[0]->password);
         unset($user[0]->confirmation_code);
@@ -53,50 +46,32 @@ class UserController extends Controller {
         $res = new \stdClass();
 
         if(!isAuthenticated()) {
-            $res->status = 'error';
-            $res->error_type = 'permission';
-            $res->message = 'Not authorized';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         } else if(isAuthorized($_SESSION['userId'], 'A')) {
             //authorized
         } else if(isAuthorized($_SESSION['userId'], 'C')) {
             if($_SESSION['userId'] != intval($id)) {
-                $res->status = 'error';
-                $res->error_type = 'permission';
-                $res->message = 'Not authorized';
-                return response()->json($res);
+                return response()->json(errorResponse($res, 'Not authorized', 'permission'));
             }
         } else {
-            $res->status = 'error';
-            $res->error_type = 'permission';
-            $res->message = 'Not authorized';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
 
         $data = $request->all();
         if(isset($data['email']) || isset($data['id']) || isset($data['confirmation_code']) || isset($data['status'])) {
-            $res->status = 'error';
-            $res->error_type = 'illegal_update';
-            $res->message = 'There is one or more columns that can\'t be changed';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'There is one or more columns that can\'t be changed', 'illegal_update'));
         }
 
         if(isset($data['password'])) {
             if(strlen($data['password']) < 8) {
-                $res->status = 'error';
-                $res->message = 'Password must have at least 8 characters';
-                $res->error_type = 'password';
-                return response()->json($res);
+                return response()->json(errorResponse($res, 'Password must have at least 8 characters', 'password'));
             }
             $data['password'] = sha1($data['password']);
         }
 
         $user = DB::table('User')->where('id', intval($id));
         if(count($user->get()) == 0) {
-            $res->status = 'error';
-            $res->error_type = 'id';
-            $res->message = 'There is no such user';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'There is no such user', 'id'));
         }
         $user->update($data);
 
@@ -112,32 +87,20 @@ class UserController extends Controller {
         $res = new \stdClass();
 
         if(!isAuthenticated()) {
-            $res->status = 'error';
-            $res->error_type = 'permission';
-            $res->message = 'Not authorized';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         } else if(isAuthorized($_SESSION['userId'], 'A')) {
             //authorized
         } else if(isAuthorized($_SESSION['userId'], 'C')) {
             if($_SESSION['userId'] != intval($id)) {
-                $res->status = 'error';
-                $res->error_type = 'permission';
-                $res->message = 'Not authorized';
-                return response()->json($res);
+                return response()->json(errorResponse($res, 'Not authorized', 'permission'));
             }
         } else {
-            $res->status = 'error';
-            $res->error_type = 'permission';
-            $res->message = 'Not authorized';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
 
         $user = DB::table('User')->where('id', intval($id));
         if(count($user->get()) == 0) {
-            $res->status = 'error';
-            $res->error_type = 'id';
-            $res->message = 'There is no such user';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'There is no such user', 'id'));
         }
         $user->delete();
 
@@ -149,10 +112,7 @@ class UserController extends Controller {
         $res = new \stdClass();
 
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'C')) {
-            $res->status = 'error';
-            $res->error_type = 'permission';
-            $res->message = 'Not authorized';
-            return response()->json($res);
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
 
         $users = DB::table('User')

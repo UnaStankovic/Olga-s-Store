@@ -1,28 +1,26 @@
 <?php
+    function errorResponse($response, $message, $error_type) {
+        $response->status = 'error';
+        $response->error_type = $error_type;
+        $response->message = $message;
+        return $response;
+    }
+
     function registerUser(array $data) {
         $response = new stdClass();
 
         //email validation
         if(!isset($data['email']) || !validate($data['email'], '/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/')) {
-            $response->status = 'error';
-            $response->message = 'E-mail is invalid';
-            $response->error_type = 'email';
-            return $response;
+            return errorResponse($response, 'E-mail is invalid', 'email');
         }
 
         if(count(DB::table('User')->where('email', $data['email'])->get()) != 0) {
-            $response->status = 'error';
-            $response->message = 'User already exists';
-            $response->error_type = 'email';
-            return $response;
+            return errorResponse($response, 'User already exists', 'email');
         }
 
         //validate and encrypt password
         if(strlen($data['password']) < 8) {
-            $response->status = 'error';
-            $response->message = 'Password must have at least 8 characters';
-            $response->error_type = 'password';
-            return $response;
+            return errorResponse($response, 'Password must have at least 8 characters', 'password');
         }
         $data['password'] = sha1($data['password']);
         $data['status'] = 'inactive';
@@ -57,10 +55,7 @@
         }
 
         if(!isset($data['email']) || !isset($data['password'])) {
-            $response->status = 'error';
-            $response->error_type = 'email,password';
-            $response->message = 'Email and password are required';
-            return $response;
+            return errorResponse($response, 'Email and password are required', 'email,password');
         }
 
         $user = DB::table('User')
@@ -70,17 +65,11 @@
             ->get();
 
         if(count($user) == 0) {
-            $response->status = 'error';
-            $response->error_type = 'email,password';
-            $response->message = 'Wrong email or password';
-            return $response;
+            return errorResponse($response, 'Wrong email or password', 'email,password');
         }
 
         if($user[0]->status == 'inactive') {
-            $response->status = 'error';
-            $response->error_type = 'email';
-            $response->message = 'Email must be confirmed';
-            return $response;
+            return errorResponse($response, 'Email must be confirmed', 'email');
         }
 
         unset($user[0]->status);
