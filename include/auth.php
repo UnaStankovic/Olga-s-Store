@@ -114,7 +114,7 @@
     function isAuthorized($userid, $privileges) {
         $privileges = str_split($privileges);
         foreach($privileges as $privilege) {
-            $user = DB::table('Has')->where('User_id', $userid)->where('Privilege_id', $privilege);
+            $user = DB::table('Has')->where('User_id', $userid)->where('Privilege_id', $privilege)->get();
             if(count($user) == 0)
                 return FALSE;
         }
