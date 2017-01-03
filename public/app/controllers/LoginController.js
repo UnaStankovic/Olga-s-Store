@@ -1,4 +1,4 @@
-angular.module("Store").controller('LoginController', function($scope, $http){
+angular.module("Store").controller('LoginController', function($scope, $http, $location){
   $scope.info = {};
   $scope.loginUser = function() {
     console.log($scope.info);
@@ -10,6 +10,7 @@ angular.module("Store").controller('LoginController', function($scope, $http){
       }
        else {
          console.log("Successfully logged in.");
+         $location.path('/myaccount');
        }
    });
   };

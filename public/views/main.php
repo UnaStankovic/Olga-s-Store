@@ -61,7 +61,7 @@
                 echo "<li><a href='#/register'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.register}}</a></li>";
                 echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
               } else {
-                echo "<li><a href='#' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>  <ul class = 'dropdown-menu'>
+                echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>  <ul class = 'dropdown-menu'>
                     <li>{{LangCtrl.lang.profile}}</li>
                     <li>{{LangCtrl.lang.changeinfo}}</li>
                     <li>{{LangCtrl.lang.showorders}}</li>
