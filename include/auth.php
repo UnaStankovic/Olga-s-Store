@@ -19,7 +19,7 @@
         }
 
         //validate and encrypt password
-        if(strlen($data['password']) < 8) {
+        if(!isset($data['password']) || strlen($data['password']) < 8) {
             return errorResponse($response, 'Password must have at least 8 characters', 'password');
         }
         $data['password'] = sha1($data['password']);
