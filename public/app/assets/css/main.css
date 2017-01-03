@@ -3,9 +3,11 @@
   font-size: 32px;
   color: #E80C39;
 }
+
 .footer a{
   color: black;
 }
+
 /*btn primary is if the "big" menu bar is used*/
 .btn-primary{
   background-color: #E80C39;
@@ -16,6 +18,7 @@
   background-color: #E80C39;
   border-color: #E80C39;
 }
+
 .maintitle{
   color: #E80C39;
 }
@@ -40,6 +43,7 @@
 
 #pagecontent{
   padding-top : 10px;
+  padding-bottom : 10px;
 }
 
 label{
