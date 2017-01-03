@@ -30,5 +30,11 @@ $app->delete('api/user/{id}', 'UserController@deleteUser');
 //product
 $app->get('api/Product', 'ProductController@index');
 
+//has
+$app->get('api/has', 'HasController@index');
+$app->get('api/has/{id}', 'HasController@getPrivilegesForUser');
+$app->post('api/has', 'HasController@createPrivilege');
+
+
 //frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');
