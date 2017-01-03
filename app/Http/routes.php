@@ -27,5 +27,10 @@ $app->get('api/user/{id}', 'UserController@getUser');
 $app->put('api/user/{id}', 'UserController@changeUser');
 $app->delete('api/user/{id}', 'UserController@deleteUser');
 
+//has
+$app->get('api/has', 'HasController@index');
+$app->get('api/has/{id}', 'HasController@getPrivilegesForUser');
+$app->post('api/has', 'HasController@createPrivilege');
+
 //frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');
