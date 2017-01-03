@@ -1,4 +1,5 @@
 <?php
+
     function errorResponse($response, $message, $error_type) {
         $response->status = 'error';
         $response->error_type = $error_type;
