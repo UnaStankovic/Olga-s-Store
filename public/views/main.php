@@ -58,8 +58,13 @@
                 echo "<li><a href='#/register'><span class='glyphicon glyphicon-user'></span>Registruj se</a></li>";
                 echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>Prijavi se</a></li>";
               } else {
-                echo "<li><a href='#/mojnalog' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>Moj nalog</a>
-                ;
+                echo "<li><a href='#/mojnalog' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>Moj nalog</a>  <ul class = 'dropdown-menu'>
+                    <li>Prikaži profil</li>
+                    <li>Izmeni podatke</li>
+                    <li>Prikaži narudžbine</li>
+                    <li>Odjavi se</li>
+                  </ul>
+                </li>";
               }
             ?>
             <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa</a></li>
