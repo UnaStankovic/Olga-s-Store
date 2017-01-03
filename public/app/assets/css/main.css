@@ -1,3 +1,4 @@
+/*colouring glyphicon icons for the store*/
 .features .glyphicon{
   font-size: 32px;
   color: #E80C39;
@@ -15,14 +16,19 @@
   background-color: #E80C39;
   border-color: #E80C39;
 }
+
 /*#1849E8 lepa plava*/
 #logo{
   width: 60%;
   height: 100%;
 }
 
-.maintitle{
+.maintitle .colorit{
   color: #E80C39;
+}
+
+.center-it{
+  text-align: center;
 }
 
 .nav.navbar-nav.navbar-right li a{

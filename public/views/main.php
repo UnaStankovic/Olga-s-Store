@@ -14,12 +14,16 @@
   </head>
 
   <body ng-app="Store">
+    <!--libraries -->
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src = "../app/assets/js/bootstrap.js"></script>
-    <script type = "text/javascript" src="../app/assets/js/angular.min.js"></script>
+    <script type = "text/javascript" src = "../app/assets/js/angular.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-    <script type = "text/javascript" src="../app/app.js"></script>
-    <script type = "text/javascript" src="../app/controllers/LoginController.js"></script>
+    <script type = "text/javascript" src = "../app/app.js"></script>
+    <!--- routes and controllers -->
+    <script type = "text/javascript" src = "../app/controllers/routes.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/LoginController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/LogoutController.js"></script>
 
     <div class = 'wrapper'>
       <div class = 'nav navbar-default navbar-static-top'>
@@ -55,7 +59,13 @@
                 echo "<li><a href='#/register'><span class='glyphicon glyphicon-user'></span>Registruj se</a></li>";
                 echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>Prijavi se</a></li>";
               } else {
-                echo "<li><a href='#'><span class='glyphicon glyphicon-user'></span>Moj nalog</a></li>";
+                echo "<li><a href='#' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>Moj nalog</a>  <ul class = 'dropdown-menu'>
+                    <li>Prikaži profil</li>
+                    <li>Izmeni podatke</li>
+                    <li>Prikaži narudžbine</li>
+                    <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>Odjavi se</a></li>
+                  </ul>
+                </li>";
               }
             ?>
             <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa</a></li>
