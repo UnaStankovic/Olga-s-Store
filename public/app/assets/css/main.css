@@ -16,7 +16,7 @@
   background-color: #E80C39;
   border-color: #E80C39;
 }
-.maintitle .colorit{
+.maintitle{
   color: #E80C39;
 }
 
@@ -39,10 +39,8 @@
 }
 
 #pagecontent{
-  padding-top : 15px;
+  padding-top : 10px;
 }
-
-
 
 label{
   display : inline-block;
