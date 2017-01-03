@@ -3,11 +3,11 @@
   </div>
   <div class = 'col-sm-8 well well-lg center-it'>
     <form ng-controller = 'LoginController as LogCtrl' ng-submit = 'loginUser()'>
-      <h1>Unesite podatke</h1>
+      <h1>{{LangCtrl.lang.logindata}}</h1>
       <p>e-mail: <input type='email' ng-model="info.email"></p>
       <p>password: <input type = 'password' ng-model="info.password"></p>
       <input type="submit" value="Login">
-      <p>Zaboravili ste lozinku?</p>
+      <p>{{LangCtrl.lang.forgotpass}}</p>
       <p style="color:red">{{info.errormsg}}</p>
     </form>
   </div>
