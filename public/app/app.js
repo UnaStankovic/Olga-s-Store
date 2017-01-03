@@ -1,5 +1,5 @@
 
-	var app = angular.module("PageSwitcher",['ngRoute']);
+	var app = angular.module("Store",['ngRoute']);
 
 	app.config(function($routeProvider, $locationProvider){
 	    $locationProvider.hashPrefix('');

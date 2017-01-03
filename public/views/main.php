@@ -13,12 +13,13 @@
     <link href = "../app/assets/css/main.css" rel = "stylesheet">
   </head>
 
-  <body ng-app="PageSwitcher">
+  <body ng-app="Store">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src = "../app/assets/js/bootstrap.js"></script>
     <script type = "text/javascript" src="../app/assets/js/angular.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script type = "text/javascript" src="../app/app.js"></script>
+    <script type = "text/javascript" src="../app/controllers/LoginController.js"></script>
 
     <div class = 'wrapper'>
       <div class = 'nav navbar-default navbar-static-top'>
