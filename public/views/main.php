@@ -25,6 +25,7 @@
     <script type = "text/javascript" src = "../app/controllers/languages.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LoginController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LogoutController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/RegisterController.js"></script>
 
     <div class = 'wrapper' ng-controller = 'LanguageController as LangCtrl'>
       <div class = 'nav navbar-default navbar-static-top'>
@@ -69,7 +70,7 @@
                 </li>";
               }
             ?>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
           </ul>
         </div>
       </div>
