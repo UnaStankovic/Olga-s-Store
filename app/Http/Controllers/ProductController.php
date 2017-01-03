@@ -90,7 +90,7 @@ class ProductController extends Controller {
             return response()->json(errorResponse($res, 'name, description, price_per_piece, Category_id, in_stock are required', 'description, name, price_per_piece, Category_id,
                                     in_stock'));
         DB::table('Product')->insert(['description' => $data['description'], 'name' => $data['name'], 'price_per_piece' => $data['price_per_piece'], 'in_stock' => $data['in_stock'],
-                                    'Category_id' = $data['Category_id']]);
+                                    'Category_id' => $data['Category_id']]);
 
         $res->status = 'success';
         return response()->json($res);
