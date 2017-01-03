@@ -54,38 +54,20 @@ class InsertProductTable extends Migration
         'in_stock' => 1, 'name' => 'OI, Vaskrs, Srbija', 'Category_id' => 3],
         ['description' => 'Kraljevina Crna gora - pet perpera.', 'price_per_piece' => 600,
         'in_stock' => 1, 'name' => 'Pet Perpera', 'Category_id' => 1],
-        ['description' => 'Kraljevina Crna gora - pet perpera.', 'price_per_piece' => 600,
-        'in_stock' => 1, 'name' => 'Pet Perpera', 'Category_id' => 1],
-        ['description' => 'Sto ruskih rubalja sa Katarinom Velikom iz 1910. godine.', 'price_per_piece' => 3600,
-        'in_stock' => 1, 'name' => 'Katarina Velika', 'Category_id' => 1],
         ['description' => 'Sto ruskih rubalja sa Katarinom Velikom iz 1910. godine.', 'price_per_piece' => 3600,
         'in_stock' => 1, 'name' => 'Katarina Velika', 'Category_id' => 1],
         ['description' => 'Petsto ruskih rubalja sa Petrom Velikim iz 1912. godine.', 'price_per_piece' => 3600,
         'in_stock' => 1, 'name' => 'Petar Veliki', 'Category_id' => 1],
-        ['description' => 'Sto ruskih rubalja sa Petrom Velikim iz 1912. godine.', 'price_per_piece' => 3600,
-        'in_stock' => 1, 'name' => 'Petar Veliki', 'Category_id' => 1],
-        ['description' => 'Hiljadu dinara iz 1931. godine. Na novčanici se nalazi Kraljica Marija Karađorđević. Likovno rešenje: Paja Jovanović', 
-        'price_per_piece' => 1200, 'in_stock' => 1, 'name' => 'Hiljadu dinara iz 1931. godine', 'Category_id' => 1],
         ['description' => 'Hiljadu dinara iz 1931. godine. Na novčanici se nalazi Kraljica Marija Karađorđević. Likovno rešenje: Paja Jovanović', 
         'price_per_piece' => 1200, 'in_stock' => 1, 'name' => 'Hiljadu dinara iz 1931. godine', 'Category_id' => 1],
         ['description' => 'Sto dinara iz 1929. godine Kraljevina Jugoslavija.', 'price_per_piece' => 600, 
         'in_stock' => 1, 'name' => 'Sto dinara iz 1929. godine', 'Category_id' => 1],
-        ['description' => 'Sto dinara iz 1929. godine Kraljevina Jugoslavija.', 'price_per_piece' => 600, 
-        'in_stock' => 1, 'name' => 'Sto dinara iz 1929. godine', 'Category_id' => 1],
-        ['description' => 'Sto franaka iz 1940. godine.', 'price_per_piece' => 600, 
-        'in_stock' => 1, 'name' => 'Francuska iz 1940. godine', 'Category_id' => 1],
         ['description' => 'Sto franaka iz 1940. godine.', 'price_per_piece' => 600, 
         'in_stock' => 1, 'name' => 'Francuska iz 1940. godine', 'Category_id' => 1],
         ['description' => 'Hiljadu srpskih dinara iz 1943. godine.', 'price_per_piece' => 600, 
         'in_stock' => 1, 'name' => 'Hiljadu srpskih dinara iz 1943. godine.', 'Category_id' => 1],
-        ['description' => 'Hiljadu srpskih dinara iz 1943. godine.', 'price_per_piece' => 600, 
-        'in_stock' => 1, 'name' => 'Hiljadu srpskih dinara iz 1943. godine.', 'Category_id' => 1],
         ['description' => 'Deset crnogorskih perpera iz 1914. godine.', 'price_per_piece' => 1000, 
         'in_stock' => 1, 'name' => 'Deset crnogorskih perpera iz 1914. godine.', 'Category_id' => 1],
-        ['description' => 'Deset crnogorskih perpera iz 1914. godine.', 'price_per_piece' => 1000, 
-        'in_stock' => 1, 'name' => 'Deset crnogorskih perpera iz 1914. godine.', 'Category_id' => 1],
-        ['description' => 'Dva brazilska reala.', 'price_per_piece' => 600, 
-        'in_stock' => 1, 'name' => 'Dva brazilska reala.', 'Category_id' => 1],
         ['description' => 'Dva brazilska reala.', 'price_per_piece' => 600, 
         'in_stock' => 1, 'name' => 'Dva brazilska reala.', 'Category_id' => 1],
         ['description' => 'Pedeset pezeta iz 1928. godine. Iz Španije.', 'price_per_piece' => 800, 
@@ -101,6 +83,6 @@ class InsertProductTable extends Migration
      */
     public function down()
     {
-        //
+        DB::table('Product')->truncate();
     }
 }

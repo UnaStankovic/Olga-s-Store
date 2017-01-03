@@ -27,6 +27,6 @@ class InsertCategoryTable extends Migration
      */
     public function down()
     {
-        //
+        DB::table('Category')->truncate();
     }
 }
