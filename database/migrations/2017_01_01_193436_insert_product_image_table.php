@@ -14,44 +14,45 @@ class InsertProductImageTable extends Migration
     public function up()
     {
         DB::table('ProductImage')->insert([
-        ['path' => '/assets/img/OldMoney/1', 'Product_id' => 1],
-        ['path' => '/assets/img/OldMoney/2', 'Product_id' => 2],
-        ['path' => '/assets/img/Postcards/3', 'Product_id' => 3],
-        ['path' => '/assets/img/Postcards/4', 'Product_id' => 4],
-        ['path' => '/assets/img/Postcards/5', 'Product_id' => 5],
-        ['path' => '/assets/img/Postcards/6', 'Product_id' => 6],
-        ['path' => '/assets/img/Postcards/7', 'Product_id' => 7],
-        ['path' => '/assets/img/Postcards/8', 'Product_id' => 8],
-        ['path' => '/assets/img/Postcards/9', 'Product_id' => 9],
-        ['path' => '/assets/img/Postcards/10', 'Product_id' => 10],
-        ['path' => '/assets/img/Postcards/11', 'Product_id' => 11],
-        ['path' => '/assets/img/OldMoney/12', 'Product_id' => 12],
-        ['path' => '/assets/img/OldMoney/13', 'Product_id' => 13],
-        ['path' => '/assets/img/Stamps/14', 'Product_id' => 14],
-        ['path' => '/assets/img/Stamps/15', 'Product_id' => 15],
-        ['path' => '/assets/img/Stamps/16', 'Product_id' => 16],
-        ['path' => '/assets/img/Stamps/17', 'Product_id' => 17],
-        ['path' => '/assets/img/Stamps/18', 'Product_id' => 18],
-        ['path' => '/assets/img/Stamps/19', 'Product_id' => 19],
-        ['path' => '/assets/img/OldMoney/20', 'Product_id' => 20],
-        ['path' => '/assets/img/OldMoney/21', 'Product_id' => 21],
-        ['path' => '/assets/img/OldMoney/22', 'Product_id' => 22],
-        ['path' => '/assets/img/OldMoney/23', 'Product_id' => 23],
-        ['path' => '/assets/img/OldMoney/24', 'Product_id' => 24],
-        ['path' => '/assets/img/OldMoney/25', 'Product_id' => 25],
-        ['path' => '/assets/img/OldMoney/26', 'Product_id' => 26],
-        ['path' => '/assets/img/OldMoney/27', 'Product_id' => 27],
-        ['path' => '/assets/img/OldMoney/28', 'Product_id' => 28],
-        ['path' => '/assets/img/OldMoney/29', 'Product_id' => 29],
-        ['path' => '/assets/img/OldMoney/30', 'Product_id' => 30],
-        ['path' => '/assets/img/OldMoney/31', 'Product_id' => 31],
-        ['path' => '/assets/img/OldMoney/32', 'Product_id' => 32],
-        ['path' => '/assets/img/OldMoney/33', 'Product_id' => 33],
-        ['path' => '/assets/img/OldMoney/34', 'Product_id' => 34],
-        ['path' => '/assets/img/OldMoney/35', 'Product_id' => 35],
-        ['path' => '/assets/img/OldMoney/36', 'Product_id' => 36],
-        ['path' => '/assets/img/OldMoney/37', 'Product_id' => 37],
-        ['path' => '/assets/img/OldMoney/38', 'Product_id' => 38]
+        ['path' => '/img/OldMoney/1.jpeg', 'Product_id' => 1],
+        ['path' => '/img/OldMoney/2.jpeg', 'Product_id' => 2],
+        ['path' => '/img/Postcards/3.jpeg', 'Product_id' => 3],
+        ['path' => '/img/Postcards/4.jpeg', 'Product_id' => 4],
+        ['path' => '/img/Postcards/5.jpeg', 'Product_id' => 5],
+        ['path' => '/img/Postcards/6.jpeg', 'Product_id' => 6],
+        ['path' => '/img/Postcards/7.jpeg', 'Product_id' => 7],
+        ['path' => '/img/Postcards/8.jpeg', 'Product_id' => 8],
+        ['path' => '/img/Postcards/9.jpeg', 'Product_id' => 9],
+        ['path' => '/img/Postcards/10.jpeg', 'Product_id' => 10],
+        ['path' => '/img/Postcards/11.jpeg', 'Product_id' => 11],
+        ['path' => '/img/OldMoney/12.jpeg', 'Product_id' => 12],
+        ['path' => '/img/OldMoney/13.jpeg', 'Product_id' => 13],
+        ['path' => '/img/Stamps/14.jpeg', 'Product_id' => 14],
+        ['path' => '/img/Stamps/15.jpeg', 'Product_id' => 15],
+        ['path' => '/img/Stamps/16.jpeg', 'Product_id' => 16],
+        ['path' => '/img/Stamps/17.jpeg', 'Product_id' => 17],
+        ['path' => '/img/Stamps/18.jpeg', 'Product_id' => 18],
+        ['path' => '/img/Stamps/19.jpeg', 'Product_id' => 19],
+        ['path' => '/img/OldMoney/20a.jpeg', 'Product_id' => 20],
+        ['path' => '/img/OldMoney/20b.jpeg', 'Product_id' => 20],
+        ['path' => '/img/OldMoney/21a.jpeg', 'Product_id' => 21],
+        ['path' => '/img/OldMoney/21b.jpeg', 'Product_id' => 21],
+        ['path' => '/img/OldMoney/22a.jpeg', 'Product_id' => 22],
+        ['path' => '/img/OldMoney/22b.jpeg', 'Product_id' => 22],
+        ['path' => '/img/OldMoney/23a.jpeg', 'Product_id' => 23],
+        ['path' => '/img/OldMoney/23b.jpeg', 'Product_id' => 23],
+        ['path' => '/img/OldMoney/24a.jpeg', 'Product_id' => 24],
+        ['path' => '/img/OldMoney/24b.jpeg', 'Product_id' => 24],
+        ['path' => '/img/OldMoney/25a.jpeg', 'Product_id' => 25],
+        ['path' => '/img/OldMoney/25b.jpeg', 'Product_id' => 25],
+        ['path' => '/img/OldMoney/26a.jpeg', 'Product_id' => 26],
+        ['path' => '/img/OldMoney/26b.jpeg', 'Product_id' => 26],
+        ['path' => '/img/OldMoney/27a.jpeg', 'Product_id' => 27],
+        ['path' => '/img/OldMoney/27b.jpeg', 'Product_id' => 27],
+        ['path' => '/img/OldMoney/28a.jpeg', 'Product_id' => 28],
+        ['path' => '/img/OldMoney/28b.jpeg', 'Product_id' => 28],
+        ['path' => '/img/OldMoney/29a.jpeg', 'Product_id' => 29],
+        ['path' => '/img/OldMoney/29b.jpeg', 'Product_id' => 29]
         ]
         );
     }
@@ -59,10 +60,10 @@ class InsertProductImageTable extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
+     * @return void     
      */
     public function down()
     {
-        //
+        DB::table('ProductImage')->truncate();
     }
 }
