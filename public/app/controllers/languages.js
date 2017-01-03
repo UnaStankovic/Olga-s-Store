@@ -6,7 +6,7 @@
       else
         this.lang = rs;
       };*/
-      this.lang = en;
+      this.lang = rs;
   }]);
   /*NOTE : Some elements are used on multiple pages*/
   var rs = {
@@ -62,6 +62,8 @@
     city : "Grad",
     country : "Država",
     tel : "Telefon",
+    fieldctrl : "Obavezna polja",
+    fieldctrl2 : "Polja koja možete popuniti pri naručivanju proizvoda",
     /*ADMIN STUFF*/
 
   }
@@ -118,5 +120,7 @@
     city : "City",
     country : "State",
     tel : "Telephone",
+    fieldctrl : "Mandatory fields",
+    fieldctrl2 : "Fields that you can fill on ordering product",
   }
 })();

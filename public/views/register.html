@@ -1,20 +1,26 @@
 <div class = 'container row-text-center'>
   <div class = 'col-sm-2'>
+      <!-- this empty div is part of "to 12" design in Angular. 2 + 8 = 10 and the rest is also 2 but there is no need to write it -->
   </div>
   <div class = 'col-sm-8 well well-lg center-it'>
     <form ng-controller = 'RegisterController as RegCtrl' ng-submit = 'registerUser()'>
-      <h1>{{LangCtrl.lang.logindata}}</h1>
+      <h1 id = 'pagetitle'>{{LangCtrl.lang.logindata}}</h1>
 
-      <p> <label>e-mail: </label><input type='email' ng-model="info.email" ngRequired = true></p>
-      <p> <label>password: </label> <input type = 'password' ng-model="info.password" ngRequired = true></p>
+      <fieldset>
+        <legend>{{LangCtrl.lang.fieldctrl}} <i class='glyphicon glyphicon-pencil'></i></legend>
+        <p> <label>e-mail: </label><input type='email' ng-model="info.email" required></p>
+        <p> <label>password: </label> <input type = 'password' ng-model="info.password" required></p>
+      </fieldset>
 
-      <p> <label>{{LangCtrl.lang.name}}: </label> <input type = 'text' ng-model="info.name" ></p>
-      <p><label>{{LangCtrl.lang.surname}}: </label><input type = 'text' ng-model="info.surname" ></p>
-      <p><label>{{LangCtrl.lang.address}}: </label> <input type = 'text' ng-model="info.address" ></p>
-      <p><label>{{LangCtrl.lang.city}}: </label><input type = 'text' ng-model="info.city" ></p>
-      <p><label>{{LangCtrl.lang.country}}: </label> <input type = 'text' ng-model="info.country" ></p>
-      <p><label>{{LangCtrl.lang.tel}}: </label> <input type = 'text' ng-model="info.telephone" ></p>
-
+      <fieldset>
+        <legend>{{LangCtrl.lang.fieldctrl2}} <i class='glyphicon glyphicon-pencil'></i></legend>
+        <p> <label>{{LangCtrl.lang.name}}: </label> <input type = 'text' ng-model="info.name" ></p>
+        <p><label>{{LangCtrl.lang.surname}}: </label><input type = 'text' ng-model="info.surname" ></p>
+        <p><label>{{LangCtrl.lang.address}}: </label> <input type = 'text' ng-model="info.address" ></p>
+        <p><label>{{LangCtrl.lang.city}}: </label><input type = 'text' ng-model="info.city" ></p>
+        <p><label>{{LangCtrl.lang.country}}: </label> <input type = 'text' ng-model="info.country" ></p>
+        <p><label>{{LangCtrl.lang.tel}}: </label> <input type = 'text' ng-model="info.telephone" ></p>
+      </fieldset>
       <input id = 'submitbutton' type="submit" value={{LangCtrl.lang.confirm}}>
 
       <p id = 'errormsg' style="color:red">{{info.errormsg}}</p>
@@ -23,4 +29,4 @@
   </div>
 </div>
 
-<!-- e mail* pass* name surname address city country telephone
+<!-- e mail* pass* name surname address city country telephone -->

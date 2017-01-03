@@ -3,34 +3,29 @@
   font-size: 32px;
   color: #E80C39;
 }
-
 .footer a{
   color: black;
 }
-
 /*btn primary is if the "big" menu bar is used*/
 .btn-primary{
   background-color: #E80C39;
   border-color: #E80C39;
 }
-
 .btn-primary:hover {
   background-color: #E80C39;
   border-color: #E80C39;
 }
-
 .maintitle{
   color: #E80C39;
+  font-size : 32px;
+  text-align : center;
 }
-
 .center-it{
   text-align: center;
 }
-
 .nav.navbar-nav.navbar-right li a{
   color: #E80C39;
 }
-
 .navbar-header.navbar-brand a{
   color: #E80C39;
 }
@@ -40,10 +35,15 @@
   width: 60%;
   height: 100%;
 }
-
 #pagecontent{
   padding-top : 10px;
   padding-bottom : 10px;
+}
+#pagetitle{
+  padding-bottom : 10px;
+}
+#warning {
+  color : red;
 }
 
 label{
@@ -53,8 +53,11 @@ label{
   margin-right : 5px;
   margin-top : 5px;
 }
-
 input{
   display : inline-block;
   margin : 5px;
+}
+
+legend{
+  text-align : center;
 }

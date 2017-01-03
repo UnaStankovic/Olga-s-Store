@@ -58,7 +58,7 @@
             <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
             <?php
               if(!isAuthenticated()) {
-                echo "<li><a href='#/register'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.register}}</a></li>";
+                echo "<li><a href='#/register'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>";
                 echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
               } else {
                 echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>  <ul class = 'dropdown-menu'>

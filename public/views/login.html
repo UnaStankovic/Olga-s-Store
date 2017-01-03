@@ -1,5 +1,6 @@
 <div class = 'row-text-center'>
   <div class = 'col-sm-2'>
+    <!-- this empty div is part of "to 12" design in Angular. 2 + 8 = 10 and the rest is also 2 but there is no need to write it -->
   </div>
   <div class = 'col-sm-8 well well-lg center-it'>
     <form ng-controller = 'LoginController as LogCtrl' ng-submit = 'loginUser()'>
@@ -8,7 +9,7 @@
       <p><label>password: </label><input type = 'password' ng-model="info.password"></p>
       <input type="submit" value="Login">
       <p>{{LangCtrl.lang.forgotpass}}</p>
-      <p style="color:red">{{info.errormsg}}</p>
+      <p id = 'warning'>{{info.errormsg}}</p>
     </form>
   </div>
 </div>
