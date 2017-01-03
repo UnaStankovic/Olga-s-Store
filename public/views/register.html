@@ -1,0 +1,27 @@
+<div class = 'container row-text-center'>
+  <div class = 'col-sm-2'>
+  </div>
+  <div class = 'col-sm-8 well well-lg center-it'>
+    <form ng-controller = 'RegisterController as RegCtrl' ng-submit = 'registerUser()'>
+      <h1>{{LangCtrl.lang.logindata}}</h1>
+
+      <p> <label>e-mail: </label><input type='email' ng-model="info.email" ngRequired = true></p>
+      <p> <label>password: </label> <input type = 'password' ng-model="info.password" ngRequired = true></p>
+
+      <p> <label>{{LangCtrl.lang.name}}: </label> <input type = 'text' ng-model="info.name" ></p>
+      <p><label>{{LangCtrl.lang.surname}}: </label><input type = 'text' ng-model="info.surname" ></p>
+      <p><label>{{LangCtrl.lang.address}}: </label> <input type = 'text' ng-model="info.address" ></p>
+      <p><label>{{LangCtrl.lang.city}}: </label><input type = 'text' ng-model="info.city" ></p>
+      <p><label>{{LangCtrl.lang.country}}: </label> <input type = 'text' ng-model="info.country" ></p>
+      <p><label>{{LangCtrl.lang.tel}}: </label> <input type = 'text' ng-model="info.telephone" ></p>
+
+      <input type="submit" value={{LangCtrl.lang.confirm}}>
+      <p>{{LangCtrl.lang.forgotpass}}</p>
+
+      <p style="color:red">{{info.errormsg}}</p>
+
+    </form>
+  </div>
+</div>
+
+<!-- e mail* pass* name surname address city country telephone
