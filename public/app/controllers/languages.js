@@ -53,6 +53,8 @@
     city : "Grad",
     country : "Država",
     tel : "Telefon",
+    /*ADMIN STUFF*/
+    
   }
   var en = {
     /*Main page elements */
