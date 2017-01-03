@@ -1,5 +1,5 @@
 <?php
-  require_once('../../include/auth.php');
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
             <li><a href = '#/history'>{{LangCtrl.lang.history}}</a></li>
             <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
             <?php
-              if(!isAuthenticated()) {
+              if(isset($_SESSION['userId'])) {
                 echo "<li><a href='#/register'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>";
                 echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
               } else {
