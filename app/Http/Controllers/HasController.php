@@ -57,6 +57,9 @@ class HasController extends Controller {
         $res = new \stdClass();
         $data = $request->all();
 
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A'))
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
+
         if(!isset($data['id']) || !isset($data['privilege']))
             return response()->json(errorResponse($res, 'id and privilege are required', 'id,privilege'));
 
@@ -71,6 +74,26 @@ class HasController extends Controller {
 
         DB::table('Has')->insert(['User_id' => $data['id'], 'Privilege_id' => $data['privilege']]);
 
+        $res->status = 'success';
+        return response()->json($res);
+    }
+
+    public function deletePrivilege($id, $privilege) {
+        $res = new \stdClass();
+
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A'))
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
+
+        if(count(DB::table('Has')->where('User_id', $id)->get()) == 0)
+            return response()->json(errorResponse($res, 'There is no such user', 'id'));
+
+        if(count(DB::table('Has')->where('Privilege_id', $privilege)->get()) == 0)
+            return response()->json(errorResponse($res, 'There is no such privilege', 'privilege'));
+
+        if(count(DB::table('Has')->where('User_id', $id)->where('Privilege_id', $privilege)->get()) == 0)
+            return response()->json(errorResponse($res, 'User doesn\'t have the privilege', 'privilege_not_exists'));
+
+        DB::table('Has')->where('User_id', $id)->where('Privilege_id', $privilege)->delete();
         $res->status = 'success';
         return response()->json($res);
     }
