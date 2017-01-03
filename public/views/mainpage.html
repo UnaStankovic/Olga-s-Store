@@ -1,47 +1,43 @@
-  <div class = 'container'>
-    <!-- These are buttons that can be added if they are found necessary
-      <div class = 'row'>
-          <div class = 'col-sm-12'>
-            <button type = 'button' class = 'btn btn-lg'>Istorijat</button>
-            <button type = 'button' class = 'btn btn-lg'>Proizvodi od keramike</button>
-            <button type = 'button' class = 'btn btn-lg'>Stari novac</button>
-            <button type = 'button' class = 'btn btn-lg'>Markice</button>
-            <button type = 'button' class = 'btn btn-lg'>Proizvodi od papira i kartona</button>
-            <button type = 'button' class = 'btn btn-lg btn-primary' >Kontakt i narucivanje</button>
-          </div>
-      </div> -->
-      <div class = 'row col-xs-12'>
-        <p> </p>
-      </div>
-      <div class = 'row text-center'>
-        <div class = 'col-sm-8 well well-lg'>
-          <h2>Dobrodošli u Olginu prodavnicu suvenira</h2>
-          <p class = 'lead'>U ovoj prodavnici možete naći različite vrste klasičnih suvenira, suvenira namenjenih
-            kolekcionarima, poštanske markice,...), kao i suvenira za osobe sa prostora EX YU.  </p>
-        </div>
-        <div class = 'col-sm-3 col-sm-offset-1 hidden-xs' >
-          <img src = '../app/assets/img/other/olga.jpg' class = "img-circle" alt = 'OlgaWithHat' style = "width: 120%; height: 140%;">
-        </div>
-      </div>
-      <div class = 'row features'>
-        <div class = 'col-sm-4 col-xs-offset-1 col-sm-offset-0'>
-          <i class = 'glyphicon glyphicon-tower'> </i>
-          <h3>Kratak istorijat</h3>
-          <p>Gospođa Olga, rođena je 1931. godine u Beogradu. Ceo radni vek provodi na Kalemegdanu(sada već 61 godinu, a nadamo se i jos mnogo više),
-            pa je zbog toga zovu i legendom Kalemegdana.Zbog svoje ljubavi prema turistima ona se već više od 20 godina
-            trudi da svakog turistu pozdravi sa osmehom i lepim rečima, kao i suvenirima koje prodaje po najnižim cenama u gradu. Paleta proizvoda
-            koje prodaje možda nije najveća, ali veliki broj proizvoda sama pravi uz pomoć svoje ćerke i unuke.</p>
-        </div>
-        <div class = 'col-sm-4 '>
-          <i class = 'glyphicon glyphicon-heart'> </i>
-          <h3>Motivacija</h3>
-          <p><i>"Želja da svaki turista iz Beograda ode sa osmehom, lepim utiscima i najlepšim i jedinstvenim suvenirima mi je glavna motivacija koja
-            mi pruža novu energiju svaki dan."</i> - Olga</p>
-        </div>
-        <div class = 'col-sm-4'>
-        <i class = 'glyphicon glyphicon-globe'> </i>
-        <h3>Cilj</h3>
-          <p>Glavni cilj ove prodavnice je da proizvode koje Olga prodaje predstavimo široj publici, s obzirom na to da je dosta ljudi iskazalo interesovanje za ono
-          što imamo da ponudimo. Mnogi od njih su ljudi iz Rusije, Kine, Japana, SAD-a, kao i ljudi iz zemalja bivše Jugoslavije.</p>
-        </div>
-      </div>
+<!-- These are buttons that can be added if they are found necessary
+<div class = 'row'>
+  <div class = 'col-sm-12'>
+    <button type = 'button' class = 'btn btn-lg'>Istorijat</button>
+    <button type = 'button' class = 'btn btn-lg'>Proizvodi od keramike</button>
+    <button type = 'button' class = 'btn btn-lg'>Stari novac</button>
+    <button type = 'button' class = 'btn btn-lg'>Markice</button>
+    <button type = 'button' class = 'btn btn-lg'>Proizvodi od papira i kartona</button>
+    <button type = 'button' class = 'btn btn-lg btn-primary' >Kontakt i narucivanje</button>
+  </div>
+</div> -->
+
+<!--<div class = 'row col-xs-12'>
+  <p> </p>
+</div> -->
+
+<div class = 'row text-center'>
+  <div class = 'col-sm-8 well well-lg'>
+    <h2>{{LangCtrl.lang.welcome}}</h2>
+    <p class = 'lead'> {{LangCtrl.lang.shortdesc}} </p>
+  </div>
+  <div class = 'col-sm-3 col-sm-offset-1 hidden-xs' >
+    <img src = '../app/assets/img/other/olga.jpg' class = "img-circle" alt = 'OlgaWithHat' style = "width: 120%; height: 140%;">
+  </div>
+</div>
+
+<div class = 'row features'>
+  <div class = 'col-sm-4 col-xs-offset-1 col-sm-offset-0'>
+    <i class = 'glyphicon glyphicon-tower'> </i>
+    <h3>{{LangCtrl.lang.sh}}</h3>
+    <p>{{LangCtrl.lang.shorthistory}}</p>
+  </div>
+  <div class = 'col-sm-4 '>
+    <i class = 'glyphicon glyphicon-heart'> </i>
+    <h3>{{LangCtrl.lang.motivation}}</h3>
+    <p><i>{{LangCtrl.lang.quotesh}}</i> - Olga</p>
+  </div>
+  <div class = 'col-sm-4'>
+    <i class = 'glyphicon glyphicon-globe'> </i>
+    <h3>{{LangCtrl.lang.goal}}</h3>
+    <p>{{LangCtrl.lang.goaltext}}</p>
+  </div>
+</div>

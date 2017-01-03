@@ -10,7 +10,7 @@
   }]);
   /*NOTE : Some elements are used on multiple pages*/
   var rs = {
-    /*Main page elements*/
+    /*Skelleton page elements*/
     title : "Olgina prodavnica suvenira",
     about : "O nama",
     history : "Istorijat",
@@ -35,6 +35,15 @@
     ily3 : "Srpski",
     co : "Kontakt i naručivanje",
 
+    /*Main page elements*/
+    welcome : "Dobrodošli u Olginu prodavnicu suvenira",
+    shortdesc : "U ovoj prodavnici možete naći različite vrste klasičnih suvenira, suvenira namenjenih kolekcionarima, poštanske markice,...), kao i suvenira za osobe sa prostora EX YU. ",
+    sh : "Kratak istorijat",
+    shorthistory : "Gospođa Olga, rođena je 1931. godine u Beogradu. Ceo radni vek provodi na Kalemegdanu(sada već 61 godinu, a nadamo se i jos mnogo više), pa je zbog toga zovu i legendom Kalemegdana.Zbog svoje ljubavi prema turistima ona se već više od 20 godina trudi da svakog turistu pozdravi sa osmehom i lepim rečima, kao i suvenirima koje prodaje po najnižim cenama u gradu. Paleta proizvoda koje prodaje možda nije najveća, ali veliki broj proizvoda sama pravi uz pomoć svoje ćerke i unuke.",
+    motivation : "Motivacija",
+    goal : "Cilj",
+    goaltext : "  Glavni cilj ove prodavnice je da proizvode koje Olga prodaje predstavimo široj publici, s obzirom na to da je dosta ljudi iskazalo interesovanje za ono što imamo da ponudimo. Mnogi od njih su ljudi iz Rusije, Kine, Japana, SAD-a, kao i ljudi iz zemalja bivše Jugoslavije. ",
+
     /*History page elements*/
     historytext : "Gospođa Olga,poznata i kao dama sa belim šeširom, rođena je 1931. godine u Beogradu. Ceo radni vek provodi na Kalemegdanu(sada već 61 godinu, a nadamo se i jos mnogo više),pa je zbog toga zovu i legendom Kalemegdana. Gospođa koja danas ima 85 godina, je najstariji radnik na Kalemegdanskoj Tvrđavi.<br>Još od davne 1955. godine ona je radila, najpre, u Muzeju Šumarstva i lova (danas poznatiji kao Prirodnjački muzej) sve do 1990. godine, kada se penzionisala.<br> Tokom rada u muzeju napisala je knjigu Beli zeka decu čeka, inspirisana sopstvenim, kao i detinjstvima mnogobrojne dece koju je svakodnevno vidjala na Kalemegdanu. Knjiga je dobila naslov po statui belog zeke koja je stajala na prozoru muzeja i time privlačila mnogobrojnu decu. Nakon penzionisanja nije zelela da se povuče u kuću, kao većina ljudi danas, već je odlučila da se bavi onime što najviše voli - turistima. <br>Zbog svoje ljubavi prema turistima ona se već više od 20 godina trudi da svakog turistu pozdravi sa osmehom i lepim rečima, kao i suvenirima koje prodaje po najnižim cenama u gradu. Paleta proizvoda koje prodaje možda nije najveća, ali veliki broj proizvoda sama pravi uz pomoć svoje ćerke i unuke, kao što su na primer jedinstveni setovi sa kovanim novcem koji je veoma popularan među strancima. <br>Stranci je naprosto obožavaju i mnogi od njih žele da se slikaju sa njom, pa tako se ona nalazi na slikama sa ljudima sa svih strana sveta, a vrlo često je i intervjuišu za različite vrste tv emisija. Njena posvećenost i energija vredni su svakog divljenja ako se uzme u obzir da je ona na poslu svaki dan od pola 8 do 8 leti, a nešto kraće zimi i da posao nastavlja kada dođe kući.",
     quotesh : "Želja da svaki turista iz Beograda ode sa osmehom, lepim utiscima i najlepšim i jedinstvenim suvenirima mi je glavna motivacija koja mi pruža novu energiju svaki dan." ,
@@ -54,10 +63,10 @@
     country : "Država",
     tel : "Telefon",
     /*ADMIN STUFF*/
-    
+
   }
   var en = {
-    /*Main page elements */
+    /*Skelleton page elements */
     title : "Olga's souvenir store",
     about : "About",
     history : "History",
@@ -82,9 +91,18 @@
     ily3 : "Engleski",
     co : "Contact us and ordering",
 
+    /*Main page elements*/
+    welcome : "Welcome to Olga's souvenir store",
+    shortdesc : "In this shop you can find various kinds of classic souvenirs, collector souvenirs, stamps, souvenirs for people from the former Republic of Yugoslavia…",
+    sh : "Short story",
+    shorthistory : "Madam Olga was born in 1931 in Belgrade. She has been working on Kalemegdan her whole life (she has already spent 61 years here and we hope for many more), which is why some even call her the legend of Kalmegdan. Because of her love for tourists for over twenty years she has been making an effort to greet every tourist with a smile, kind words and souvenirs at the lowest prices in town. The array of items that she sells might not be the largest, but she makes a large number of items herself with the help of her daughter and granddaughter.",
+    motivation : "Motivation",
+    goal : "Main Goal",
+    goaltext : "The main purpose of this store is to present the items Olga sells to a wider audience, considering that a great number of people showed interest in what we have to offer. Many of them are from Russia, China, Japan, USA and the countries of the former republic of Yugoslavia.",
+
     /*History page elements*/
-    historytext : "sometext",
-    quotesh : "I want for every tourist to go from Belgrade with a smile, amazing impressions and most beautiful and unique souvenirs. That is my main motivation that gives me new strenght every day.",
+    historytext : "Madam Olga, also known as the lady with the white hat, was born in 1931 in Belgrade. She has been working on Kalemegdan her whole life (she has already spent 61 years here and we hope for many more), which is why some even call her the legend of Kalmegdan. The lady, who is now 85, is the oldest employee on the Kalemegdan Fortress. </br> Ever since the distant 1955 she worked at first in the Museum of Forestry and Hunting (today more widely known as the Natural History Museum) until 1990, when she retired. </br> During her time at the museum she wrote the book “Beli zeka decu čeka” (The white bunny waits for the children), inspired by her own childhood and those of the children she used to see every day on Kalemegdan. The book was named after the statue of a white bunny which stood on the window of the museum and attracted lots of children in that way. After retiring she did not want to keep to her house, like most people today, but she decided to do business with who she loved the most – tourists. </br> Because of her love for tourists for over twenty years she has been making an effort to greet every tourist with a smile, kind words and souvenirs at the lowest prices in town. The array of items that she sells might not be the largest, but she makes a large number of items herself with the help of her daughter and granddaughter, like the unique sets of coins, which are very popular among foreigners. </br> Foreigners just adore her and many of them want to take a picture with her, and thus she can be seen in photos with people from all around the world, and she is very often interviewed for various kinds of TV shows.",
+    quotesh : "The desire that every tourist leaves Belgrade with a smile, pleasant memories and the most beautiful and unique souvenirs is my main motivation that gives me new energy every day.",
 
     /*Order page elements*/
     ordering : "For now you can only purchase products at Kalemegdan fortress.",

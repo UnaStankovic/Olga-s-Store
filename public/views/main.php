@@ -76,7 +76,10 @@
       </div>
     </div>
 
-    <div ng-view></div>
+    <div class = 'container' id = 'pagecontent'>
+      <div ng-view>
+      </div>
+    </div>
 
     <div class = 'container'>
       <div class = 'row footer' style = "background-color: gray;">

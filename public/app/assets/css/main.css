@@ -16,13 +16,6 @@
   background-color: #E80C39;
   border-color: #E80C39;
 }
-
-/*#1849E8 lepa plava*/
-#logo{
-  width: 60%;
-  height: 100%;
-}
-
 .maintitle .colorit{
   color: #E80C39;
 }
@@ -38,6 +31,18 @@
 .navbar-header.navbar-brand a{
   color: #E80C39;
 }
+
+/*#1849E8 lepa plava*/
+#logo{
+  width: 60%;
+  height: 100%;
+}
+
+#pagecontent{
+  padding-top : 15px;
+}
+
+
 
 label{
   display : inline-block;
