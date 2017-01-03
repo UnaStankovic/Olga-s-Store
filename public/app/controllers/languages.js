@@ -6,13 +6,13 @@
       else
         this.lang = rs;
       };*/
-      this.lang = rs;
+      this.lang = en;
   }]);
   /*NOTE : Some elements are used on multiple pages*/
   var rs = {
     /*Skelleton page elements*/
     title : "Olgina prodavnica suvenira",
-    about : "O nama",
+    about : "O prodavnici",
     history : "Istorijat",
     products : "Proizvodi",
     old_money : "Stari novac",
@@ -52,7 +52,7 @@
     ordering : "Naručivanje se za sada vrši pouzećem ili ličnim preuzimanjem na Kalemegdanu.",
     toorder : "Naručivanje",
 
-    /*Login page and registration page */
+    /*Login page and registration page elements*/
     forgotpass : "Zaboravili ste lozinku?",
     logindata : "Unesite podatke",
     confirm : "Potvrdi",
@@ -64,6 +64,14 @@
     tel : "Telefon",
     fieldctrl : "Obavezna polja",
     fieldctrl2 : "Polja koja možete popuniti pri naručivanju proizvoda",
+
+    /*About the store page elements*/
+    cause : "Svrha",
+    abouttext : "Svrha ove prodavnice je da znatiželjnima i kupcima pruži uvid u proizvode koje nudimo. Proizvodi su razvrstani u više kategorija: stari novac, markice, proizvodi od papira i kartona,... kako bi bilo omogućeno da svako lako nađe ono što ga interesuje. ",
+    prices : "Cene",
+    abouttext1 : "Trudimo se da cene budu najniže u Beogradu. Osim toga moguć je dogovor oko popusta od 5% do 15% u zavisnosti od robe koju želite kao i od količine. :)",
+    payment : "Plaćanje",
+    abouttext2 : "Plaćanje je za sad moguće samo na dva načina : pouzećem i ličnim preuzimanjem. Radimo na tome da online naručivanje bude omogućeno tako da se proizvodi mogu plaćati karticom.",
     /*ADMIN STUFF*/
 
   }
@@ -122,5 +130,12 @@
     tel : "Telephone",
     fieldctrl : "Mandatory fields",
     fieldctrl2 : "Fields that you can fill on ordering product",
+    /*About the store page elements*/
+    cause : "Main Cause",
+    abouttext : "Main cause of this store is to present to whom it may concern and possible buyers insight into all the products we have to offer. All products are divided into various categories, such as : old money, stamps, postcards, etc. so anybody can find their cup of tea.",
+    prices : "Prices",
+    abouttext1 : "We are trying to maintain our prices lowest in Belgrade. At the top of that, we are sometimes offering discount from 5% to 15% depending on type of product and quantity. :)",
+    payment : "Payment method",
+    abouttext2 : "For now it is only possible to pay and take product in person at Kalemegdan. We are currently working on providing credit card payment method support.",
   }
 })();

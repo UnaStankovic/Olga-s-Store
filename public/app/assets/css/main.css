@@ -19,9 +19,13 @@
   color: #E80C39;
   font-size : 32px;
   text-align : center;
+  font-weight : bold;
 }
 .center-it{
   text-align: center;
+}
+.bold-it{
+  font-weight : bold;
 }
 .nav.navbar-nav.navbar-right li a{
   color: #E80C39;
