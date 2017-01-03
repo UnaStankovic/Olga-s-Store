@@ -1,3 +1,4 @@
+/*colouring glyphicon icons for the store*/
 .features .glyphicon{
   font-size: 32px;
   color: #E80C39;
@@ -21,8 +22,12 @@
   height: 100%;
 }
 
-.maintitle{
+.maintitle .colorit{
   color: #E80C39;
+}
+
+.center-it{
+  text-align: center;
 }
 
 .nav.navbar-nav.navbar-right li a{
