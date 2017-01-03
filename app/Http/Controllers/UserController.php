@@ -26,14 +26,13 @@ class UserController extends Controller {
     public function getUser($id) {
         $res = new \stdClass();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'C')) {
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id))
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        }
 
         $user = DB::table('User')->where('id', intval($id))->get();
-        if(count($user) == 0) {
+        if(count($user) == 0)
             return response()->json(errorResponse($res, 'There is no such user', 'id'));
-        }
+
         unset($user[0]->password);
         unset($user[0]->confirmation_code);
         $res->status = 'success';
@@ -45,15 +44,7 @@ class UserController extends Controller {
     public function changeUser(Request $request, $id) {
         $res = new \stdClass();
 
-        if(!isAuthenticated()) {
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        } else if(isAuthorized($_SESSION['userId'], 'A')) {
-            //authorized
-        } else if(isAuthorized($_SESSION['userId'], 'C')) {
-            if($_SESSION['userId'] != intval($id)) {
-                return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-            }
-        } else {
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id)) {
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
 
@@ -86,17 +77,8 @@ class UserController extends Controller {
     function deleteUser($id) {
         $res = new \stdClass();
 
-        if(!isAuthenticated()) {
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id))
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        } else if(isAuthorized($_SESSION['userId'], 'A')) {
-            //authorized
-        } else if(isAuthorized($_SESSION['userId'], 'C')) {
-            if($_SESSION['userId'] != intval($id)) {
-                return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-            }
-        } else {
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        }
 
         $user = DB::table('User')->where('id', intval($id));
         if(count($user->get()) == 0) {
@@ -111,7 +93,7 @@ class UserController extends Controller {
     function index() {
         $res = new \stdClass();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'C')) {
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A')) {
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
 

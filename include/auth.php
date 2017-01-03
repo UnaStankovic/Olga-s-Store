@@ -100,15 +100,31 @@
         return FALSE;
     }
 
-    function isAuthorized($userid, $privileges) {
-        $privileges = str_split($privileges);
-        foreach($privileges as $privilege) {
-            $user = DB::table('Has')->where('User_id', $userid)->where('Privilege_id', $privilege)->get();
-            if(count($user) == 0)
-                return FALSE;
+    //use: isAuthorized(123, 'C|A|^', $id) -- customer, administrator or current user is equals to $id
+    //use: isAuthorized(153, 'AC|^', $id) -- administrator and customer, or current user is equals to $id
+    function isAuthorized($userid, $setOfPrivileges, $id = 0) {
+        $setOfPrivileges = explode('|', $setOfPrivileges);
+        foreach($setOfPrivileges as $privileges) {
+            $ok = TRUE;
+            $privileges = str_split($privileges);
+            foreach($privileges as $privilege) {
+                if($privilege == '^') {
+                    if($id != $userid) {
+                        $ok = FALSE;
+                        break;
+                    }
+                } else {
+                    $user = DB::table('Has')->where('User_id', $userid)->where('Privilege_id', $privilege)->get();
+                    if(count($user) == 0) {
+                        $ok = FALSE;
+                        break;
+                    }
+                }
+            }
+            if($ok == TRUE)
+                return TRUE;
         }
-
-        return TRUE;
+        return FALSE;
     }
 
     function validate($input, $pattern) {
