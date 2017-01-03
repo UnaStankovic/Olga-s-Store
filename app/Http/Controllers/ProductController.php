@@ -62,6 +62,7 @@ class ProductController extends Controller {
     }
     
     function deleteProduct($id) {
+        
         $res = new \stdClass();
 
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id))
@@ -76,4 +77,22 @@ class ProductController extends Controller {
         $res->status = 'success';
         return response()->json($res);
     }
+    
+    public function createProduct(Request $request) {
+        
+        $res = new \stdClass();
+        $data = $request->all();
+
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A'))
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
+
+        if(!isset($data['name']) || !isset($data['description']) || !isset($data['price_per_piece']) || !isset($data['Category_id']) || !isset($data['in_stock']))
+            return response()->json(errorResponse($res, 'name, description, price_per_piece, Category_id, in_stock are required', 'description, name, price_per_piece, Category_id,
+                                    in_stock'));
+        DB::table('Product')->insert(['description' => $data['description'], 'name' => $data['name'], 'price_per_piece' => $data['price_per_piece'], 'in_stock' => $data['in_stock'],
+                                    'Category_id' = $data['Category_id']]);
+
+        $res->status = 'success';
+        return response()->json($res);
+    }    
 }

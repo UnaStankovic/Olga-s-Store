@@ -32,6 +32,7 @@ $app->get('api/product', 'ProductController@index');
 $app->get('api/product/{id}', 'ProductController@getProduct');
 $app->put('api/product/{id}', 'ProductController@updateProduct');
 $app->delete('api/product/{id}', 'ProductController@deleteProduct');
+$app->post('api/product', 'ProductController@createProduct');
 
 //has
 $app->get('api/has', 'HasController@index');
