@@ -27,5 +27,8 @@ $app->get('api/user/{id}', 'UserController@getUser');
 $app->put('api/user/{id}', 'UserController@changeUser');
 $app->delete('api/user/{id}', 'UserController@deleteUser');
 
+//product
+$app->get('api/user', 'ProductController@index');
+
 //frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');
