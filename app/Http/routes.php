@@ -40,5 +40,20 @@ $app->get('api/has/{id}', 'HasController@getPrivilegesForUser');
 $app->post('api/has', 'HasController@createPrivilege');
 $app->delete('api/has/{id}/{privilege}', 'HasController@deletePrivilege');
 
+//category
+$app->get('api/category', 'CategoryController@index');
+$app->get('api/category/{id}', 'CategoryController@getCategory');
+$app->put('api/category/{id}', 'CategoryController@updateCategory');
+$app->delete('api/category/{id}', 'CategoryController@deleteCategory');
+$app->post('api/category', 'CategoryController@createCategory');
+
+//privilege
+$app->get('api/privilege', 'PrivilegeController@index');
+$app->get('api/privilege/{id}', 'PrivilegeController@getPrivilege');
+$app->put('api/privilege/{id}', 'PrivilegeController@updatePrivilege');
+$app->delete('api/privilege/{id}', 'PrivilegeController@deletePrivilege');
+$app->post('api/privilege', 'PrivilegeController@createPrivilege');
+
 //frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');
+    
