@@ -1,8 +1,6 @@
-angular.module("Store").controller('StoreController', function($scope, $http,$routeParams){
-  var controller = this;
-  $http({
-    method : 'GET', url : '/catalogue/' + $routeParams.id})
-  .success(function(data){
-    controller.product = data;
-  })
+angular.module("Store").controller('StoreController', function($scope, $http, $location){
+      $http.get('../api/product/2')
+      .then(function(response) {
+        console.log(response.data);
+      });
 });

@@ -5,9 +5,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller {   
+class ProductController extends Controller {
     function index() {
-        
+
         $res = new \stdClass();
 
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A')) {
@@ -19,13 +19,10 @@ class ProductController extends Controller {
         $res->products = $products;
         return response()->json($res);
     }
-    
-      public function getProduct($id) {
-        
-        $res = new \stdClass();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id))
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
+      public function getProduct($id) {
+
+        $res = new \stdClass();
 
         $product = DB::table('Product')->where('id', intval($id))->get();
         if(count($product) == 0)
@@ -36,7 +33,7 @@ class ProductController extends Controller {
 
         return response()->json($res);
     }
-    
+
      public function updateProduct(Request $request, $id) {
         $res = new \stdClass();
 
@@ -60,9 +57,9 @@ class ProductController extends Controller {
         $res->product = $product[0];
         return response()->json($res);
     }
-    
+
     function deleteProduct($id) {
-        
+
         $res = new \stdClass();
 
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id))
@@ -77,9 +74,9 @@ class ProductController extends Controller {
         $res->status = 'success';
         return response()->json($res);
     }
-    
+
     public function createProduct(Request $request) {
-        
+
         $res = new \stdClass();
         $data = $request->all();
 
@@ -94,5 +91,5 @@ class ProductController extends Controller {
 
         $res->status = 'success';
         return response()->json($res);
-    }    
+    }
 }
