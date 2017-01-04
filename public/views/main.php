@@ -16,10 +16,13 @@
   <body ng-app="Store">
     <!--libraries -->
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src = "../app/assets/js/bootstrap.js"></script>
     <script type = "text/javascript" src = "../app/assets/js/angular.min.js"></script>
+    <script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src = "../app/assets/js/bootstrap.js"></script>
     <script type = "text/javascript" src = "../app/app.js"></script>
+
+
     <!--- routes and controllers -->
     <script type = "text/javascript" src = "../app/controllers/routes.js"></script>
     <script type = "text/javascript" src = "../app/controllers/languages.js"></script>
