@@ -54,6 +54,13 @@ $app->put('api/privilege/{id}', 'PrivilegeController@updatePrivilege');
 $app->delete('api/privilege/{id}', 'PrivilegeController@deletePrivilege');
 $app->post('api/privilege', 'PrivilegeController@createPrivilege');
 
+//order
+$app->get('api/order', 'OrderController@index');
+$app->get('api/order/{id}', 'OrderController@getOrder');
+$app->put('api/order/{id}', 'OrderController@updateOrder');
+$app->delete('api/order/{id}', 'OrderController@deleteOrder');
+$app->post('api/order', 'OrderController@createOrder');
+
 //frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');
     
