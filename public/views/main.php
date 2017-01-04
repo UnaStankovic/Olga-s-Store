@@ -16,10 +16,13 @@
   <body ng-app="Store">
     <!--libraries -->
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src = "../app/assets/js/bootstrap.js"></script>
     <script type = "text/javascript" src = "../app/assets/js/angular.min.js"></script>
+    <script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src = "../app/assets/js/bootstrap.js"></script>
     <script type = "text/javascript" src = "../app/app.js"></script>
+
+
     <!--- routes and controllers -->
     <script type = "text/javascript" src = "../app/controllers/routes.js"></script>
     <script type = "text/javascript" src = "../app/controllers/languages.js"></script>
@@ -44,8 +47,9 @@
 
           <ul class = 'nav navbar-nav navbar-right  collapse navbar-collapse'>
             <li><a href = '#/about'>{{LangCtrl.lang.about}}</a></li>
-            <li><a href = '#/products' data-target = '#' data-toggle = 'dropdown'>{{LangCtrl.lang.products}}<span class = 'caret'></span></a>
+            <li><a href = '' data-target = '#' data-toggle = 'dropdown'>{{LangCtrl.lang.products}}<span class = 'caret'></span></a>
               <ul class = 'dropdown-menu'>
+                <li><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
                 <li>{{LangCtrl.lang.ceramics}}</li>
                 <li class = 'divider'></li>
                 <li>{{LangCtrl.lang.old_money}}</li>

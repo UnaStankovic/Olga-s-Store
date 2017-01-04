@@ -15,6 +15,12 @@
   background-color: #E80C39;
   border-color: #E80C39;
 }
+.nav.navbar-nav.navbar-right li a{
+  color: #E80C39;
+}
+.navbar-header.navbar-brand a{
+  color: #E80C39;
+}
 .maintitle{
   color: #E80C39;
   font-size : 32px;
@@ -27,13 +33,15 @@
 .bold-it{
   font-weight : bold;
 }
-.nav.navbar-nav.navbar-right li a{
-  color: #E80C39;
+.smaller-font{
+  font-size : 16px;
 }
-.navbar-header.navbar-brand a{
-  color: #E80C39;
+.wrap-em{
+  padding : 20px;
 }
-
+.div.well-md{
+  padding : 5px;
+}
 /*#1849E8 lepa plava*/
 #logo{
   width: 60%;
