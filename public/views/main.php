@@ -44,8 +44,9 @@
 
           <ul class = 'nav navbar-nav navbar-right  collapse navbar-collapse'>
             <li><a href = '#/about'>{{LangCtrl.lang.about}}</a></li>
-            <li><a href = '#/products' data-target = '#' data-toggle = 'dropdown'>{{LangCtrl.lang.products}}<span class = 'caret'></span></a>
+            <li><a href = '' data-target = '#' data-toggle = 'dropdown'>{{LangCtrl.lang.products}}<span class = 'caret'></span></a>
               <ul class = 'dropdown-menu'>
+                <li><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
                 <li>{{LangCtrl.lang.ceramics}}</li>
                 <li class = 'divider'></li>
                 <li>{{LangCtrl.lang.old_money}}</li>
