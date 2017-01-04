@@ -80,12 +80,12 @@
 
         $_SESSION['userId'] = $user[0]->id;
         $_SESSION['username'] = isset($user[0]->name) ? $user[0]->name : $user[0]->email;
-		
-		if(isAuthorized($_SESSION['userId'], 'A'))
-			$_SESSION['isAdmin'] = TRUE;
-		else
-			$_SESSION['isAdmin'] = FALSE;
-		
+
+		    if(isAuthorized($_SESSION['userId'], 'A'))
+			     $_SESSION['isAdmin'] = TRUE;
+		    else
+			     $_SESSION['isAdmin'] = FALSE;
+
         return $response;
     }
 
