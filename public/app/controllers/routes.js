@@ -26,6 +26,9 @@ angular.module("Store")
     .when('/register',{
       templateUrl: '../views/register.html'
     })
+    .when('/myaccount',{
+      templateUrl: '../views/contact.html'
+    })
     .otherwise({
       redirectTo: '/'
     });

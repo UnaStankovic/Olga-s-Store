@@ -1,4 +1,5 @@
 <?php
+
     function errorResponse($response, $message, $error_type) {
         $response->status = 'error';
         $response->error_type = $error_type;
@@ -19,7 +20,7 @@
         }
 
         //validate and encrypt password
-        if(strlen($data['password']) < 8) {
+        if(!isset($data['password']) || strlen($data['password']) < 8) {
             return errorResponse($response, 'Password must have at least 8 characters', 'password');
         }
         $data['password'] = sha1($data['password']);
@@ -79,6 +80,12 @@
 
         $_SESSION['userId'] = $user[0]->id;
         $_SESSION['username'] = isset($user[0]->name) ? $user[0]->name : $user[0]->email;
+
+		    if(isAuthorized($_SESSION['userId'], 'A'))
+			     $_SESSION['isAdmin'] = TRUE;
+		    else
+			     $_SESSION['isAdmin'] = FALSE;
+
         return $response;
     }
 

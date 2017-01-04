@@ -11,10 +11,27 @@
   background-color: #E80C39;
   border-color: #E80C39;
 }
-
 .btn-primary:hover {
   background-color: #E80C39;
   border-color: #E80C39;
+}
+.maintitle{
+  color: #E80C39;
+  font-size : 32px;
+  text-align : center;
+  font-weight : bold;
+}
+.center-it{
+  text-align: center;
+}
+.bold-it{
+  font-weight : bold;
+}
+.nav.navbar-nav.navbar-right li a{
+  color: #E80C39;
+}
+.navbar-header.navbar-brand a{
+  color: #E80C39;
 }
 
 /*#1849E8 lepa plava*/
@@ -22,19 +39,29 @@
   width: 60%;
   height: 100%;
 }
-
-.maintitle .colorit{
-  color: #E80C39;
+#pagecontent{
+  padding-top : 10px;
+  padding-bottom : 10px;
+}
+#pagetitle{
+  padding-bottom : 10px;
+}
+#warning {
+  color : red;
 }
 
-.center-it{
-  text-align: center;
+label{
+  display : inline-block;
+  width : 30%;
+  text-align : right;
+  margin-right : 5px;
+  margin-top : 5px;
+}
+input{
+  display : inline-block;
+  margin : 5px;
 }
 
-.nav.navbar-nav.navbar-right li a{
-  color: #E80C39;
-}
-
-.navbar-header.navbar-brand a{
-  color: #E80C39;
+legend{
+  text-align : center;
 }

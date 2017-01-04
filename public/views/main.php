@@ -1,5 +1,5 @@
 <?php
-  require_once('../../include/auth.php');
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +25,8 @@
     <script type = "text/javascript" src = "../app/controllers/languages.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LoginController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LogoutController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/RegisterController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/StoreController.js"></script>
 
     <div class = 'wrapper' ng-controller = 'LanguageController as LangCtrl'>
       <div class = 'nav navbar-default navbar-static-top'>
@@ -56,11 +58,12 @@
             <li><a href = '#/history'>{{LangCtrl.lang.history}}</a></li>
             <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
             <?php
-              if(!isAuthenticated()) {
-                echo "<li><a href='#/register'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.register}}</a></li>";
+              if(!isset($_SESSION['userId'])) {
+                echo "<li><a href='#/register'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>";
                 echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
               } else {
-                echo "<li><a href='#' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>  <ul class = 'dropdown-menu'>
+                echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>  <ul class = 'dropdown-menu'>
+                    " . ($_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
                     <li>{{LangCtrl.lang.profile}}</li>
                     <li>{{LangCtrl.lang.changeinfo}}</li>
                     <li>{{LangCtrl.lang.showorders}}</li>
@@ -69,13 +72,16 @@
                 </li>";
               }
             ?>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div ng-view></div>
+    <div class = 'container' id = 'pagecontent'>
+      <div ng-view>
+      </div>
+    </div>
 
     <div class = 'container'>
       <div class = 'row footer' style = "background-color: gray;">
