@@ -72,7 +72,13 @@
     prices : "Cene",
     abouttext1 : "Trudimo se da cene budu najniže u Beogradu. Osim toga moguć je dogovor oko popusta od 5% do 15% u zavisnosti od robe koju želite kao i od količine. :)",
     payment : "Plaćanje",
-    abouttext2 : "Plaćanje je za sad moguće samo na dva načina : pouzećem i ličnim preuzimanjem. Radimo na tome da online naručivanje bude omogućeno tako da se proizvodi mogu plaćati karticom.",
+    abouttext2 : "Plaćanje je za sad moguće samo na dva načina : pouzećem i ličnim preuzimanjem. Jedno smo od malo mesta u gradu gde je moguće platiti u dinarima, evrima i američkim dolarima. Radimo na tome da online naručivanje bude omogućeno tako da se proizvodi mogu plaćati karticom.",
+    horario : "Radno vreme",
+    horariotext : "Možete nas naći na Kalemegdanu od 08 do 20 časova tokom leta, a zimi radimo nešto kraće od 9 do 17 časova. Na mejl odgovaramo u roku od 24 sata. ",
+    aboutproduct : "Naši proizvodi",
+    aboutproducttext : "Prodajemo proizvode visokog kvaliteta po najboljim cenama. Članovi smo Srpskog numizmatičkog društva i sve što prodajemo je ORIGINALNO. Kopiranje novca je ozbiljan prekršaj.",
+    location : "Lokacija",
+    locationtext : "Možete nas naći na najlepšoj lokaciji u gradu - u Kalemegdanskom parku. Kalemegdanski park je nezaobilazna destinacija svih turista koji dolaze u Beograd.",
     /*ADMIN STUFF*/
 
   }
@@ -134,10 +140,16 @@
     fieldctrl2 : "Fields that you can fill on ordering product",
     /*About the store page elements*/
     cause : "Main Cause",
-    abouttext : "Main cause of this store is to present to whom it may concern and possible buyers insight into all the products we have to offer. All products are divided into various categories, such as : old money, stamps, postcards, etc. so anybody can find their cup of tea.",
+    abouttext : "Main cause of this store is to present to a wider audience and possible buyers insight into all the products we have to offer. All products are divided into various categories, such as : old money, stamps, postcards, etc. so anybody can find their cup of tea.",
     prices : "Prices",
     abouttext1 : "We are trying to maintain our prices lowest in Belgrade. At the top of that, we are sometimes offering discount from 5% to 15% depending on type of product and quantity. :)",
     payment : "Payment method",
-    abouttext2 : "For now it is only possible to pay and take product in person at Kalemegdan. We are currently working on providing credit card payment method support.",
+    abouttext2 : "For now it is only possible to pay and take product in person at Kalemegdan. We are one of a very few places in Belgrade where it is possible to pay in dinars, euros and american dollars. We are currently working on providing credit card payment method support.",
+    horario : "Working hours",
+    horariotext : "You can find us at Kalemegdan from 8 am to 8 pm during the summer and from 9 am to 5 pm during the winter. We reply to your e-mail in 24h max. ",
+    aboutproduct : "Our products",
+    aboutproducttext : "We sell high quality products at best prices. We are members of the Serbian numismatic society and everything we sell is ORIGINAL. Money forgery is a serious crime.",
+    location : "Location",
+    locationtext : "You can find us on the best location in town - Kalemegdan park. Kalemegdan park is the most atractive destination which is visited by all the tourists that come to Belgrade.",
   }
 })();
