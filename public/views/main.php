@@ -23,7 +23,7 @@
     <script type = "text/javascript" src = "../app/app.js"></script>
 
 
-    <!--- routes and controllers -->
+    <!--- routes,services and controllers -->
     <script type = "text/javascript" src = "../app/controllers/routes.js"></script>
     <script type = "text/javascript" src = "../app/controllers/languages.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LoginController.js"></script>
@@ -61,12 +61,25 @@
               </li>
               <li><a href = '#/history'>{{LangCtrl.lang.history}}</a></li>
               <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
-              <?php
+
+              <li ng-hide = 'isLoggedIn'><a href='#/register'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>
+              <li ng-hide = 'isLoggedIn'><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>
+              <li ng-show = 'isLoggedIn'><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>
+                <ul class = 'dropdown-menu'>
+                  <li>Admin panel</li>
+                  <li>{{LangCtrl.lang.profile}}</li>
+                  <li>{{LangCtrl.lang.changeinfo}}</li>
+                  <li>{{LangCtrl.lang.showorders}}</li>
+                  <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>{{LangCtrl.lang.logout}}</a></li>
+                </ul>
+              </li>
+            <!--  <?php /*
                 if(!isset($_SESSION['userId'])) {
                   echo "<li><a href='#/register'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>";
                   echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
                 } else {
-                  echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>  <ul class = 'dropdown-menu'>
+                  echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>
+                    <ul class = 'dropdown-menu'>
                       " . ($_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
                       <li>{{LangCtrl.lang.profile}}</li>
                       <li>{{LangCtrl.lang.changeinfo}}</li>
@@ -75,7 +88,7 @@
                     </ul>
                   </li>";
                 }
-              ?>
+              */?> -->
               <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
               <!--Language icons removed because the page loads only once and the langugae should be chosen before it happend
                 This stays as comment until we find real good solution for language change.
