@@ -15,10 +15,10 @@
 
   <body ng-app="Store">
     <!--libraries -->
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src = "../app/assets/js/jquery.min.js"></script>
     <script type = "text/javascript" src = "../app/assets/js/angular.min.js"></script>
-    <script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.min.js"></script>
-    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script type = "text/javascript" src = "../app/assets/js/angular-sanitize.min.js"></script>
+    <script src = "../app/assets/js/angular-route.js"></script>
     <script src = "../app/assets/js/bootstrap.js"></script>
     <script type = "text/javascript" src = "../app/app.js"></script>
 
@@ -49,15 +49,15 @@
               <li><a href = '#/about'>{{LangCtrl.lang.about}}</a></li>
               <li><a href = '' data-target = '#' data-toggle = 'dropdown'>{{LangCtrl.lang.products}}<span class = 'caret'></span></a>
                 <ul class = 'dropdown-menu'>
-                  <li><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
-                  <li><a href = '#/ceramics'>{{LangCtrl.lang.ceramics}}</li>
-                  <li class = 'divider'></li>
-                  <li><a href = '#/oldmoney'>{{LangCtrl.lang.old_money}}</li>
-                  <li><a href = '#/stamps'>{{LangCtrl.lang.stamps}}</li>
-                  <li><a href = '#/postcards'>{{LangCtrl.lang.postcards}}</a></li>
-                  <li class = 'divider'></li>
-                  <li><a href = '#/otherproducts'>{{LangCtrl.lang.other}}</li>
-                </ul>
+                    <li><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
+                    <li><a href = '#/ceramics'>{{LangCtrl.lang.ceramics}}</li>
+                    <li class = 'divider'></li>
+                    <li><a href = '#/oldmoney'>{{LangCtrl.lang.old_money}}</li>
+                    <li><a href = '#/stamps'>{{LangCtrl.lang.stamps}}</li>
+                    <li><a href = '#/postcards'>{{LangCtrl.lang.postcards}}</a></li>
+                    <li class = 'divider'></li>
+                    <li><a href = '#/otherproducts'>{{LangCtrl.lang.other}}</a></li>
+                  </ul>
               </li>
               <li><a href = '#/history'>{{LangCtrl.lang.history}}</a></li>
               <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
@@ -106,7 +106,7 @@
               <li><a href = '#/oldmoney'>{{LangCtrl.lang.old_money}}</li>
               <li><a href = '#/stamps'>{{LangCtrl.lang.stamps}}</li>
               <li><a href = '#/postcards'>{{LangCtrl.lang.postcards}}</a></li>
-              <li><a href = '#/otherproducts'>{{LangCtrl.lang.other}}</li>
+              <li><a href = '#/otherproducts'>{{LangCtrl.lang.other}}</a></li>
               <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
             </ul>
           </div>
