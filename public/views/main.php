@@ -43,49 +43,49 @@
                   <span class = 'icon-bar'></span>
                   <span class = 'icon-bar'></span>
                   <span class = 'icon-bar'></span>
-              </button>
+            </button>
 
-              <ul class = 'nav navbar-nav navbar-right  collapse navbar-collapse'>
-                <li><a href = '#/about'>{{LangCtrl.lang.about}}</a></li>
-                <li><a href = '' data-target = '#' data-toggle = 'dropdown'>{{LangCtrl.lang.products}}<span class = 'caret'></span></a>
-                  <ul class = 'dropdown-menu'>
-                    <li><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
-                    <li>{{LangCtrl.lang.ceramics}}</li>
-                    <li class = 'divider'></li>
-                    <li>{{LangCtrl.lang.old_money}}</li>
-                    <li>{{LangCtrl.lang.stamps}}</li>
-                    <li><a href = '#/catalogue'>{{LangCtrl.lang.postcards}}</a></li>
-                    <li class = 'divider'></li>
-                    <li>{{LangCtrl.lang.other}}</li>
-                  </ul>
-                </li>
-                <li><a href = '#/history'>{{LangCtrl.lang.history}}</a></li>
-                <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
-                <?php
-                  if(!isset($_SESSION['userId'])) {
-                    echo "<li><a href='#/register'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>";
-                    echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
-                  } else {
-                    echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>  <ul class = 'dropdown-menu'>
-                        " . ($_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
-                        <li>{{LangCtrl.lang.profile}}</li>
-                        <li>{{LangCtrl.lang.changeinfo}}</li>
-                        <li>{{LangCtrl.lang.showorders}}</li>
-                        <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>{{LangCtrl.lang.logout}}</a></li>
-                      </ul>
-                    </li>";
-                  }
-                ?>
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
+            <ul class = 'nav navbar-nav navbar-right  collapse navbar-collapse'>
+              <li><a href = '#/about'>{{LangCtrl.lang.about}}</a></li>
+              <li><a href = '' data-target = '#' data-toggle = 'dropdown'>{{LangCtrl.lang.products}}<span class = 'caret'></span></a>
+                <ul class = 'dropdown-menu'>
+                  <li><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
+                  <li><a href = '#/ceramics'>{{LangCtrl.lang.ceramics}}</li>
+                  <li class = 'divider'></li>
+                  <li><a href = '#/oldmoney'>{{LangCtrl.lang.old_money}}</li>
+                  <li><a href = '#/stamps'>{{LangCtrl.lang.stamps}}</li>
+                  <li><a href = '#/postcards'>{{LangCtrl.lang.postcards}}</a></li>
+                  <li class = 'divider'></li>
+                  <li><a href = '#/otherproducts'>{{LangCtrl.lang.other}}</li>
+                </ul>
+              </li>
+              <li><a href = '#/history'>{{LangCtrl.lang.history}}</a></li>
+              <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
+              <?php
+                if(!isset($_SESSION['userId'])) {
+                  echo "<li><a href='#/register'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>";
+                  echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
+                } else {
+                  echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>  <ul class = 'dropdown-menu'>
+                      " . ($_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
+                      <li>{{LangCtrl.lang.profile}}</li>
+                      <li>{{LangCtrl.lang.changeinfo}}</li>
+                      <li>{{LangCtrl.lang.showorders}}</li>
+                      <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>{{LangCtrl.lang.logout}}</a></li>
+                    </ul>
+                  </li>";
+                }
+              ?>
+              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
                 <!--  Language icons removed because the page loads only once and the langugae should be chosen before it happend
                 This stays as comment until we find real good solution for language change.
                 <a href="#"><img src ='../app/assets/img/other/en.png' style = "width: 20px; height: 11px; margin-top: 19px;"></a>
                 <li><a href="#"><img src ='../app/assets/img/other/serbian.png' style = "width: 20px; height: 20px;"></a> </li>
               -->
-              </ul>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
 
     <div class = 'container' id = 'pagecontent'>
       <div ng-view>
@@ -94,9 +94,6 @@
 
     <div class = 'container'>
       <div class = 'row footer' style = "background-color: gray;">
-          <div class = 'col-xs-12'>
-            <p> </p>
-          </div>
           <div class = 'col-sm-3 col-xs-offset-1'>
             <i class = 'glyphicon glyphicon-list-alt'></i>
             <h4>{{LangCtrl.lang.pages}}</h4>
