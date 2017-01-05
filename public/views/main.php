@@ -36,7 +36,7 @@
 
         <div class = 'container'>
           <div class = 'navbar-header'>
-            <img src = '../app/assets/img/other/logo1.png' alt = 'logo' class = 'navbar-brand navbar-left' id = 'logo' style = "width: 15%; heigth:20%;">
+            <img src = '../app/assets/img/other/logo1.png' alt = 'logo' class = 'navbar-brand navbar-left' id = 'logo'>
             <a href = '#/' class = 'navbar-brand maintitle' id = 'maintitle'>{{LangCtrl.lang.title}}</a>
         <!--  Language icons removed because the page loads only once and the langugae should be chosen before it happend
         This stays as comment until we find real good solution for language change.
