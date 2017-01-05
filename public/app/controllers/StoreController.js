@@ -1,6 +1,6 @@
 angular.module("Store").controller('StoreController', function($scope, $http, $location){
     $scope.product = {};
-    $http.get('../api/product/2')
+    $http.get('../api/product/')
       .then(function(response) {
         if(response.data.status == 'error'){
           console.log(response.data);

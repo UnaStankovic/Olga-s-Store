@@ -77,7 +77,7 @@
                 }
               ?>
               <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
-                <!--  Language icons removed because the page loads only once and the langugae should be chosen before it happend
+              <!--Language icons removed because the page loads only once and the langugae should be chosen before it happend
                 This stays as comment until we find real good solution for language change.
                 <a href="#"><img src ='../app/assets/img/other/en.png' style = "width: 20px; height: 11px; margin-top: 19px;"></a>
                 <li><a href="#"><img src ='../app/assets/img/other/serbian.png' style = "width: 20px; height: 20px;"></a> </li>
@@ -101,11 +101,12 @@
               <li><a href = '#/'>{{LangCtrl.lang.mainpage}}</a></li>
               <li><a href = '#/about'>{{LangCtrl.lang.about}}</a></li>
               <li><a href = '#/history'>{{LangCtrl.lang.history}}</a></li>
-              <li>{{LangCtrl.lang.ceramics}}</li>
-              <li>{{LangCtrl.lang.old_money}}</li>
-              <li>{{LangCtrl.lang.stamps}}</li>
-              <li>{{LangCtrl.lang.postcards}}</li>
-              <li>{{LangCtrl.lang.other}}</li>
+              <li><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
+              <li><a href = '#/ceramics'>{{LangCtrl.lang.ceramics}}</li>
+              <li><a href = '#/oldmoney'>{{LangCtrl.lang.old_money}}</li>
+              <li><a href = '#/stamps'>{{LangCtrl.lang.stamps}}</li>
+              <li><a href = '#/postcards'>{{LangCtrl.lang.postcards}}</a></li>
+              <li><a href = '#/otherproducts'>{{LangCtrl.lang.other}}</li>
               <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
             </ul>
           </div>

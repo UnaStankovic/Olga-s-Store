@@ -6,7 +6,7 @@
       else
         this.lang = rs;
       };*/
-      this.lang = en;
+      this.lang = rs;
   }]);
   /*NOTE : Some elements are used on multiple pages*/
   var rs = {
@@ -50,7 +50,7 @@
     quotesh : "Želja da svaki turista iz Beograda ode sa osmehom, lepim utiscima i najlepšim i jedinstvenim suvenirima mi je glavna motivacija koja mi pruža novu energiju svaki dan." ,
     olga : "O Olgi",
     kalemegdan : "O Tvrđavi",
-    
+
     /*Order page elements*/
     ordering : "Naručivanje se za sada vrši pouzećem ili ličnim preuzimanjem na Kalemegdanu.",
     toorder : "Naručivanje",
