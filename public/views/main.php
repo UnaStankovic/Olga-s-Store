@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang = 'sr' >
+<html lang = 'rs' >
 
   <head>
     <title>Olgina prodavnica suvenira</title>
@@ -76,7 +76,9 @@
                 </li>";
               }
             ?>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li> 
+            <a href="#"><img src ='../app/assets/img/other/en.png' style = "width: 20px; height: 11px; margin-top: 19px;"></a>
+            <li><a href="#"><img src ='../app/assets/img/other/serbian.png' style = "width: 20px; height: 20px;"></a> </li>
           </ul>
         </div>
       </div>
