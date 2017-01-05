@@ -10,9 +10,7 @@ angular.module("Store").controller('LoginController', function($scope, $http, $l
       }
        else {
          console.log("Successfully logged in.");
-
-         $scope.isLoggedIn = true;
-         //$window.location.reload(true);
+         $window.location.reload(true);  //This should be removed soon.
          $location.path('/myaccount');
        }
    });
