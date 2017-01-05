@@ -1,4 +1,23 @@
 <div class = 'row text-center'>
+  <!-- Please DO indent code properly -->
+  <h1>All products</h1>
+  <div class="row">
+      <div class="col-sm-3" style="">
+      <ul class="list-group">
+                  <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
+                  <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.ceramics}}</a></li>
+                  <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.old_money}}</a></li>
+                  <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.stamps}}</a></li>
+                  <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.postcards}}</a></li>
+                  <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.other}}</a></li>
+      </ul>
+      </div>
+      <div class="col-sm-1" ></div>
+      <div class="col-sm-8" >
+          <!-- kako izlistavati   -->
+
+      </div>
+    </div>
   <div ng-controller = 'StoreController as store'>
   <!--  <div ng-repeat = 'product in store.products'>
       <h2> {{product.name}} </h2>
@@ -11,27 +30,6 @@
     <p>{{product.errormsg}}</p>
   </div>
 
-
-<h1>All products</h1>
-<div class="row">
-    <div class="col-sm-3" style="">     
-    <ul class="list-group"> 
-                <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.allproducts}}</a></li>
-                <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.ceramics}}</a></li>
-                <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.old_money}}</a></li>
-                <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.stamps}}</a></li>
-                <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.postcards}}</a></li>
-                <li class="list-group-item"><a href = '#/catalogue'>{{LangCtrl.lang.other}}</a></li>
-    </ul>
-    </div>
-    <div class="col-sm-1" ></div>
-    <div class="col-sm-8" >
-        <!-- kako izlistavati   -->
-        
-    </div>
-  </div>
-
- 
   <nav aria-label="Page navigation">
     <ul class="pagination">
       <li>

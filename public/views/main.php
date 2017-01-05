@@ -38,12 +38,15 @@
           <div class = 'navbar-header'>
             <img src = '../app/assets/img/other/logo1.png' alt = 'logo' class = 'navbar-brand navbar-left' id = 'logo' style = "width: 15%; heigth:20%;">
             <a href = '#/' class = 'navbar-brand maintitle' id = 'maintitle'>{{LangCtrl.lang.title}}</a>
-            <button type = 'button' class = 'navbar-toggle' data-toggle = 'collapse' data-target = '.navbar-collapse'>
+        <!--  Language icons removed because the page loads only once and the langugae should be chosen before it happend
+        This stays as comment until we find real good solution for language change.
+          <button type = 'button' class = 'navbar-toggle' data-toggle = 'collapse' data-target = '.navbar-collapse'>
                 <span class = 'sr-only'>Toggle navigation</span>
                 <span class = 'icon-bar'></span>
                 <span class = 'icon-bar'></span>
                 <span class = 'icon-bar'></span>
             </button>
+          -->
 
           <ul class = 'nav navbar-nav navbar-right  collapse navbar-collapse'>
             <li><a href = '#/about'>{{LangCtrl.lang.about}}</a></li>
@@ -76,7 +79,7 @@
                 </li>";
               }
             ?>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li> 
+            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
             <a href="#"><img src ='../app/assets/img/other/en.png' style = "width: 20px; height: 11px; margin-top: 19px;"></a>
             <li><a href="#"><img src ='../app/assets/img/other/serbian.png' style = "width: 20px; height: 20px;"></a> </li>
           </ul>
