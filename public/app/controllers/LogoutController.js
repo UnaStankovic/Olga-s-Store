@@ -1,4 +1,4 @@
-angular.module("Store").controller('LogoutController', function($scope, $http, $location,$window){
+angular.module("Store").controller('LogoutController', function($scope, $http, $location,$window, User){
     $scope.logout = function(){
       $http.get('../api/logout')
       .then(function(response) {

@@ -54,6 +54,9 @@
   padding-top : 10px;
   padding-bottom : 10px;
 }
+#footer{
+  background-color: gray;
+}
 #pagetitle{
   padding-bottom : 10px;
 }
