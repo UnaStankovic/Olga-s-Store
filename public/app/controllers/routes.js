@@ -17,21 +17,6 @@ angular.module("Store")
     .when('/catalogue',{
       templateUrl: '../views/catalogue.html'
     })
-    .when('/oldmoney',{
-      templateUrl: '../views/oldmoney.html'
-    })
-    .when('/ceramics',{
-      templateUrl: '../views/ceramics.html'
-    })
-    .when('/stamps',{
-      templateUrl: '../views/stamps.html'
-    })
-    .when('/postcards',{
-      templateUrl: '../views/postcards.html'
-    })
-    .when('/otherproducts',{
-      templateUrl: '../views/otherproducts.html'
-    })
     .when('/basket',{
       templateUrl: '../views/basket.html'
     })
