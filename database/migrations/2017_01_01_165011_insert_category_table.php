@@ -29,6 +29,8 @@ class InsertCategoryTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         DB::table('Category')->truncate();
+        Schema::enableForeignKeyConstraints();
     }
 }

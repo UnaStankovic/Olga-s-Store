@@ -26,6 +26,8 @@ class InsertIntoPrivilegeTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         DB::table('Privilege')->truncate();
+        Schema::enableForeignKeyConstraints();
     }
 }

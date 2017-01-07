@@ -83,6 +83,8 @@ class InsertProductTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         DB::table('Product')->truncate();
+        Schema::enableForeignKeyConstraints();
     }
 }

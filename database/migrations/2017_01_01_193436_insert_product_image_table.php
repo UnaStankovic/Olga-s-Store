@@ -64,6 +64,8 @@ class InsertProductImageTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         DB::table('ProductImage')->truncate();
+        Schema::enableForeignKeyConstraints();
     }
 }
