@@ -38,8 +38,11 @@ class OrderController extends Controller {
         if(count($order) == 0) {
             return response()->json(errorResponse($res, 'There is no such order', 'id'));
         }
+        
+        $products = DB::table('Contains')->where('Order_id', intval($id))->select('Contains.Product_id AS id', 'Contains.quantity')->get();
         $res->status = 'success';
         $res->order = $order[0];
+        $res->order->products = $products;
 
         return response()->json($res);
     }
