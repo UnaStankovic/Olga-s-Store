@@ -31,7 +31,7 @@
 
   </head>
 
-  <body ng-app="Store">
+  <body ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>">
     <div class = 'wrapper' ng-controller = 'LanguageController as LangCtrl'>
 
       <!-- Navigation bar -->
@@ -64,20 +64,18 @@
               <li><a href = '#/contact'>{{LangCtrl.lang.contact}}</a></li>
               <!-- PHP code is cheking if user is logged in and he is site admin he should have admin panel option displayed-->
               <?php
-                if(!isset($_SESSION['userId'])) {
-                  echo "<li><a href='#/register'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>";
-                  echo "<li><a href='#/login'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
-                } else {
-                  echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>
+                echo "<li><a href='#/register' ng-hide = 'loggedin'><span class='glyphicon glyphicon-pencil'></span>{{LangCtrl.lang.register}}</a></li>";
+                echo "<li><a href='#/login' ng-hide = 'loggedin'><span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.login}}</a></li>";
+                echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown' ng-show = 'loggedin'>
+                              <span class='glyphicon glyphicon-user'></span>{{LangCtrl.lang.myaccount}}</a>
                     <ul class = 'dropdown-menu'>
-                      " . ($_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
-                      <li>{{LangCtrl.lang.profile}}</li>
-                      <li>{{LangCtrl.lang.changeinfo}}</li>
-                      <li>{{LangCtrl.lang.showorders}}</li>
-                      <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>{{LangCtrl.lang.logout}}</a></li>
-                    </ul>
-                  </li>";
-                }
+                    " . (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
+                    <li>{{LangCtrl.lang.profile}}</li>
+                    <li>{{LangCtrl.lang.changeinfo}}</li>
+                    <li>{{LangCtrl.lang.showorders}}</li>
+                    <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>{{LangCtrl.lang.logout}}</a></li>
+                  </ul>
+                </li>";
               ?>
               <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> {{LangCtrl.lang.basket}}</a></li>
               <!--Language icons removed because the page loads only once and the langugae should be chosen before it happend

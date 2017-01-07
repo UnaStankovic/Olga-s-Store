@@ -1,4 +1,4 @@
-angular.module("Store").controller('RegisterController', function($scope, $http,$location){
+angular.module("Store").controller('RegisterController', function($scope, $http,$location, $rootScope){
   $scope.info = {};
   $scope.registerUser = function() {
     console.log($scope.info);

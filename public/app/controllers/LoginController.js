@@ -1,4 +1,4 @@
-angular.module("Store").controller('LoginController', function($scope, $http, $location,$window){
+angular.module("Store").controller('LoginController', function($scope, $http, $location,$window,$rootScope){
   $scope.info = {};
   $scope.loginUser = function() {
     console.log($scope.info);
@@ -10,7 +10,8 @@ angular.module("Store").controller('LoginController', function($scope, $http, $l
       }
        else {
          console.log("Successfully logged in.");
-         $window.location.reload(true);  //This should be removed soon.
+         $rootScope.loggedin = true;
+        // $window.location.reload(true);  //This should be removed soon.
          $location.path('/myaccount');
        }
    });
