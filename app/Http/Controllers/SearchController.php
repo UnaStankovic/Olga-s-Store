@@ -44,7 +44,7 @@ class SearchController extends Controller {
     }
 
     public function searchProduct(Request $request) {
-        $available_fields = array('id', 'name');
+        $available_fields = array('id', 'name', 'in_stock');
         $res = new \stdClass();
 
         /*if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^')) {
@@ -58,17 +58,23 @@ class SearchController extends Controller {
             }
         }
         
-        $product = DB::table('Product');
+        $products = DB::table('Product');
         if(isset($data['id'])) {
-            $product = $product->where('id', $data['id']);
+            $products = $products->where('id', $data['id']);
         }
         if(isset($data['name'])) {
-            $product = $product->where('name', $data['name']);
+            $products = $products->where('name', $data['name']);
+        }
+        if(isset($data['in_stock']) && $data['in_stock'] == TRUE) {
+            $products = $products->where('in_stock', '>', 0);
+        }
+        else if(isset($data['in_stock']) && $data['in_stock'] == FALSE) {
+            $products = $products->where('in_stock', '=', 0);
         }
         
-        $product = $product->get();
+        $products = $products->get();
         $res->status = 'success';
-        $res->product = $product[0];
+        $res->products = $products;
         return response()->json($res);
     }
 }
