@@ -44,7 +44,7 @@ class SearchController extends Controller {
     }
 
     public function searchProduct(Request $request) {
-        $available_fields = array('id', 'name', 'in_stock');
+        $available_fields = array('id', 'name', 'in_stock', 'category');
         $res = new \stdClass();
 
         /*if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^')) {
@@ -64,6 +64,9 @@ class SearchController extends Controller {
         }
         if(isset($data['name'])) {
             $products = $products->where('name', $data['name']);
+        }
+        if(isset($data['category'])) {
+            $products = $products->where('Category_id', $data['category']);
         }
         if(isset($data['in_stock']) && $data['in_stock'] == TRUE) {
             $products = $products->where('in_stock', '>', 0);
