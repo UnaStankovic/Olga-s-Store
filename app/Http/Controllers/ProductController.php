@@ -1,95 +1,102 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller {
-    public function index() {
+    public function index(Request $request) {
+        $pageSize = 10;
+        $response = new \stdClass();
 
-        $res = new \stdClass();
+        $query = DB::table('Product');
+        if($request->has('page'))
+            $query = $query->skip(($request->input('page') - 1) * $pageSize)->take($pageSize);
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A')) {
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        }
+        $products = $query->get();
 
-        $products = DB::table('Product')->select('id', 'description', 'price_per_piece', 'in_stock', 'name', 'Category_id')->get();
-        $res->status = 'success';
-        $res->products = $products;
-        return response()->json($res);
+        $response->status = 'success';
+        $response->products = $products;
+        foreach($response->products as $key => $value)
+            $response->products[$key]->images = 'api/products/' . $response->products[$key]->id . '/images';
+        return response()->json($response);
     }
 
-      public function getProduct($id) {
-
-        $res = new \stdClass();
+    public function get($id) {
+        $response = new \stdClass();
 
         $product = DB::table('Product')->where('id', intval($id))->get();
         if(count($product) == 0)
-            return response()->json(errorResponse($res, 'There is no such product', 'id'));
+            return response()->json(errorResponse($response, 'Product doesn\'t exist', 'not_found'));
 
-        $res->status = 'success';
-        $res->product = $product[0];
-
-        return response()->json($res);
+        $response->status = 'success';
+        $response->product = $product[0];
+        $response->product->images = 'api/products/' . $response->product->id . '/images';
+        return response()->json($response);
     }
 
-     public function updateProduct(Request $request, $id) {
-        $res = new \stdClass();
-
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id)) {
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        }
-
-        $data = $request->all();
-        if(isset($data['id']) || isset($data['Category_id'])) {
-            return response()->json(errorResponse($res, 'There is one or more columns that can\'t be changed', 'illegal_update'));
-        }
-
-        $product = DB::table('Product')->where('id', intval($id));
-        if(count($product->get()) == 0) {
-            return response()->json(errorResponse($res, 'There is no such product', 'id'));
-        }
-        $product->update($data);
-
-        $res->status = 'success';
-        $product = $product->get();
-        $res->product = $product[0];
-        return response()->json($res);
-    }
-
-    function deleteProduct($id) {
-
-        $res = new \stdClass();
-
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id))
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-
-        $product = DB::table('Product')->where('id', intval($id));
-        if(count($product->get()) == 0) {
-            return response()->json(errorResponse($res, 'There is no such product', 'id'));
-        }
-        $product->delete();
-
-        $res->status = 'success';
-        return response()->json($res);
-    }
-
-    public function createProduct(Request $request) {
-
-        $res = new \stdClass();
-        $data = $request->all();
+     public function update(Request $request, $id) {
+         $available_fields = array('description', 'price_per_piece', 'in_stock', 'name', 'Category_id');
+         $response = new \stdClass();
 
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A'))
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
+            return response()->json(errorResponse($response, 'Not authorized to change product', 'not_authorized'));
 
-        if(!isset($data['name']) || !isset($data['description']) || !isset($data['price_per_piece']) || !isset($data['Category_id']) || !isset($data['in_stock']))
-            return response()->json(errorResponse($res, 'name, description, price_per_piece, Category_id, in_stock are required', 'description, name, price_per_piece, Category_id,
-                                    in_stock'));
-        DB::table('Product')->insert(['description' => $data['description'], 'name' => $data['name'], 'price_per_piece' => $data['price_per_piece'], 'in_stock' => $data['in_stock'],
-                                    'Category_id' => $data['Category_id']]);
+        $data = $request->all();
+         foreach($data as $key => $value)
+             if(array_search($key, $available_fields) === FALSE)
+                 unset($data[$key]);
 
-        $res->status = 'success';
-        return response()->json($res);
+        $product = DB::table('Product')->where('id', $id);
+        if(count($product->get()) == 0)
+            return response()->json(errorResponse($response, 'Product doesn\'t exist', 'not_found'));
+
+         if(isset($data['Category_id']) && count(DB::table('Category')->where('id', $data['Category_id'])->get()) == 0)
+            return response()->json(errorResponse($response, 'Product doesn\'t exist', 'not_found'));
+
+         $product->update($data);
+         $response->status = 'success';
+         $product = $product->get();
+         $response->product = $product[0];
+         $response->product->images = 'api/products/' . $response->product->id . '/images';
+         return response()->json($response);
+    }
+
+    public function delete($id) {
+        $response = new \stdClass();
+
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A'))
+            return response()->json(errorResponse($response, 'Not authorized to change product', 'not_authorized'));
+
+        $product = DB::table('Product')->where('id', $id);
+        if(count($product->get()) == 0)
+            return response()->json(errorResponse($response, 'Product doesn\'t exist', 'not_found'));
+
+        $product->delete();
+        $response->status = 'success';
+        return response()->json($response);
+    }
+
+    public function create(Request $request) {
+        $available_fields = array('description', 'price_per_piece', 'in_stock', 'name', 'Category_id');
+        $mandatory_fields = array('name', 'description', 'price_per_piece', 'Category_id', 'in_stock');
+        $response = new \stdClass();
+
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A'))
+            return response()->json(errorResponse($response, 'Not authorized to add product', 'not_authorized'));
+
+        $data = $request->all();
+        foreach($data as $key => $value)
+            if (array_search($key, $available_fields) === FALSE)
+                unset($data[$key]);
+
+        if(mandatoryFields($data, $mandatory_fields) === FALSE)
+            return response()->json(errorResponse($response, 'name, description, price_per_piece, Category_id, in_stock are required', 'bad_request'));
+
+        $id = DB::table('Product')->insertGetId($data);
+        $response->status = 'success';
+        $response->product = DB::table('Product')->where('id', $id)->get()[0];
+        $response->product->images = 'api/products/' . $response->product->id . '/images';;
+        return response()->json($response);
     }
 }

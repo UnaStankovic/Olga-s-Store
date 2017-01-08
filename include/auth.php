@@ -139,4 +139,12 @@
             return TRUE;
         return FALSE;
     }
+
+    function mandatoryFields($userInput, $mandatory) {
+        $userInput = array_keys($userInput);
+        foreach ($mandatory as $field)
+            if(array_search($field, $userInput) === FALSE)
+                return FALSE;
+        return TRUE;
+    }
 ?>
