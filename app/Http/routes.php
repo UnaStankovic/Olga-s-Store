@@ -28,11 +28,17 @@ $app->put('api/user/{id}', 'UserController@changeUser');
 $app->delete('api/user/{id}', 'UserController@deleteUser');
 
 //product
-$app->get('api/product', 'ProductController@index');
-$app->get('api/product/{id}', 'ProductController@getProduct');
-$app->put('api/product/{id}', 'ProductController@updateProduct');
-$app->delete('api/product/{id}', 'ProductController@deleteProduct');
-$app->post('api/product', 'ProductController@createProduct');
+$app->get('api/products', 'ProductController@index');
+$app->get('api/products/{id}', 'ProductController@get');
+$app->put('api/products/{id}', 'ProductController@update');
+$app->delete('api/products/{id}', 'ProductController@delete');
+$app->post('api/products', 'ProductController@create');
+
+//productimage
+$app->get('api/products/{pid}/images', 'ProductImageController@index');
+$app->get('api/products/{pid}/images/{id}', 'ProductImageController@get');
+$app->post('api/products/{pid}/images', 'ProductImageController@create');
+$app->delete('api/products/{pid}/images/{id}', 'ProductImageController@delete');
 
 //has
 $app->get('api/has', 'HasController@index');
@@ -67,4 +73,3 @@ $app->get('api/search/product', 'SearchController@searchProduct');
 
 //frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');
-    
