@@ -6,6 +6,6 @@ angular.module('Store').controller('CategoryController', function($rootScope, $h
         id : 'allproducts',
         name : 'Svi proizvodi'
       });
-      console.log($rootScope.categories);
+      //console.log($rootScope.categories);
     });
 });

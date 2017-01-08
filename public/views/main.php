@@ -28,7 +28,8 @@
     <script type = "text/javascript" src = "../app/controllers/StoreController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/CategoryController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/UserController.js"></script>
-
+    <script type = "text/javascript" src = "../app/controllers/ChangeinfoController.js"></script>
+    
   </head>
 
   <body ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>;
@@ -65,7 +66,7 @@
                     <ul class = 'dropdown-menu'>
                     " . (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
                     <li><a href = '#/myaccount'>Profil</a></li>
-                    <li>Izmeni informacije</li>
+                    <li><a href = '#/changeinfo'>Izmeni informacije</a></li>
                     <li>Prikaži narudžbine</li>
                     <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>Odjavi se</a></li>
                   </ul>

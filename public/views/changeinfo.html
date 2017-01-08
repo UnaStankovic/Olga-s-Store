@@ -1,0 +1,24 @@
+<div class = 'container row-text-center'>
+  <div class = 'col-sm-2'>
+      <!-- this empty div is part of "to 12" design in Angular. 2 + 8 = 10 and the rest is also 2 but there is no need to write it -->
+  </div>
+  <div class = 'col-sm-8 well well-lg center-it'>
+    <form ng-controller = 'ChangeinfoController' ng-submit = 'changeInfo()'>
+      <h1 id = 'pagetitle' class = 'maintitle'><i class='glyphicon glyphicon-pencil'></i>Izmenite podatke</h1>
+      <fieldset>
+        <p><label>Ime: </label> <input type = 'text' ng-model="info.name"></p>
+        <p><label>Prezime: </label><input type = 'text' ng-model="info.surname" ></p>
+        <p><label>Adresa: </label> <input type = 'text' ng-model="info.address" ></p>
+        <p><label>Grad: </label><input type = 'text' ng-model="info.city" ></p>
+        <p><label>Država: </label> <input type = 'text' ng-model="info.country" ></p>
+        <p><label>Telefon: </label> <input type = 'text' ng-model="info.telephone" ></p>
+      </fieldset>
+      <input id = 'submitbutton' type="submit" value=Potvrdi>
+
+      <p id = 'errormsg' style="color:red">{{info.errormsg}}</p>
+
+    </form>
+  </div>
+</div>
+
+<!-- e mail* pass* name surname address city country telephone -->
