@@ -37,7 +37,7 @@ class SearchController extends Controller {
         if(isset($data['telephone'])) {
             $users = $users->where('telephone', $data['telephone']);
         }
-        $users = $users->get();
+        $users = $users->select('User.id', 'User.email', 'User.name', 'User.surname', 'User.address', 'User.city', 'User.country', 'User.telephone', 'User.status')->get();
         $res->status = 'success';
         $res->users = $users;
         return response()->json($res);
