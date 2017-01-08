@@ -106,7 +106,7 @@
           <div class = 'col-sm-3 col-xs-offset-1'>
             <i class = 'glyphicon glyphicon-heart-empty'></i>
             <h4>"Volim te" na raznim jezicima</h4>
-            <p><i id="iLoveYou" onclick="loveYou()"> Volim te - Srpski</i></p>
+            <p><i id = "iLoveYou" onload = "loveYou()"> Volim te - Srpski</i></p>
             <!-- it should work with onload , but it fales idk why, for now it's onclick -->
           </div>
           <div class = 'col-sm-3 col-xs-offset-1'>
