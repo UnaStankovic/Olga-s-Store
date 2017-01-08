@@ -7,7 +7,7 @@
   color: black;
 }
 /*btn primary is if the "big" menu bar is used ALSO USED for basket buttons*/
-.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+.btn-primary, .btn-primary:focus, .btn-primary:hover{
   background-color: #E80C39 !important;
   border-color: #E80C39 !important;
 }
@@ -23,7 +23,7 @@
 .color-it{
   color: #E80C39;
 }
-.color-it-g, .color-it-g:hover, .color-it-g:active, .color-it-g:focus{
+.color-it-g, .color-it-g:hover, .color-it-g:active, .color-it-g:focus, .btn-primary:active, #keepinfo:active{
   background-color: gray !important;
   border-color: gray !important;
 }
