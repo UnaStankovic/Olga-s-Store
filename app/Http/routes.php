@@ -61,6 +61,9 @@ $app->put('api/order/{id}', 'OrderController@updateOrder');
 $app->delete('api/order/{id}', 'OrderController@deleteOrder');
 $app->post('api/order', 'OrderController@createOrder');
 
+//search
+$app->get('api/search/user', 'SearchController@index');
+
 //frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');
     
