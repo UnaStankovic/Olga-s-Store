@@ -10,6 +10,7 @@
     <meta charset="utf-8">
     <link href = "../app/assets/css/bootstrap.css" rel = "stylesheet">
     <link href = "../app/assets/css/main.css" rel = "stylesheet">
+    <link rel="stylesheet" type="text/css" href="../app/moreInfo.css">
 
     <!--libraries -->
     <script src = "../app/assets/js/jquery.min.js"></script>
@@ -29,7 +30,11 @@
     <script type = "text/javascript" src = "../app/controllers/CategoryController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/UserController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/ChangeinfoController.js"></script>
-    
+    <script type = "text/javascript" src = "../app/controllers/moreInfoController.js"></script>
+
+    <!-- contains function for love you on all languages part-->
+    <script type="text/javascript" src="../app/assets/js/loveYou.js"></script>
+
   </head>
 
   <body ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>;
@@ -72,7 +77,7 @@
                   </ul>
                 </li>";
               ?>
-              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Korpa</a></li>
+              <li><a href="#/shoppingCart"><span class="glyphicon glyphicon-shopping-cart"></span>Korpa</a></li>
             </ul>
           </div>
         </div>
@@ -100,8 +105,9 @@
           </div>
           <div class = 'col-sm-3 col-xs-offset-1'>
             <i class = 'glyphicon glyphicon-heart-empty'></i>
-            <h4>"Volim te" na svim jezicima</h4>
-            <p><i>Volim te</i> -Srpski</p>
+            <h4>"Volim te" na raznim jezicima</h4>
+            <p><i id="iLoveYou" onclick="loveYou()"> Volim te - Srpski</i></p>
+            <!-- it should work with onload , but it fales idk why, for now it's onclick -->
           </div>
           <div class = 'col-sm-3 col-xs-offset-1'>
             <i class = 'glyphicon glyphicon-phone-alt'></i>
@@ -113,5 +119,4 @@
 
     </div>
   </body>
-
 </html>
