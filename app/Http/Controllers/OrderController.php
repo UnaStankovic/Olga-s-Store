@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller {
-    function index() {
+    public function index() {
 
         $res = new \stdClass();
 
@@ -24,10 +24,6 @@ class OrderController extends Controller {
 
         $res = new \stdClass();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^|C', $id)) {
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        }
-        
         $user = DB::table('Has')->where('User_id', $_SESSION['userId'])->where('Privilege_id', 'A')->get();
         if(count($user) == 0) {
             $order = DB::table('Order')->where('id', intval($id))->where('User_id', $_SESSION['userId'])->get();
@@ -39,7 +35,8 @@ class OrderController extends Controller {
             return response()->json(errorResponse($res, 'There is no such order', 'id'));
         }
         
-        $products = DB::table('Contains')->where('Order_id', intval($id))->select('Contains.Product_id AS id', 'Contains.quantity')->get();
+        $products = DB::table('Contains')->join('Product', 'Product_id', '=', 'id')
+                    ->select('Contains.Product_id AS id', 'Product.name', 'Product.price_per_piece AS price', 'Contains.quantity')->where('Order_id', intval($id))->get();
         $res->status = 'success';
         $res->order = $order[0];
         $res->order->products = $products;
