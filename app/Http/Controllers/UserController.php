@@ -41,6 +41,7 @@ class UserController extends Controller {
     }
 
     public function changeUser(Request $request, $id) {
+        $available_fields = array('password', 'name', 'surname', 'address', 'city', 'country', 'telephone');
         $res = new \stdClass();
 
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id)) {
@@ -48,9 +49,9 @@ class UserController extends Controller {
         }
 
         $data = $request->all();
-        if(isset($data['email']) || isset($data['id']) || isset($data['confirmation_code']) || isset($data['status'])) {
-            return response()->json(errorResponse($res, 'There is one or more columns that can\'t be changed', 'illegal_update'));
-        }
+        foreach($data as $key => $value)
+          if(array_search($key, $available_fields) === FALSE)
+            unset($data[$key]);
 
         if(isset($data['password'])) {
             if(strlen($data['password']) < 8) {
