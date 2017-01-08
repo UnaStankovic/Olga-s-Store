@@ -1,25 +1,13 @@
-<div class = 'row text-center'>
+<div class = 'row text-center'  ng-controller = 'StoreController as store'>
   <div class="col-sm-3">
     <ul class="list-group">
-      <li class="list-group-item"><a href = '#/catalogue'>Svi proizvodi</a></li>
-      <li class="list-group-item"><a href = '#/ceramics'>Keramika</a></li>
-      <li class="list-group-item"><a href = '#/oldmoney'>Stari novac</a></li>
-      <li class="list-group-item"><a href = '#/stamps'>Markice</a></li>
-      <li class="list-group-item"><a href = '#/postcards'>Razglednice i drugi slični proizvodi</a></li>
-      <li class="list-group-item"><a href = '#/otherproducts'>Ostali proizvodi</a></li>
+      <li class = 'list-group-item' ng-repeat='category in categories'><a href = '#/catalogue/{{$index}}'>{{category.name}}</a></li>
     </ul>
   </div>
 
-  <div class="col-sm-9" >
-    <h1>Svi proizvodi</h1>
-    <div ng-controller = 'StoreController as store'>
-      <!--This section will be used when the time comes.
-       <div ng-repeat = 'product in store.products'>
-          <h2> {{product.name}} </h2>
-          <h3> {{product.price}} din. </h3>
-          <p> {{product.description}} </p>
-          <button ng-show = "product.canPurchase"> Dodaj u korpu </button>
-        </div> -->
+  <di class="col-sm-9" >
+    <h1>{{categories[categoryid].name}}</h1>
+    <div>
       <h2>{{product.name}}</h2>
       <p>{{product.description}}</p>
       <p>{{product.errormsg}}</p>

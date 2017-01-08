@@ -6,13 +6,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller {
-    function index() {
+    public function index() {
 
         $res = new \stdClass();
-
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A')) {
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        }
 
         $categories = DB::table('Category')->select('id', 'name')->get();
         $res->status = 'success';
@@ -35,7 +31,7 @@ class CategoryController extends Controller {
     }
 
     public function updateCategory(Request $request, $id) {
-        
+
         $res = new \stdClass();
 
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $id)) {

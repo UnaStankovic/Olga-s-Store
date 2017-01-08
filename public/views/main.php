@@ -26,6 +26,7 @@
     <script type = "text/javascript" src = "../app/controllers/LogoutController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/RegisterController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/StoreController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/CategoryController.js"></script>
     <script type = "text/javascript" src = "../app/services/userService.js"></script>
 
   </head>
@@ -48,16 +49,9 @@
             <ul class = 'nav navbar-nav navbar-right  collapse navbar-collapse'>
               <li><a href = '#/about'>O nama</a></li>
               <li><a href = '' data-target = '#' data-toggle = 'dropdown'>Proizvodi<span class = 'caret'></span></a>
-                <ul class = 'dropdown-menu'>
-                    <li><a href = '#/catalogue'>Svi proizvodi</a></li>
-                    <li><a href = '#/ceramics'>Keramika</li>
-                    <li class = 'divider'></li>
-                    <li><a href = '#/oldmoney'>Stari novac</li>
-                    <li><a href = '#/stamps'>Markice</li>
-                    <li><a href = '#/postcards'>Razglednice i drugi slični proizvodi</a></li>
-                    <li class = 'divider'></li>
-                    <li><a href = '#/otherproducts'>Ostali proizvodi</a></li>
-                  </ul>
+                <ul class = 'dropdown-menu' ng-controller = 'CategoryController'>
+                  <li ng-repeat='category in categories'><a href = '#/catalogue/{{$index}}'>{{category.name}}</a></li>
+                </ul>
               </li>
               <li><a href = '#/history'>Istorijat</a></li>
               <li><a href = '#/contact'>Kontakt i naručivanje</a></li>
@@ -103,12 +97,7 @@
               <li><a href = '#/'>Naslovna strana</a></li>
               <li><a href = '#/about'>O nama</a></li>
               <li><a href = '#/history'>Istorijat</a></li>
-              <li><a href = '#/catalogue'>Svi proizvodi</a></li>
-              <li><a href = '#/ceramics'>Keramika</li>
-              <li><a href = '#/oldmoney'>Stari novac</li>
-              <li><a href = '#/stamps'>Markice</li>
-              <li><a href = '#/postcards'>Razglednice drugi slični proizvodi</a></li>
-              <li><a href = '#/otherproducts'>Ostali proizvodi</a></li>
+              <li ng-repeat='category in categories'><a href = '#/catalogue/{{$index}}'>{{category.name}}</a></li>
               <li><a href = '#/contact'>Kontakt</a></li>
             </ul>
           </div>

@@ -14,7 +14,7 @@ angular.module("Store")
     .when('/contact',{
       templateUrl: '../views/contact.html'
     })
-    .when('/catalogue',{
+    .when('/catalogue/:categoryid',{
       templateUrl: '../views/catalogue.html'
     })
     .when('/basket',{

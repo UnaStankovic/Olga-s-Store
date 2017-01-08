@@ -14,9 +14,11 @@ class InsertCategoryTable extends Migration
     public function up()
     {
         DB::table('Category')->insert([
-        ['name' => 'OldMoney'],
-        ['name' => 'Postcards'],
-        ['name' => 'Stamps']
+        ['name' => 'Stari novac'],
+        ['name' => 'Markice'],
+        ['name' => 'Razglednice i ostali slični proizvodi'],
+        ['name' => 'Keramika'],
+        ['name' => 'Ostali proizvodi']
         ]);
     }
 
