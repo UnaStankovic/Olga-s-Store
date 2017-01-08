@@ -27,11 +27,12 @@
     <script type = "text/javascript" src = "../app/controllers/RegisterController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/StoreController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/CategoryController.js"></script>
-    <script type = "text/javascript" src = "../app/services/userService.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/UserController.js"></script>
 
   </head>
 
-  <body ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>">
+  <body ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>;
+    userid=<?php echo isset($_SESSION['userId']) ? $_SESSION['userId'] : -1; ?>">
     <div class = 'wrapper'>
 
       <!-- Navigation bar -->
@@ -59,11 +60,11 @@
               <?php
                 echo "<li><a href='#/register' ng-hide = 'loggedin'><span class='glyphicon glyphicon-pencil'></span>Registracija</a></li>";
                 echo "<li><a href='#/login' ng-hide = 'loggedin'><span class='glyphicon glyphicon-user'></span>Prijava</a></li>";
-                echo "<li><a href='#/myaccount' data-target = '#' data-toggle = 'dropdown' ng-show = 'loggedin'>
+                echo "<li><a href='' data-target = '#' data-toggle = 'dropdown' ng-show = 'loggedin'>
                               <span class='glyphicon glyphicon-user'></span>Moj nalog</a>
                     <ul class = 'dropdown-menu'>
                     " . (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
-                    <li>Profil</li>
+                    <li><a href = '#/myaccount'>Profil</a></li>
                     <li>Izmeni informacije</li>
                     <li>Prikaži narudžbine</li>
                     <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>Odjavi se</a></li>
@@ -71,11 +72,6 @@
                 </li>";
               ?>
               <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Korpa</a></li>
-              <!--Language icons removed because the page loads only once and the langugae should be chosen before it happend
-                This stays as comment until we find real good solution for language change.
-                <a href="#"><img src ='../app/assets/img/other/en.png' style = "width: 20px; height: 11px; margin-top: 19px;"></a>
-                <li><a href="#"><img src ='../app/assets/img/other/serbian.png' style = "width: 20px; height: 20px;"></a> </li>
-              -->
             </ul>
           </div>
         </div>
