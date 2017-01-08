@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller {
-    function index() {
+    public function index() {
 
         $res = new \stdClass();
 
