@@ -32,6 +32,9 @@ angular.module("Store")
     .when('/changeinfo',{
       templateUrl: '../views/changeinfo.html'
     })
+    .when('/shoppingCart',{
+      templateUrl: '../views/shoppingCart.html'
+    })
     .otherwise({
       redirectTo: '/'
     });
