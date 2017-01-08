@@ -6,19 +6,12 @@
 .footer a{
   color: black;
 }
-/*btn primary is if the "big" menu bar is used*/
-.btn-primary{
-  background-color: #E80C39;
-  border-color: #E80C39;
+/*btn primary is if the "big" menu bar is used ALSO USED for basket buttons*/
+.btn-primary, .btn-primary:focus, .btn-primary:hover{
+  background-color: #E80C39 !important;
+  border-color: #E80C39 !important;
 }
-.btn-primary:hover {
-  background-color: #E80C39;
-  border-color: #E80C39;
-}
-.nav.navbar-nav.navbar-right li a{
-  color: #E80C39;
-}
-.navbar-header.navbar-brand a{
+.nav.navbar-nav.navbar-right li a, .navbar-header.navbar-brand a{
   color: #E80C39;
 }
 .maintitle{
@@ -29,6 +22,13 @@
 }
 .color-it{
   color: #E80C39;
+}
+.color-it-g, .color-it-g:hover, .color-it-g:active, .color-it-g:focus, .btn-primary:active, #keepinfo:active{
+  background-color: gray !important;
+  border-color: gray !important;
+}
+.color-back{
+  background-color: #E80C39;
 }
 .center-it{
   text-align: center;
@@ -63,7 +63,11 @@
 #warning {
   color : red;
 }
-
+#keepinfo{
+  width : 100%;
+  background-color: #E80C39 !important;
+  border-color : #E80C39 !important;
+}
 label{
   display : inline-block;
   width : 30%;
