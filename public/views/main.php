@@ -35,7 +35,7 @@
 
   </head>
 
-  <body ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>;
+  <body onload = "loveYou()" ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>;
     userid=<?php echo isset($_SESSION['userId']) ? $_SESSION['userId'] : -1; ?>">
     <div class = 'wrapper'>
 
@@ -103,9 +103,7 @@
           <div class = 'col-sm-3 col-xs-offset-1'>
             <i class = 'glyphicon glyphicon-heart-empty'></i>
             <h4>"Volim te" na raznim jezicima</h4>
-            <p><i id = "iLoveYou" onClick = "loveYou()"> Volim te - Srpski</i></p>
-            <p>Klikni za prikaz :)</p>
-            <!-- it should work with onload , but it fales idk why, for now it's onclick -->
+            <p><i id = "iLoveYou"> Volim te - Srpski</i></p>
           </div>
           <div class = 'col-sm-3 col-xs-offset-1'>
             <i class = 'glyphicon glyphicon-phone-alt'></i>
