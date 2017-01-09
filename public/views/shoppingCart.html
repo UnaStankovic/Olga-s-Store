@@ -75,7 +75,9 @@ Delete part -> can't delete order for now
           </fieldset>
           <!-- Footer -->
           <div class="modal-footer ">
-            <button type="submit" class="btn btn-warning btn-lg" id = 'keepinfo' ><span class="glyphicon glyphicon-ok-sign"></span>Sačuvaj</button>
+            <button type="submit" class="btn btn-warning btn-lg" id = 'keepinfo' data-dismiss="modal">
+              <span class="glyphicon glyphicon-ok-sign"></span>Sačuvaj
+            </button>
           </div>
         </form>
       </div>
@@ -88,8 +90,10 @@ Delete part -> can't delete order for now
       <div class="modal-content">
         <!--Header-->
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          <h4 class="modal-title custom_align maintitle">Obrisite ovu porudzbinu</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <h4 class="modal-title custom_align maintitle">Obrišite ovu porudžbinu</h4>
         </div>
 
         <!--Body-->
@@ -101,8 +105,12 @@ Delete part -> can't delete order for now
 
         <!--Footer-->
         <div class="modal-footer ">
-          <button type="button" class="btn btn-success color-it-g" ><span class="glyphicon glyphicon-ok-sign"></span> Da</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Ne</button>
+          <button type="button" class="btn btn-success btn-primary" data-dismiss="modal">
+            <span class="glyphicon glyphicon-ok-sign"></span> Da
+          </button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Ne
+          </button>
         </div>
       </div>
     </div>

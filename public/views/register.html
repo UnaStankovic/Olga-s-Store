@@ -3,7 +3,7 @@
       <!-- this empty div is part of "to 12" design in Angular. 2 + 8 = 10 and the rest is also 2 but there is no need to write it -->
   </div>
   <div class = 'col-sm-8 well well-lg center-it'>
-    <form ng-controller = 'RegisterController as RegCtrl' ng-submit = 'registerUser()'>
+    <form ng-controller = 'RegisterController' ng-submit = 'registerUser()'>
       <h1 id = 'pagetitle'>Unesite podatke</h1>
 
       <fieldset>
@@ -23,7 +23,7 @@
       </fieldset>
       <input id = 'submitbutton' type="submit" value=Potvrdi>
 
-      <p id = 'errormsg' style="color:red">{{info.errormsg}}</p>
+      <p id = 'errormsg'>{{info.errormsg}}</p>
 
     </form>
   </div>
