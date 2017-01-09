@@ -44,7 +44,7 @@ class SearchController extends Controller {
     }
 
     public function searchProduct(Request $request) {
-        $available_fields = array('id', 'name', 'in_stock', 'category');
+        $available_fields = array('id', 'name', 'in_stock', 'category', 'image');
         $res = new \stdClass();
 
         /*if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^')) {
@@ -74,10 +74,28 @@ class SearchController extends Controller {
         else if(isset($data['in_stock']) && $data['in_stock'] == FALSE) {
             $products = $products->where('in_stock', '=', 0);
         }
-        
-        $products = $products->get();
+
         $res->status = 'success';
         $res->products = $products;
+        return response()->json($res);
+    }
+    
+    public function searchCategory(Request $request) {
+
+        $res = new \stdClass();
+        
+        $data = $request->all();
+        
+        $product = DB::table('Category')->join('Product', 'Category.id', '=', 'Product.Category_id')
+                   ->where('Category.id', '=', $data['id'])->select('Product.id', 'Product.name', 'Product.description', 'Product.price_per_piece')->get();
+        $res->product = $product;
+        foreach($product as $key => $value) {
+             $images = DB::table('Category')->join('Product', 'Category.id', '=', 'Product.Category_id')->join('ProductImage', 'ProductImage.Product_id', '=', 'Product.id')
+                       ->where('Category.id', '=', $data['id'])->where('Product.id', '=', $product[$key]->id)->select('ProductImage.path')->get();
+             $res->product[$key]->images = $images;
+        }
+
+        $res->status = 'success';
         return response()->json($res);
     }
 }
