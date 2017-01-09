@@ -36,11 +36,11 @@
 .center-it{
   text-align: center;
 }
+.right-it{
+  text-align : right;
+}
 .bold-it{
   font-weight : bold;
-}
-.toRight{
-  text-align : right;
 }
 .smaller-font{
   font-size : 16px;
