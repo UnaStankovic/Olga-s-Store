@@ -20,7 +20,7 @@
     <script type = "text/javascript" src = "../app/app.js"></script>
 
 
-    <!--- routes,services and controllers -->
+    <!--- routes,services, directives and controllers -->
     <script type = "text/javascript" src = "../app/controllers/routes.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LoginController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LogoutController.js"></script>
@@ -29,7 +29,8 @@
     <script type = "text/javascript" src = "../app/controllers/CategoryController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/UserController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/ChangeinfoController.js"></script>
-
+    <script type = "text/javascript" src = "../app/directives/product.js"></script>
+    
     <!-- contains function for love you on all languages part-->
     <script type="text/javascript" src="../app/assets/js/loveYou.js"></script>
 
