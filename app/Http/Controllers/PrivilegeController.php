@@ -23,6 +23,9 @@ class PrivilegeController extends Controller {
     public function getPrivilege($id) {
 
         $res = new \stdClass();
+        
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A', $id))
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
 
         $privilege = DB::table('Privilege')->where('id', intval($id))->get();
         if(count($privilege) == 0)
