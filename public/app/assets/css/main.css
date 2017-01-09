@@ -23,6 +23,9 @@
 .color-it{
   color: #E80C39;
 }
+.color-it-gray{
+  color : gray;
+}
 .color-it-g, .color-it-g:hover, .color-it-g:active, .color-it-g:focus, .btn-primary:active, #keepinfo:active{
   background-color: gray !important;
   border-color: gray !important;
@@ -35,6 +38,9 @@
 }
 .bold-it{
   font-weight : bold;
+}
+.toRight{
+  text-align : right;
 }
 .smaller-font{
   font-size : 16px;

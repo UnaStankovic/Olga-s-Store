@@ -17,9 +17,6 @@ angular.module("Store")
     .when('/catalogue/:categoryid',{
       templateUrl: '../views/catalogue.html'
     })
-    .when('/basket',{
-      templateUrl: '../views/basket.html'
-    })
     .when('/login',{
       templateUrl: '../views/login.html'
     })
@@ -28,9 +25,6 @@ angular.module("Store")
     })
     .when('/myaccount',{
       templateUrl: '../views/myaccount.html'
-    })
-    .when('/changeinfo',{
-      templateUrl: '../views/changeinfo.html'
     })
     .when('/shoppingCart',{
       templateUrl: '../views/shoppingCart.html'

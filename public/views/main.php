@@ -69,7 +69,6 @@
                     <ul class = 'dropdown-menu'>
                     " . (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
                     <li><a href = '#/myaccount'>Profil</a></li>
-                    <li><a href = '#/changeinfo'>Izmeni informacije</a></li>
                     <li>Prikaži narudžbine</li>
                     <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>Odjavi se</a></li>
                   </ul>

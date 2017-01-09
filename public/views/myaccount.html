@@ -1,14 +1,56 @@
 <div class = 'row' ng-controller = 'UserController'>
+  <div>
   <h1 class = 'maintitle'> <i class = 'glyphicon glyphicon-user'></i>Vaši podaci</h1>
-  <div class = 'col-sm-2'></div>
-  <div class = 'col-sm-8 text-centered well well-md'>
-    <fieldset>
-      <p><label>Ime: </label> {{info.name}} </p>
-      <p><label>Prezime: </label> {{info.surname}} </p>
-      <p><label>Adresa: </label> {{info.address}}</p>
-      <p><label>Grad: </label> {{info.city}}</p>
-      <p><label>Država: </label> {{info.country}}</p>
-      <p><label>Telefon: </label> {{info.telephone}}</p>
-    </fieldset>
+
+  </div>
+  <div class = 'text-centered'>
+    <div class = 'col-sm-2'>
+        <!-- this empty div is part of "to 12" design in Angular. 2 + 8 = 10 and the rest is also 2 but there is no need to write it -->
+    </div>
+    <div class = 'col-sm-8  well well-md'>
+      <fieldset>
+        <p><label>Ime: </label> {{info.name}} </p>
+        <p><label>Prezime: </label> {{info.surname}} </p>
+        <p><label>Adresa: </label> {{info.address}}</p>
+        <p><label>Grad: </label> {{info.city}}</p>
+        <p><label>Država: </label> {{info.country}}</p>
+        <p><label>Telefon: </label> {{info.telephone}}</p>
+      </fieldset>
+      <p class = 'color-it-gray'> Izmeni podatke </p>
+      <p data-placement="top" data-toggle="tooltip" title="Edit">
+        <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </p>
+    </div>
+    <div class = 'col-sm-2'></div>
+  </div>
+
+  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          <h4 class="modal-title custom_align maintitle "><i class = 'glyphicon glyphicon-pencil'></i>Izmenite željene podatke</h4>
+        </div>
+          <!-- Body -->
+        <form ng-controller = 'ChangeinfoController' ng-submit = 'changeInfo()'>
+          <fieldset>
+            <p><label>Ime: </label> <input type = 'text' ng-model = 'info.name' ></p>
+            <p><label>Prezime: </label> <input type = 'text' ng-model = 'info.surname' ></p>
+            <p><label>Adresa: </label> <input type = 'text' ng-model="info.address" ></p>
+            <p><label>Grad: </label> <input type = 'text' ng-model="info.city" ></p>
+            <p><label>Država: </label> <input type = 'text' ng-model="info.country" ></p>
+            <p><label>Telefon: </label> <input type = 'text' ng-model="info.telephone" ></p>
+          </fieldset>
+          <p id = 'errormsg' style="color:red">{{info.errormsg}}</p>
+          <!-- Footer -->
+          <div class="modal-footer ">
+            <button type="submit" class="btn btn-warning btn-lg" id = 'keepinfo' ><span class="glyphicon glyphicon-ok-sign"></span>Sačuvaj</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
