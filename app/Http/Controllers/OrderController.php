@@ -24,6 +24,10 @@ class OrderController extends Controller {
 
         $res = new \stdClass();
 
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^|C')) {
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
+        }
+        
         $user = DB::table('Has')->where('User_id', $_SESSION['userId'])->where('Privilege_id', 'A')->get();
         if(count($user) == 0) {
             $order = DB::table('Order')->where('id', intval($id))->where('User_id', $_SESSION['userId'])->get();
