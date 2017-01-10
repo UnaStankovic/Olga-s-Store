@@ -31,7 +31,7 @@
                 Cena : <i class = 'color-it left-it'>{{products[selectedProduct].price_per_piece | currency : "RSD " : 2}}</i></p>
               <div class = 'add-disp'>
                 <input ng-show = "products[selectedProduct].in_stock" type="checkbox" name="addtocart" value="add">
-                <span onclick="addToCart()" ng-show = "products[selectedProduct].in_stock" class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span>
+                <span onclick = "addToCart()" ng-show = "products[selectedProduct].in_stock" class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span>
               </div>
             </div>
             <p class = 'well well-sm'>{{products[selectedProduct].description}}</p>
