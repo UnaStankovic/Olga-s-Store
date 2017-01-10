@@ -39,6 +39,9 @@
 .right-it{
   text-align : right;
 }
+.left-it{
+  text-align : left;
+}
 .bold-it{
   font-weight : bold;
 }
@@ -69,6 +72,17 @@
 }
 .product-pic{
   width : 100%;
+}
+#price-disp{
+  float : left;
+  margin-left: 10px;
+}
+#price-div{
+  overflow: hidden;
+}
+#add-disp{
+  float: right;
+  margin-right: 10px;
 }
 #pagecontent{
   padding-top : 10px;

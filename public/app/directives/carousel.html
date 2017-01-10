@@ -8,7 +8,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item" ng-class="{active: $index==0}" ng-repeat="i in products[selectedProduct].imgs">
-            <img class = 'product-pic' ng-src='{{"../app/assets" + i.path}}' alt="productpic">
+            <img ng-src='{{"../app/assets" + i.path}}' alt="productpic">
         </div>
     </div>
 
