@@ -1,26 +1,25 @@
 angular.module("Store").controller('StoreController', function($scope, $http, $routeParams){
-  $scope.product = {};
+  $scope.products = {};
   $scope.categoryid = $routeParams.categoryid;
 
-  $http.get('../api/products/29')
+  $http.get('../api/products?page=3')
     .then(function(response) {
       if(response.data.status == 'error'){
-        console.log(response.data);
-        $scope.product.errormsg = response.data.message;
+        $scope.errormsg = response.data.message;
       }
       else {
-        $scope.product = response.data.product;
-        $http.get('../' + $scope.product.images)
-          .then(function(response) {
-            if(response.data.status == 'error'){
-              console.log(response.data);
-              $scope.product.errormsg = response.data.message;
-            }
-            else {
-              $scope.product.images = response.data.images;
-              console.log($scope.product);
-            }
-          });
+        $scope.products = response.data.products;
+        $scope.products.forEach(function(curvalue, i){
+          $http.get('../' + $scope.products[i].images)
+            .then(function(response) {
+              if(response.data.status == 'error'){
+                $scope.errormsg = response.data.message;
+              }
+              else {
+                $scope.products[i].imgs = response.data.images;
+              }
+            });
+        });
       }
     });
 });

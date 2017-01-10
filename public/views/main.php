@@ -30,7 +30,7 @@
     <script type = "text/javascript" src = "../app/controllers/UserController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/ChangeinfoController.js"></script>
     <script type = "text/javascript" src = "../app/directives/product.js"></script>
-    
+
     <!-- contains function for love you on all languages part-->
     <script type="text/javascript" src="../app/assets/js/loveYou.js"></script>
 
@@ -44,7 +44,7 @@
       <div class = 'nav navbar-default navbar-static-top'>
         <div class = 'container'>
           <div class = 'navbar-header'>
-            <img src = '../app/assets/img/other/logo1.png' alt = 'logo' class = 'navbar-brand navbar-left' id = 'logo'>
+            <img src = '../app/assets/img/other/logo1.png' alt = 'logo' class = 'navbar-brand navbar-left logo'>
             <a href = '#/' class = 'navbar-brand maintitle' id = 'maintitle'>Olgina prodavnica suvenira</a>
             <button type = 'button' class = 'navbar-toggle' data-toggle = 'collapse' data-target = '.navbar-collapse'>
                   <span class = 'sr-only'>Toggle navigation</span>

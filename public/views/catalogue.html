@@ -1,4 +1,4 @@
-<div class = 'row text-center'  ng-controller = 'StoreController as store'>
+<div class = 'row text-center' ng-controller = 'StoreController as store' >
   <div class="col-sm-3">
     <ul class="list-group">
       <li class = 'list-group-item' ng-repeat='category in categories'><a href = '#/catalogue/{{$index}}'>{{category.name}}</a></li>
@@ -6,22 +6,11 @@
   </div>
 
   <div class="col-sm-9" >
-  <!--  <h1 class = 'maintitle'>{{categories[categoryid].name}}</h1>
+   <h1 class = 'maintitle'>{{categories[categoryid].name}}</h1>
     <div>
-      <div class = 'well well-sm'>
-        <h2 class = 'color-it-gray'>{{product.name}}</h2>
-        <img ng-src = '{{"../app/assets" + product.images[0].path}}' alt = 'productpic' id = 'logo'>
-        <p>{{product.errormsg}}</p>
+      <product ng-repeat = 'product in products'></product>
 
-      <p class = 'right-it'>
-        <button type = 'submit' class = 'btn btn-primary' data-title="Edit" data-toggle="modal" data-target="#moreinfo">
-          <span class="glyphicon glyphicon-ok-sign"></span>Saznaj više
-        </button>
-      </p>
--->
-      <product></product>
-
-      <div class="modal fade" id="moreinfo" tabindex="-1" role="dialog" aria-labelledby="moreifo" aria-hidden="true">
+      <div class="modal fade" id="moreinfo" tabindex="-1" role="dialog" aria-labelledby="moreinfo" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <!-- Header -->
@@ -30,10 +19,9 @@
               <h4 class="modal-title custom_align maintitle">Informacije o proizvodu</h4>
             </div>
             <div>
-              <h3>{{product.name}}</h3>
-              <p>{{product.description}}</p>
-              <img ng-src = '{{"../app/assets" + product.images[0].path}}' alt = 'productpic' id = 'logo'>
-              <img ng-src = '{{"../app/assets" + product.images[1].path}}' alt = 'productpic' id = 'logo'>
+              <h3>{{products[selectedProduct].name}}</h3>
+              <p>{{products[selectedProduct].description}}</p>
+              <img ng-repeat = "image in products[selectedProduct].imgs" ng-src = '{{"../app/assets" + image.path}}' alt = "productpic" class = 'logo'>
             </div>
             <div>
               <input type="checkbox" name="addtocart" value="add"><p class = 'color-it-gray bold-it'>Dodaj u korpu</p></input>
@@ -42,7 +30,6 @@
         </div>
       </div>
 
-      </div>
       <nav aria-label='Page navigation'>
         <ul class='pagination'>
           <li>
@@ -61,6 +48,7 @@
           </li>
         </ul>
       </nav>
+
     </div>
   </div>
 </div>

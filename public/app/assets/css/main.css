@@ -54,12 +54,16 @@
 .div.well-md{
   padding : 5px;
 }
+.set-div-size{
+  width : 50%;
+  height : 50%;
+}
 .picture-olga{
-  width: 80%;
-  height: 125%;
+  width : 80%;
+  height : 125%;
 }
 /*#1849E8 lepa plava*/
-#logo{
+.logo{
   width: 20%;
   height: 30%;
 }
