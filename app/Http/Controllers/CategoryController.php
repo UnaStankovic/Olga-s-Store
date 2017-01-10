@@ -55,7 +55,7 @@ class CategoryController extends Controller {
         return response()->json($res);
     }
 
-    function deleteCategory($id) {
+    public function deleteCategory($id) {
 
         $res = new \stdClass();
 

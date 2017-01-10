@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PrivilegeController extends Controller {
-    function index() {
+    public function index() {
 
         $res = new \stdClass();
 
@@ -59,7 +59,7 @@ class PrivilegeController extends Controller {
         return response()->json($res);
     }
 
-    function deletePrivilege($id) {
+    public function deletePrivilege($id) {
 
         $res = new \stdClass();
 
