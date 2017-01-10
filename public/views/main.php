@@ -69,7 +69,7 @@
                 echo "<li><a href='' data-target = '#' data-toggle = 'dropdown' ng-show = 'loggedin'>
                               <span class='glyphicon glyphicon-user'></span>Moj nalog</a>
                     <ul class = 'dropdown-menu'>
-                    " . (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] ? "<li>Admin panel</li>" : "" ) . "
+                    " . (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] ? "<li><a href = '#/adminpanel'>Admin panel</a></li>" : "" ) . "
                     <li><a href = '#/myaccount'>Profil</a></li>
                     <li>Prikaži narudžbine</li>
                     <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>Odjavi se</a></li>

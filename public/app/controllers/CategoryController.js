@@ -8,7 +8,8 @@ angular.module('Store').controller('CategoryController', function($rootScope, $h
         name : 'Svi proizvodi'
       });
 
-      $rootScope.loadProducts();
+      if($rootScope.loadProducts != null)
+        $rootScope.loadProducts();
       //console.log($rootScope.categories);
     });
 });

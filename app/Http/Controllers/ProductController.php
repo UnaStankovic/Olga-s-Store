@@ -10,6 +10,10 @@ class ProductController extends Controller {
         $response = new \stdClass();
 
         $query = DB::table('Product');
+
+        $response->count = count($query->get());
+        $response->pageSize = $pageSize;
+
         if($request->has('page'))
             $query = $query->skip(($request->input('page') - 1) * $pageSize)->take($pageSize);
 

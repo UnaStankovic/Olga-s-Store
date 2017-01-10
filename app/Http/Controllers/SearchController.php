@@ -95,6 +95,9 @@ class SearchController extends Controller {
         $query = DB::table('Category')->join('Product', 'Category.id', '=', 'Product.Category_id')
                    ->where('Category.id', '=', $data['id'])->select('Product.id', 'Product.name', 'Product.description', 'Product.price_per_piece', 'Product.in_stock');
 
+        $res->count = count($query->get());
+        $res->pageSize = $pageSize;
+
         if($request->has('page'))
           $query = $query->skip(($request->input('page') - 1) * $pageSize)->take($pageSize);
 
