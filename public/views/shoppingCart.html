@@ -1,10 +1,12 @@
-<!-- This is just some idea, a lot of stuff is going to be change when we start using Order table from database
-i was using here just fields we have in user to see if it's going to work
+<!-- 
 
-i think we should give some kind of message if user is not logged in or hide the shopping cart
-Update part -> you can change some data
-Delete part -> can't delete order for now
+This small script under is for loading a cart, i think it should stay here so it happenes when we start a page
+
 -->
+
+<script type="text/javascript">
+  showCart();
+</script>
 
 <div class = "col-sm-12" ng-controller = 'UserController'>
   <h1 class = 'maintitle'> Vaša korpa </h1>
@@ -15,7 +17,7 @@ Delete part -> can't delete order for now
       <th>Količina</th>
       <th>Obriši</th>
     </thead>
-    <tbody>
+    <tbody id="tabela">
       <tr>
         <td></td>
         <td>Neki proizvod</td>
@@ -63,7 +65,7 @@ Delete part -> can't delete order for now
         <!-- Header -->
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          <h4 class="modal-title custom_align maintitle">Izmenite zeljene podatke</h4>
+          <h4 class="modal-title custom_align maintitle">Izmenite željene podatke</h4>
         </div>
           <!-- Body -->
         <form ng-controller = 'ChangeinfoController'>
@@ -105,7 +107,7 @@ Delete part -> can't delete order for now
 
         <!--Footer-->
         <div class="modal-footer ">
-          <button type="button" class="btn btn-success btn-primary" data-dismiss = 'modal'>
+          <button type="button" class="btn btn-success btn-primary" onclick="deleteProduct()" data-dismiss="modal">
             <span class="glyphicon glyphicon-ok-sign"></span> Da
           </button>
           <button type="button" class="btn btn-default" data-dismiss="modal">
