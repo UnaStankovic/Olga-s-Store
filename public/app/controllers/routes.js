@@ -17,6 +17,9 @@ angular.module("Store")
     .when('/catalogue/:categoryid',{
       templateUrl: '../views/catalogue.html'
     })
+    .when('/catalogue/:categoryid/:pageid',{
+      templateUrl: '../views/catalogue.html'
+    })
     .when('/login',{
       templateUrl: '../views/login.html'
     })

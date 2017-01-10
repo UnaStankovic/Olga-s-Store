@@ -57,7 +57,7 @@
               <li><a href = '#/about'>O nama</a></li>
               <li><a href = '' data-target = '#' data-toggle = 'dropdown'>Proizvodi<span class = 'caret'></span></a>
                 <ul class = 'dropdown-menu' ng-controller = 'CategoryController'>
-                  <li ng-repeat='category in categories'><a href = '#/catalogue/{{$index}}'>{{category.name}}</a></li>
+                  <li ng-repeat='category in categories'><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></li>
                 </ul>
               </li>
               <li><a href = '#/history'>Istorijat</a></li>
@@ -98,7 +98,7 @@
               <li><a href = '#/'>Naslovna strana</a></li>
               <li><a href = '#/about'>O nama</a></li>
               <li><a href = '#/history'>Istorijat</a></li>
-              <li ng-repeat='category in categories'><a href = '#/catalogue/{{$index}}'>{{category.name}}</a></li>
+              <li ng-repeat='category in categories'><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></li>
               <li><a href = '#/contact'>Kontakt</a></li>
             </ul>
           </div>

@@ -1,7 +1,7 @@
 <div class = 'row text-center' ng-controller = 'StoreController as store' >
   <div class="col-sm-3 m-top">
     <ul class="list-group">
-      <li class = 'list-group-item' ng-repeat='category in categories'><a href = '#/catalogue/{{$index}}'>{{category.name}}</a></li>
+      <li class = 'list-group-item' ng-repeat='category in categories'><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></li>
     </ul>
   </div>
 
@@ -11,10 +11,10 @@
     <div>
       <div class = 'row'>
         <div class = 'col-sm-6'>
-          <product ng-repeat = 'product in products'></product>
+          <product ng-repeat = 'product in products.slice(products.length / 2, products.length)' ng-init="tmp = products.length / 2 + $index" ></product>
         </div>
         <div class = 'col-sm-6'>
-          <product ng-repeat = 'product in products'></product>
+          <product ng-repeat = 'product in products.slice(0, products.length / 2)' ng-init="tmp = $index"></product>
         </div>
       </div>
       <div class="modal fade" id="moreinfo" tabindex="-1" role="dialog" aria-labelledby="moreinfo" aria-hidden="true">
@@ -30,8 +30,8 @@
               <p class = 'color-it-gray bold-it price-disp'><i class = 'glyphicon glyphicon-tag color-it'></i>
                 Cena : <i class = 'color-it left-it'>{{products[selectedProduct].price_per_piece | currency : "RSD " : 2}}</i></p>
               <div class = 'add-disp'>
-                <input type="checkbox" name="addtocart" value="add">
-                <span class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span>
+                <input ng-show = "products[selectedProduct].in_stock" type="checkbox" name="addtocart" value="add">
+                <span ng-show = "products[selectedProduct].in_stock" class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span>
               </div>
             </div>
             <p class = 'well well-sm'>{{products[selectedProduct].description}}</p>

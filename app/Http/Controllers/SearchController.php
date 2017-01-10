@@ -20,7 +20,7 @@ class SearchController extends Controller {
                 unset($data[$key]);
             }
         }
-        
+
         $user = DB::table('User');
         if(isset($data['id'])) {
             $user = $user->where('id', $data['id']);
@@ -57,7 +57,7 @@ class SearchController extends Controller {
                 unset($data[$key]);
             }
         }
-        
+
         $products = DB::table('Product');
         if(isset($data['id'])) {
             $products = $products->where('Product.id', $data['id']);
@@ -77,7 +77,7 @@ class SearchController extends Controller {
         else if(isset($data['in_stock']) && $data['in_stock'] == FALSE) {
             $products = $products->where('in_stock', '=', 0);
         }
-        
+
         $products = $products->join('ProductImage', 'Product.id', '=', 'ProductImage.Product_id')
                     ->select('Product.*', 'ProductImage.path')->get();
 
@@ -85,20 +85,25 @@ class SearchController extends Controller {
         $res->products = $products;
         return response()->json($res);
     }
-    
-    public function searchCategory(Request $request) {
 
+    public function searchCategory(Request $request) {
+        $pageSize = 10;
         $res = new \stdClass();
-        
+
         $data = $request->all();
-        
-        $product = DB::table('Category')->join('Product', 'Category.id', '=', 'Product.Category_id')
-                   ->where('Category.id', '=', $data['id'])->select('Product.id', 'Product.name', 'Product.description', 'Product.price_per_piece')->get();
-        $res->product = $product;
+
+        $query = DB::table('Category')->join('Product', 'Category.id', '=', 'Product.Category_id')
+                   ->where('Category.id', '=', $data['id'])->select('Product.id', 'Product.name', 'Product.description', 'Product.price_per_piece', 'Product.in_stock');
+
+        if($request->has('page'))
+          $query = $query->skip(($request->input('page') - 1) * $pageSize)->take($pageSize);
+
+        $product = $query->get();
+        $res->products = $product;
         foreach($product as $key => $value) {
              $images = DB::table('Category')->join('Product', 'Category.id', '=', 'Product.Category_id')->join('ProductImage', 'ProductImage.Product_id', '=', 'Product.id')
                        ->where('Category.id', '=', $data['id'])->where('Product.id', '=', $product[$key]->id)->select('ProductImage.path')->get();
-             $res->product[$key]->images = $images;
+             $res->products[$key]->images = $images;
         }
 
         $res->status = 'success';
