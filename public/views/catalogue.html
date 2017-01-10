@@ -21,7 +21,8 @@
             <div>
               <h3>{{products[selectedProduct].name}}</h3>
               <p>{{products[selectedProduct].description}}</p>
-              <img ng-repeat = "image in products[selectedProduct].imgs" ng-src = '{{"../app/assets" + image.path}}' alt = "productpic" class = 'logo'>
+              <carousel></carousel>
+              <!--<img ng-repeat = "image in products[selectedProduct].imgs" ng-src = '{{"../app/assets" + image.path}}' alt = "productpic" class = 'logo'>-->
             </div>
             <div>
               <input type="checkbox" name="addtocart" value="add"><p class = 'color-it-gray bold-it'>Dodaj u korpu</p></input>

@@ -1,0 +1,22 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="{{$index}}" class="active"
+            ng-repeat="i in products[selectedProduct].imgs"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item" ng-class="{active: $index==0}" ng-repeat="i in products[selectedProduct].imgs">
+            <img class = 'product-pic' ng-src='{{"../app/assets" + i.path}}' alt="productpic">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <span class="left carousel-control" data-target="#myCarousel" data-slide="prev" role="button">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden = "true"></span>
+    </span>
+    <span class="right carousel-control" data-target="#myCarousel" data-slide="next" role="button">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden = "true"></span>
+    </span>
+</div>

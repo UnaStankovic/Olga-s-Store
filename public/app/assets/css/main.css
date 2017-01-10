@@ -67,6 +67,9 @@
   width: 20%;
   height: 30%;
 }
+.product-pic{
+  width : 100%;
+}
 #pagecontent{
   padding-top : 10px;
   padding-bottom : 10px;

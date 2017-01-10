@@ -30,6 +30,7 @@
     <script type = "text/javascript" src = "../app/controllers/UserController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/ChangeinfoController.js"></script>
     <script type = "text/javascript" src = "../app/directives/product.js"></script>
+    <script type = "text/javascript" src = "../app/directives/carousel.js"></script>
 
     <!-- contains function for love you on all languages part-->
     <script type="text/javascript" src="../app/assets/js/loveYou.js"></script>
