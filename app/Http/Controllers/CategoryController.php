@@ -34,7 +34,7 @@ class CategoryController extends Controller {
 
         $res = new \stdClass();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A') {
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A')) {
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
 
