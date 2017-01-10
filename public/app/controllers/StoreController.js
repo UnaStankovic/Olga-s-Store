@@ -2,7 +2,7 @@ angular.module("Store").controller('StoreController', function($scope, $http, $r
   $scope.products = {};
   $scope.categoryid = $routeParams.categoryid;
 
-  $http.get('../api/products?page=3')
+  $http.get('../api/products?page=2')
     .then(function(response) {
       if(response.data.status == 'error'){
         $scope.errormsg = response.data.message;

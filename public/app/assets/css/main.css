@@ -54,6 +54,9 @@
 .wrap-em{
   padding : 20px;
 }
+.m-top{
+  margin-top: 20px;
+}
 .div.well-md{
   padding : 5px;
 }
@@ -71,16 +74,17 @@
   height: 30%;
 }
 .product-pic{
-  width : 100%;
+  width : 90%;
+  height : 200%;
 }
-#price-disp{
+.price-disp{
   float : left;
   margin-left: 10px;
 }
-#price-div{
+.price-div{
   overflow: hidden;
 }
-#add-disp{
+.add-disp{
   float: right;
   margin-right: 10px;
 }

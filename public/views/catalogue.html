@@ -1,5 +1,5 @@
 <div class = 'row text-center' ng-controller = 'StoreController as store' >
-  <div class="col-sm-3">
+  <div class="col-sm-3 m-top">
     <ul class="list-group">
       <li class = 'list-group-item' ng-repeat='category in categories'><a href = '#/catalogue/{{$index}}'>{{category.name}}</a></li>
     </ul>
@@ -9,8 +9,14 @@
 
    <h1 class = 'maintitle'>{{categories[categoryid].name}}</h1>
     <div>
-      <product ng-repeat = 'product in products'></product>
-
+      <div class = 'row'>
+        <div class = 'col-sm-6'>
+          <product ng-repeat = 'product in products'></product>
+        </div>
+        <div class = 'col-sm-6'>
+          <product ng-repeat = 'product in products'></product>
+        </div>
+      </div>
       <div class="modal fade" id="moreinfo" tabindex="-1" role="dialog" aria-labelledby="moreinfo" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -20,10 +26,10 @@
               <h4 class="modal-title custom_align maintitle">Informacije o proizvodu</h4>
             </div>
             <h3>{{products[selectedProduct].name}}</h3>
-            <div id = 'price-div'>
-              <p class = 'color-it-gray bold-it' id = 'price-disp'><i class = 'glyphicon glyphicon-tag color-it'></i>
+            <div class = 'price-div'>
+              <p class = 'color-it-gray bold-it price-disp'><i class = 'glyphicon glyphicon-tag color-it'></i>
                 Cena : <i class = 'color-it left-it'>{{products[selectedProduct].price_per_piece | currency : "RSD " : 2}}</i></p>
-              <div id = 'add-disp'>
+              <div class = 'add-disp'>
                 <input type="checkbox" name="addtocart" value="add">
                 <span class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span>
               </div>
