@@ -24,17 +24,12 @@ class OrderController extends Controller {
 
         $res = new \stdClass();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^|C')) {
+        $order = DB::table('Order')->where('id', intval($id))->get();
+ 
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $order[0]->User_id)) {
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
         
-        $user = DB::table('Has')->where('User_id', $_SESSION['userId'])->where('Privilege_id', 'A')->get();
-        if(count($user) == 0) {
-            $order = DB::table('Order')->where('id', intval($id))->where('User_id', $_SESSION['userId'])->get();
-        }
-        else {
-            $order = DB::table('Order')->where('id', intval($id))->get();
-        }
         if(count($order) == 0) {
             return response()->json(errorResponse($res, 'There is no such order', 'id'));
         }
@@ -52,23 +47,17 @@ class OrderController extends Controller {
         
         $res = new \stdClass();
 
-      
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^|C', $id)) {
-            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        }
-
         $data = $request->all();
        
         if(isset($data['id']) || isset($data['date_of_creation']) || isset($data['User_id'])) {
             return response()->json(errorResponse($res, 'There is one or more columns that can\'t be changed', 'illegal_update'));
         }
 
-        $user = DB::table('Has')->where('User_id', $_SESSION['userId'])->where('Privilege_id', 'A')->get();
-        if(count($user) == 0) {
-            $order = DB::table('Order')->where('id', intval($id))->where('User_id', $_SESSION['userId']);
-        }
-        else {
-            $order = DB::table('Order')->where('id', intval($id));
+        $order = DB::table('Order')->where('id', intval($id)); 
+        $tmp = DB::table('Order')->where('id', intval($id))->get();
+        
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $tmp[0]->User_id)) {
+            return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
         if(count($order->get()) == 0) {
             return response()->json(errorResponse($res, 'There is no such order', 'id'));
@@ -81,20 +70,14 @@ class OrderController extends Controller {
         return response()->json($res);
     }
     
-    function deleteOrder($id) {
+    public function deleteOrder($id) {
 
         $res = new \stdClass();
-
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^|C', $id))
+            
+        $order = DB::table('Order')->where('id', intval($id));  
+        $tmp = DB::table('Order')->where('id', intval($id))->get();
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $tmp[0]->User_id))
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-
-        $user = DB::table('Has')->where('User_id', $_SESSION['userId'])->where('Privilege_id', 'A')->get();
-        if(count($user) == 0) {
-            $order = DB::table('Order')->where('id', intval($id))->where('User_id', $_SESSION['userId']);
-        }
-        else {
-            $order = DB::table('Order')->where('id', intval($id));
-        }
         if(count($order->get()) == 0) {
             return response()->json(errorResponse($res, 'There is no such order', 'id'));
         }
@@ -109,9 +92,9 @@ class OrderController extends Controller {
         $res = new \stdClass();
         $data = $request->all();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^|C'))
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $_SESSION['userId']))
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-
+        
         if(!isset($data['date_of_creation']) || !isset($data['status']) || !isset($data['amount']) || !isset($_SESSION['userId'])) {
             return response()->json(errorResponse($res, 'date_of_creation, status, amount and User_id are required', 'date_of_creation, status, amount, User_id'));
         }
