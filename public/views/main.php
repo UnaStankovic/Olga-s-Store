@@ -39,7 +39,7 @@
   </head>
 
   <body onload = "loveYou()" ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>;
-    userid=<?php echo isset($_SESSION['userId']) ? $_SESSION['userId'] : -1; ?>">
+    userid=<?php echo isset($_SESSION['userId']) ? $_SESSION['userId'] : -1; ?>; isadmin=<?php echo (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) ? 'true' : 'false'; ?>">
     <div class = 'wrapper'>
 
       <!-- Navigation bar -->
@@ -63,20 +63,17 @@
               </li>
               <li><a href = '#/history'>Istorijat</a></li>
               <li><a href = '#/contact'>Kontakt i naručivanje</a></li>
-              <!-- PHP code is cheking if user is logged in and he is site admin he should have admin panel option displayed-->
-              <?php
-                echo "<li><a href='#/register' ng-hide = 'loggedin'><span class='glyphicon glyphicon-pencil'></span>Registracija</a></li>";
-                echo "<li><a href='#/login' ng-hide = 'loggedin'><span class='glyphicon glyphicon-user'></span>Prijava</a></li>";
-                echo "<li><a href='' data-target = '#' data-toggle = 'dropdown' ng-show = 'loggedin'>
-                              <span class='glyphicon glyphicon-user'></span>Moj nalog</a>
-                    <ul class = 'dropdown-menu'>
-                    " . (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] ? "<li><a href = '#/adminpanel'>Admin panel</a></li>" : "" ) . "
-                    <li><a href = '#/myaccount'>Profil</a></li>
-                    <li>Prikaži narudžbine</li>
-                    <li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>Odjavi se</a></li>
-                  </ul>
-                </li>";
-              ?>
+              <li><a href='#/register' ng-hide = 'loggedin'><span class='glyphicon glyphicon-pencil'></span>Registracija</a></li>
+              <li><a href='#/login' ng-hide = 'loggedin'><span class='glyphicon glyphicon-user'></span>Prijava</a></li>
+              <li><a href='' data-target = '#' data-toggle = 'dropdown' ng-show = 'loggedin'>
+				<span class='glyphicon glyphicon-user'></span>Moj nalog</a>
+                <ul class = 'dropdown-menu'>
+					<li><a href = '#/adminpanel' ng-show='isadmin'>Admin panel</a></li>
+					<li><a href = '#/myaccount'>Profil</a></li>
+					<li>Prikaži narudžbine</li>
+					<li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>Odjavi se</a></li>
+                </ul>
+              </li>
               <li><a href="#/shoppingCart"><span class="glyphicon glyphicon-shopping-cart"></span>Korpa</a></li>
             </ul>
           </div>
