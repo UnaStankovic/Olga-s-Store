@@ -11,6 +11,7 @@ angular.module("Store").controller('LoginController', function($scope, $http, $l
        else {
          console.log("Successfully logged in.");
          $rootScope.loggedin = true;
+         $rootScope.isadmin = response.data.user.isAdmin;
          $rootScope.userid = response.data.user.id;
         // $window.location.reload(true);  //This should be removed soon.
          $location.path('/myaccount');

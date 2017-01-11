@@ -85,6 +85,7 @@
 			     $_SESSION['isAdmin'] = TRUE;
 		    else
 			     $_SESSION['isAdmin'] = FALSE;
+        $response->user->isAdmin = $_SESSION['isAdmin'];
 
         return $response;
     }
