@@ -8,16 +8,14 @@
       <div class = 'col-sm-6'>
           <p class = 'color-it-gray bold-it '><i class = 'glyphicon glyphicon-tag color-it'></i>
             Cena : <i class = 'color-it left-it'>{{product.price_per_piece | currency : "RSD " : 2}}</i></p>
-            <!--
             <input ng-show = "product.in_stock" type="checkbox" name="addtocart" value="add">
-            <span ng-show = "product.in_stock" class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span> -->
+            <span ng-show = "product.in_stock" class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span>
             <p ng-show = "product.in_stock" class = 'color-it-gray bold-it'>Proizvod je na stanju
                <i class = 'glyphicon glyphicon-ok-circle' style = 'color : green;'></i>
             </p>
             <p ng-hide = "product.in_stock" class = 'color-it-gray bold-it'>Proizvod nije na stanju
                <i class = 'glyphicon glyphicon-remove-circle' style = 'color : red;'></i>
             </p>
-          <!--  <p class = 'color-it-gray bold-it' ><i class = 'glyphicon glyphicon-remove-circle'></i> Proizvod nije na stanju</p> -->
       </div>
     </div>
     <p class = 'right-it'>
