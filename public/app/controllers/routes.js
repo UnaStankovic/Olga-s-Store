@@ -29,6 +29,9 @@ angular.module("Store")
     .when('/myaccount',{
       templateUrl: '../views/myaccount.html'
     })
+    .when('/showorders',{
+      templateUrl: '../views/showorders.html'
+    })
     .when('/adminpanel',{
       templateUrl: '../views/adminpanel.html'
     })

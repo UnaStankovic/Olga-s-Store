@@ -70,7 +70,7 @@
                 <ul class = 'dropdown-menu'>
 					<li><a href = '#/adminpanel' ng-show='isadmin'>Admin panel</a></li>
 					<li><a href = '#/myaccount'>Profil</a></li>
-					<li>Prikaži narudžbine</li>
+					<li><a href = '#/showorders'>Prikaži narudžbine</a></li>
 					<li><a href='#' ng-controller='LogoutController' ng-click='logout()' target='_self'>Odjavi se</a></li>
                 </ul>
               </li>

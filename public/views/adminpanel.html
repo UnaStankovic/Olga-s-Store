@@ -38,7 +38,7 @@
         <div class = 'form-group'>
           <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
           <select class = 'form-control' id = 'sel1'>
-            <option ng-repeat='category in categories'><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></option>
+            <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}"><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></option>
           <!--  <option>Stari novac</option>
             <option>Markice</option>
             <option>Razglednice</option>
