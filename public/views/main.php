@@ -32,8 +32,9 @@
     <script type = "text/javascript" src = "../app/directives/product.js"></script>
     <script type = "text/javascript" src = "../app/directives/carousel.js"></script>
 
-    <!-- contains function for love you on all languages part-->
+    <!-- contains function written in js for love you on all languages part and shopping cart session-->
     <script type="text/javascript" src="../app/assets/js/loveYou.js"></script>
+    <script type="text/javascript" src="../app/assets/js/shoppingCartFunctions.js"></script>
 
   </head>
 
