@@ -1,6 +1,7 @@
 angular.module("Store").controller('StoreController', function($scope, $http, $routeParams, $rootScope){
   $scope.products = {};
   $scope.pages = [];
+  $scope.Math = window.Math;
   $scope.initializePageIndexes = function(response) {
     var numOfPages = Math.ceil(response.data.count * 1.0 / response.data.pageSize);
 
@@ -59,6 +60,7 @@ angular.module("Store").controller('StoreController', function($scope, $http, $r
 
             for(var i = 0; i < $scope.products.length; i++)
               $scope.products[i].imgs = $scope.products[i].images;
+			console.log($scope.products);
           }
         });
     }
