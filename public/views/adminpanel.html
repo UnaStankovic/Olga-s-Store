@@ -19,7 +19,7 @@
       </fieldset>
       <p class = 'right-it'>
           <button type = 'submit' class = 'btn btn-primary' data-title="Edit">
-              <span class="glyphicon glyphicon-ok-sign"></span>Izmeni
+              <span class="glyphicon glyphicon-ok-sign"></span> Izmeni
           </button>
       </p>
     </div>
@@ -38,16 +38,17 @@
         <div class = 'form-group'>
           <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
           <select class = 'form-control' id = 'sel1'>
-            <option>Stari novac</option>
+            <option ng-repeat='category in categories'><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></option>
+          <!--  <option>Stari novac</option>
             <option>Markice</option>
             <option>Razglednice</option>
-            <option>Ostali proizvodi</option>
+            <option>Ostali proizvodi</option> -->
           </select>
         </div>
       </fieldset>
       <p class = 'right-it'>
           <button type = 'submit' class = 'btn btn-primary' data-title="Edit">
-              <span class="glyphicon glyphicon-ok-sign"></span>Potvrdi
+              <span class="glyphicon glyphicon-ok-sign"></span> Potvrdi
           </button>
       </p>
     </div>
@@ -57,6 +58,11 @@
      <fieldset>
        <!-- TODO : create controller that adds new category-->
        <p><label>Ime kategorije: </label> <input type = 'text' ng-model = 'info.name'></p>
+       <p class = 'right-it'>
+           <button type = 'submit' class = 'btn btn-primary' data-title="Edit">
+               <span class="glyphicon glyphicon-ok-sign"></span> Dodaj
+           </button>
+       </p>
      </fieldset>
     </div>
   </div>
