@@ -95,12 +95,23 @@ class OrderController extends Controller {
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $_SESSION['userId']))
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         
-        if(!isset($data['date_of_creation']) || !isset($data['status']) || !isset($data['amount']) || !isset($_SESSION['userId'])) {
+        $product_price = DB::table('Product')->where('id', $data['Product_id'])->select('Product.price_per_piece')->get();
+        $order_amount = $data['quantity'] * $product_price[0]->price_per_piece;
+        
+        if(!isset($data['date_of_creation']) || !isset($data['status']) || !isset($_SESSION['userId'])) {
             return response()->json(errorResponse($res, 'date_of_creation, status, amount and User_id are required', 'date_of_creation, status, amount, User_id'));
         }
-        DB::table('Order')->insert(['date_of_creation' => $data['date_of_creation'], 'status' => $data['status'], 'amount' => $data['amount'], 'User_id' => $_SESSION['userId']]);
-
+        DB::table('Order')->insert(['date_of_creation' => $data['date_of_creation'], 'status' => $data['status'], 'amount' => $order_amount, 'User_id' => $_SESSION['userId']]);
+        
+        $order_id = DB::table('Order')->max('id');
+        if(!isset($data['Product_id']) || !isset($data['quantity'])) {
+            return response()->json(errorResponse($res, 'Product_id and quantity are required', 'Product_id, quantity'));
+        }
+        
+        DB::table('Contains')->insert(['quantity' => $data['quantity'], 'Product_id' => $data['Product_id'], 'Order_id' => $order_id]);
+        
         $res->status = 'success';
         return response()->json($res);
     }
+
 }
