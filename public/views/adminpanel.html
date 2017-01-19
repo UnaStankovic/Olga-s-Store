@@ -1,6 +1,7 @@
 <div class = 'row' ng-controller = 'ChangeinfoController'>
   <!-- TODO : here should be used change user controller by his id or email... OR the function in front end will be changed OR new controller will be added -->
   <h1 class = 'maintitle'><i class = 'glyphicon glyphicon-blackboard'></i> Admin panel </h1>
+
   <div class = 'row well well-md'>
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-duplicate'></i> Prikaz narudžbina
@@ -10,6 +11,7 @@
 
       <!-- TODO : Here should be added some order filter -->
     </div>
+    
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-user'></i> Izmeni korisnika
         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#changeUserShow'></span>
@@ -31,12 +33,13 @@
         </p>
       </div>
     </div>
+
   </div>
+
   <div class = 'row well well-md'>
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-plus'></i> Dodaj proizvod
         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#addProductShow' ></span></h3>
-
       <div id = "addProductShow" class = 'collapse'>
        <fieldset>
         <!-- TODO : create controller that adds new category-->
@@ -60,6 +63,7 @@
        </p>
       </div>
     </div>
+
     <div class = 'col-sm-6'>
       <!-- ng-controller = 'newcategoryController' -->
      <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-th-list'></i> Dodaj kategoriju
@@ -76,5 +80,6 @@
       </fieldset>
      </div>
     </div>
+
   </div>
 </div>
