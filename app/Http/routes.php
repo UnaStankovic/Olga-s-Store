@@ -72,5 +72,10 @@ $app->get('api/search/user', 'SearchController@searchUser');
 $app->get('api/search/product', 'SearchController@searchProduct');
 $app->get('api/search/category', 'SearchController@searchCategory');
 
+//contains
+$app->put('api/contains/{id}', 'ContainsController@changeQuantity');
+$app->post('api/contains/{id}', 'ContainsController@insertProduct');
+$app->delete('api/contains/{id}', 'ContainsController@deleteProduct');
+
 //frontend
 $app->get('confirm/{id}/{code}', 'UserController@confirm');
