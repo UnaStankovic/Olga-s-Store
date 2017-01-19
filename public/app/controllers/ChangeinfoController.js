@@ -5,6 +5,11 @@ angular.module("Store").controller('ChangeinfoController', function($scope, $htt
     .then(function(response) {
       $scope.$parent.info = response.data.user;
     });
+  //For hiding and showing parts on Admin panel on-click
+  $scope.addProductShow = false;
+  $scope.addCategoryShow = false;
+  $scope.changeUserShow = false;
+  $scope.orderShow = false;
   $scope.$parent.changeInfo = function(){
     console.log("ok");
     $http.put('../api/user/' + $rootScope.userid, $scope.$parent.info)

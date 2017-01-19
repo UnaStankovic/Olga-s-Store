@@ -4,17 +4,13 @@ function addToCart() {
     var nameOfProduct = document.getElementById("nameOfProduct").innerHTML;
     //var numberOfProduct = document.getElementById("numberOfProduct").value;
 
-
     console.log(nameOfProduct);
     //console.log(numberOfProduct);
 
     sessionStorage.setItem(nameOfProduct, 1);
-
-
   }
 
 function showCart() {
-
     var tabelBody = " ";
   //console.log() is used for testing
   //console.log("-----------------------------------------------");
@@ -29,19 +25,13 @@ function showCart() {
         tabelBody+="<tr><td></td><td id='some-product' onclick='pop()'>"+sessionStorage.key(i)+
         "</td><td> <input id='kolicina' type = 'number' min = '1' value='1'></td><td><p data-placement='top' data-toggle='tooltip' title='Delete'><button class='btn btn-primary btn-xs' data-title='Delete' data-toggle='modal' data-target='#delete' ><span class='glyphicon glyphicon-trash'></span></button></p></td></tr>";
         //Idk why he doesn't allow me to break it in new lines
-
-
       }
 
       document.getElementById("tabela").innerHTML = tabelBody;
-
     } else {
-
       document.getElementById("tabela").innerHTML = "<p> Nema proizvoda u korpi ! </p>";
     }
 }
-
-
 
 
 function deleteProduct(){
@@ -51,7 +41,6 @@ function deleteProduct(){
 
     showCart();
 }
-
 
 function pop(){
 
