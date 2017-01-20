@@ -9,12 +9,14 @@
 
    <h1 class = 'maintitle'>{{categories[categoryid].name}}</h1>
     <div>
-      <div class = 'row'>
-        <div class = 'col-sm-6'>
-          <product ng-repeat = 'product in products.slice(products.length / 2, products.length)' ng-init="tmp = products.length / 2 + $index" ></product>
-        </div>
-        <div class = 'col-sm-6'>
-          <product ng-repeat = 'product in products.slice(0, products.length / 2)' ng-init="tmp = $index"></product>
+      <div class = 'catalogue-container'>
+        <div class = 'catalogue-row' ng-repeat="id in range(0, Math.ceil(products.length / 2))">
+          <div class = 'catalogue-col well well-sm'>
+            <product prodid="2 * id" selprod="$parent.selectedProduct"></product>
+          </div>
+          <div class = 'catalogue-col well well-sm' ng-show="2 * id + 1 < products.length">
+            <product prodid="2 * id + 1" selprod="$parent.selectedProduct"></product>
+          </div>
         </div>
       </div>
       <div class="modal fade" id="moreinfo" tabindex="-1" role="dialog" aria-labelledby="moreinfo" aria-hidden="true">
