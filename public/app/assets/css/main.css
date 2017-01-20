@@ -33,6 +33,12 @@
 .color-back{
   background-color: #E80C39;
 }
+.position-it {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin-right: 10px;
+}
 .center-it{
   text-align: center;
 }
