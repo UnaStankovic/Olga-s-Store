@@ -2,6 +2,15 @@ angular.module("Store").controller('StoreController', function($scope, $http, $r
   $scope.products = {};
   $scope.pages = [];
   $scope.Math = window.Math;
+    $rootScope.selectedProduct = 10;
+
+  $scope.range = function(min, max) {
+      var arr = [];
+      for(var i = min; i < max; i++)
+          arr.push(i);
+      return arr;
+  }
+
   $scope.initializePageIndexes = function(response) {
     var numOfPages = Math.ceil(response.data.count * 1.0 / response.data.pageSize);
 
@@ -32,6 +41,7 @@ angular.module("Store").controller('StoreController', function($scope, $http, $r
           }
           else {
             $scope.products = response.data.products;
+              console.log($scope.products);
 
             $scope.initializePageIndexes(response);
 

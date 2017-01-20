@@ -1,26 +1,24 @@
-<div class = 'well well-sm'>
-    <h2 class = 'color-it-gray'>{{product.name}}</h2>
-    <div class = 'row'>
-      <div class = 'col-sm-6'>
-        <img ng-src = '{{"../app/assets" + product.imgs[0].path}}' alt = 'productpic' class = 'product-pic img-thumbnail'>
-        <p>{{errormsg}}</p>
-      </div>
-      <div class = 'col-sm-6'>
-          <p class = 'color-it-gray bold-it '><i class = 'glyphicon glyphicon-tag color-it'></i>
-            Cena : <i class = 'color-it left-it'>{{product.price_per_piece | currency : "RSD " : 2}}</i></p>
-            <input ng-show = "product.in_stock" type="checkbox" name="addtocart" value="add">
-            <span ng-show = "product.in_stock" class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span>
-            <p ng-show = "product.in_stock" class = 'color-it-gray bold-it'>Proizvod je na stanju
-               <i class = 'glyphicon glyphicon-ok-circle' style = 'color : green;'></i>
-            </p>
-            <p ng-hide = "product.in_stock" class = 'color-it-gray bold-it'>Proizvod nije na stanju
-               <i class = 'glyphicon glyphicon-remove-circle' style = 'color : red;'></i>
-            </p>
-      </div>
-    </div>
-    <p class = 'right-it'>
-        <button type = 'submit' class = 'btn btn-primary' data-title="Edit" data-toggle="modal" data-target="#moreinfo" ng-click="$parent.selectedProduct=Math.floor(tmp)">
-            <span class="glyphicon glyphicon-ok-sign"></span>Saznaj više
-        </button>
-    </p>
+<h2 class = 'color-it-gray'>{{$parent.products[tmp].name}}</h2>
+<div class = 'row'>
+  <div class = 'col-sm-6'>
+    <img ng-src = '{{"../app/assets" + $parent.products[tmp].imgs[0].path}}' alt = 'productpic' class = 'product-pic img-thumbnail'>
+    <p>{{errormsg}}</p>
+  </div>
+  <div class = 'col-sm-6'>
+      <p class = 'color-it-gray bold-it '><i class = 'glyphicon glyphicon-tag color-it'></i>
+        Cena : <i class = 'color-it left-it'>{{$parent.products[tmp].price_per_piece | currency : "RSD " : 2}}</i></p>
+        <input ng-show = "$parent.products[tmp].in_stock" type="checkbox" name="addtocart" value="add">
+        <span ng-show = "$parent.products[tmp].in_stock" class = 'color-it bold-it right-it'><i class = 'glyphicon glyphicon-shopping-cart'></i> Dodaj u korpu</span>
+        <p ng-show = "$parent.products[tmp].in_stock" class = 'color-it-gray bold-it'>Proizvod je na stanju
+           <i class = 'glyphicon glyphicon-ok-circle' style = 'color : green;'></i>
+        </p>
+        <p ng-hide = "$parent.products[tmp].in_stock" class = 'color-it-gray bold-it'>Proizvod nije na stanju
+           <i class = 'glyphicon glyphicon-remove-circle' style = 'color : red;'></i>
+        </p>
+  </div>
 </div>
+<p class = 'right-it position-it'>
+    <button type = 'submit' class = 'btn btn-primary' data-title="Edit" data-toggle="modal" data-target="#moreinfo" ng-click="selectedProduct=tmp">
+        <span class="glyphicon glyphicon-ok-sign"></span>Saznaj više
+    </button>
+</p>

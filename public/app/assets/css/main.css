@@ -33,6 +33,12 @@
 .color-back{
   background-color: #E80C39;
 }
+.position-it {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin-right: 10px;
+}
 .center-it{
   text-align: center;
 }
@@ -87,6 +93,19 @@
 .add-disp{
   float: right;
   margin-right: 10px;
+}
+.catalogue-container {
+  display: table;
+  border-spacing: 20px;
+  border-collapse: separate;
+}
+.catalogue-row {
+  display: table-row;
+}
+.catalogue-col {
+  display: table-cell;
+  position: relative;
+  width: 50%;
 }
 #pagecontent{
   padding-top : 10px;
