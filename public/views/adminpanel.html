@@ -1,7 +1,8 @@
-<div class = 'row' ng-controller = 'ChangeinfoController'>
+<div class = 'row'>
   <!-- TODO : here should be used change user controller by his id or email... OR the function in front end will be changed OR new controller will be added -->
   <h1 class = 'maintitle'><i class = 'glyphicon glyphicon-blackboard'></i> Admin panel </h1>
 
+<!--Show order and change user part -->
   <div class = 'row well well-md'>
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-duplicate'></i> Prikaz narudžbina
@@ -11,13 +12,17 @@
 
       <!-- TODO : Here should be added some order filter -->
     </div>
-    
+
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-user'></i> Izmeni korisnika
         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#changeUserShow'></span>
       </h3>
-      <div id = "changeUserShow" class = 'collapse'>
-        <p class = 'color-it-gray'> <i class = 'glyphicon glyphicon-search'></i>Unesite korisnikov id ili email:</p> <input type = 'text'>
+      <div id = "changeUserShow" class = 'collapse' ng-controller = 'MSUserController'>
+        <p class = 'color-it-gray'> <i class = 'glyphicon glyphicon-search'></i>Unesite korisnikov id ili email:</p> <input type = 'text' ng-model = 'info.field'>
+        <button class="btn btn-primary btn-xs color-it-g submit" ng-click = 'searchUser()'>
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+        <p class = 'warning'></span>{{info.errormsg}}</p>
         <fieldset>
           <p><label>Ime: </label> <input type = 'text' ng-model = 'info.name'></p>
           <p><label>Prezime: </label> <input type = 'text' ng-model = 'info.surname'></p>
@@ -26,8 +31,9 @@
           <p><label>Država: </label> <input type = 'text' ng-model = "info.country"></p>
           <p><label>Telefon: </label> <input type = 'text' ng-model = "info.telephone"></p>
         </fieldset>
+        <p class = 'warning'>{{info.errormsg1}}</p>
         <p class = 'right-it'>
-            <button type = 'submit' class = 'btn btn-primary' data-title="Edit">
+            <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'changeUInfo()'>
                 <span class="glyphicon glyphicon-ok-sign"></span> Izmeni
             </button>
         </p>
@@ -36,6 +42,7 @@
 
   </div>
 
+<!--Add product and add category part -->
   <div class = 'row well well-md'>
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-plus'></i> Dodaj proizvod
@@ -44,15 +51,13 @@
        <fieldset>
         <!-- TODO : create controller that adds new category-->
          <p><label>Ime proizvoda: </label> <input type = 'text' ng-model = 'info.name'></p>
-         <p><label>Opis proizvoda: </label> <input type = 'text' ng-model = 'info.name'></p>
-         <p><label>Na stanju: </label> <input type = 'text' ng-model = 'info.name'></p>
-         <p><label>Ime proizvoda: </label> <input type = 'text' ng-model = 'info.name'></p>
-        <!-- the form below is for category choice, it should be implemented in such way so that category names are in a list
-              it should be done for each category with ng-repeat -->
+         <p><label>Opis proizvoda: </label> <input type = 'text' ng-model = 'info.description'></p>
+         <p><label>Na stanju: </label> <input type = 'text' ng-model = 'info.in_stock'></p>
+         <p><label>Cena po komadu: </label> <input type = 'text' ng-model = 'info.price_per_piece'></p>
          <div class = 'form-group'>
            <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
            <select class = 'form-control' id = 'sel1'>
-             <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}"><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></option>
+             <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" ng-model = 'info.category'><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></option>
            </select>
          </div>
        </fieldset>

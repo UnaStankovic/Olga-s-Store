@@ -9,11 +9,12 @@ angular.module("Store").controller('LoginController', function($scope, $http, $l
         console.log("Error on logging in: " + response.data.message);
       }
        else {
-         console.log("Successfully logged in.");
+        // console.log("Successfully logged in.");
          $rootScope.loggedin = true;
          $rootScope.isadmin = response.data.user.isAdmin;
          $rootScope.userid = response.data.user.id;
-        // $window.location.reload(true);  //This should be removed soon.
+
+         /*After successfull login we go to our account page, might be switched with product page instead, or even basket*/
          $location.path('/myaccount');
        }
    });

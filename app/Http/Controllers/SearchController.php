@@ -38,6 +38,11 @@ class SearchController extends Controller {
             $user = $user->where('telephone', $data['telephone']);
         }
         $user = $user->select('User.id', 'User.email', 'User.name', 'User.surname', 'User.address', 'User.city', 'User.country', 'User.telephone', 'User.status')->get();
+
+        if(count($user) == 0) {
+          return response()->json(errorResponse($res, 'User doesn\'t exist', 'not_found'));
+        }
+
         $res->status = 'success';
         $res->user = $user[0];
         return response()->json($res);
