@@ -29,7 +29,8 @@
     <script type = "text/javascript" src = "../app/controllers/CategoryController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/UserController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/ChangeinfoController.js"></script>
-    <script type = "text/javascript" src = "../app/controllers/SearchModifyUserController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/adminUserController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/adminCategoryController.js"></script>
     <script type = "text/javascript" src = "../app/directives/product.js"></script>
     <script type = "text/javascript" src = "../app/directives/carousel.js"></script>
 

@@ -31,6 +31,7 @@
           <p><label>Država: </label> <input type = 'text' ng-model = "info.country"></p>
           <p><label>Telefon: </label> <input type = 'text' ng-model = "info.telephone"></p>
         </fieldset>
+        <p class = 'color-it-gray bold-it'>{{info.successmsg}}</p>
         <p class = 'warning'>{{info.errormsg1}}</p>
         <p class = 'right-it'>
             <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'changeUInfo()'>
@@ -57,7 +58,7 @@
          <div class = 'form-group'>
            <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
            <select class = 'form-control' id = 'sel1'>
-             <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" ng-model = 'info.category'><a href = '#/catalogue/{{category.id}}'>{{category.name}}</a></option>
+             <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" >{{category.name}}</option>
            </select>
          </div>
        </fieldset>
@@ -69,20 +70,35 @@
       </div>
     </div>
 
-    <div class = 'col-sm-6'>
-      <!-- ng-controller = 'newcategoryController' -->
-     <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-th-list'></i> Dodaj kategoriju
+    <div class = 'col-sm-6' ng-controller = 'aCategoryController'>
+     <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-th-list'></i> Dodaj/Ukloni kategoriju
        <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#addCategoryShow' ></span></h3>
      <div id = "addCategoryShow" class = 'collapse'>
+      <h4 class = 'color-it-gray bold-it'> Dodaj kategoriju </h4>
       <fieldset>
-        <!-- TODO : create controller that adds new category-->
         <p><label>Ime kategorije: </label> <input type = 'text' ng-model = 'info.name'></p>
+        <p class = 'warning'>{{info.errormsg}}</p>
+        <p class = 'color-it-gray bold-it'> {{info.successmsg}}</p>
         <p class = 'right-it'>
-            <button type = 'submit' class = 'btn btn-primary' data-title="Edit">
+            <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'AddCategory()'>
                 <span class="glyphicon glyphicon-ok-sign"></span> Dodaj
             </button>
         </p>
       </fieldset>
+      <h4 class = 'color-it-gray bold-it'> Ukloni kategoriju </h4>
+      <p class = 'bold-it color-it-gray'><span class = 'glyphicon glyphicon-warning-sign color-it'></span> Brisanjem kategorije obrisaće se i svi proizvodi koji joj pripadaju </p>
+      <div class = 'form-group'>
+        <label for = 'sel1'>Ukloni kategoriju:</label>
+        <select class = 'form-control' id = 'sel1'>
+          <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </div>
+      <p class = 'warning'>{{info.errormsg}}</p>
+      <p class = 'right-it'>
+          <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'RemoveCategory()'>
+              <span class="glyphicon glyphicon-ok-sign"></span> Ukloni
+          </button>
+      </p>
      </div>
     </div>
 

@@ -13,7 +13,8 @@ angular.module("Store").controller('ChangeinfoController', function($scope, $htt
         $scope.$parent.info = response.data.user;
       }
       else{
-        console.log('Error : ' + response.data.message);
+        $scope.info.errormsg = response.data.message;
+        //console.log('Error : ' + response.data.message);
       }
     });
   };

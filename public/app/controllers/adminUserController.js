@@ -23,6 +23,7 @@ angular.module("Store").controller('MSUserController', function($scope, $http, $
     .then(function(response){
       if(response.data.status == 'success'){
         $scope.info = response.data.user;
+        $scope.info.successmsg = 'User info successfully changed.';
       }
       else{
         $scope.info.errormsg1 = response.data.message;

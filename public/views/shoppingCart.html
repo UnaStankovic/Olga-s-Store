@@ -76,6 +76,7 @@ This small script under is for loading a cart, i think it should stay here so it
             <p><label>Država: </label> <input type = 'text' ng-model="info.country" ></p>
             <p><label>Telefon: </label> <input type = 'text' ng-model="info.telephone" ></p>
           </fieldset>
+          <p id = 'errormsg' class = 'warning'>{{info.errormsg}}</p>
           <!-- Footer -->
           <div class="modal-footer ">
             <button type="submit" class="btn btn-warning btn-lg" id = 'keepinfo' data-dismiss="modal" ng-click="changeInfo()">
