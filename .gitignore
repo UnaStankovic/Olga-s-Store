@@ -1,6 +1,7 @@
 **/*.mwb.bak
 .idea/*
 /vendor
+/Presentation
 Homestead.json
 Homestead.yaml
 .env
