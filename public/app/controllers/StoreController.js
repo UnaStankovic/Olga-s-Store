@@ -31,7 +31,7 @@ angular.module("Store").controller('StoreController', function($scope, $http, $r
 
     for(var i = 0; i < $rootScope.categories.length; i++)
       if($routeParams.categoryid == $rootScope.categories[i].id)
-        $scope.categoryid = $routeParams.categoryid;
+        $scope.categoryid = i;
 
     if($scope.categoryid == 0) {
       $http.get('../api/products?page=' + $scope.pageid)
@@ -41,7 +41,7 @@ angular.module("Store").controller('StoreController', function($scope, $http, $r
           }
           else {
             $scope.products = response.data.products;
-              console.log($scope.products);
+            //  console.log($scope.products);
 
             $scope.initializePageIndexes(response);
 
@@ -70,7 +70,7 @@ angular.module("Store").controller('StoreController', function($scope, $http, $r
 
             for(var i = 0; i < $scope.products.length; i++)
               $scope.products[i].imgs = $scope.products[i].images;
-			console.log($scope.products);
+		            //	console.log($scope.products);
           }
         });
     }

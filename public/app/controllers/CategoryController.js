@@ -14,4 +14,5 @@ angular.module('Store').controller('CategoryController', function($rootScope, $h
       if($rootScope.loadProducts != null)
         $rootScope.loadProducts();
     });
+
 });

@@ -44,7 +44,7 @@
   </div>
 
 <!--Add product and add category part -->
-  <div class = 'row well well-md'>
+  <div class = 'row well well-md' ng-controller = 'CategoryController'>
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-plus'></i> Dodaj proizvod
         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#addProductShow' ></span></h3>
@@ -76,9 +76,9 @@
      <div id = "addCategoryShow" class = 'collapse'>
       <h4 class = 'color-it-gray bold-it'> Dodaj kategoriju </h4>
       <fieldset>
-        <p><label>Ime kategorije: </label> <input type = 'text' ng-model = 'info.name'></p>
-        <p class = 'warning'>{{info.errormsg}}</p>
-        <p class = 'color-it-gray bold-it'> {{info.successmsg}}</p>
+        <p><label>Ime kategorije: </label> <input type = 'text' ng-model = 'catinfo.name'></p>
+        <p class = 'warning'>{{catinfo.errormsg}}</p>
+        <p class = 'color-it-gray bold-it'> {{catinfo.successmsg}}</p>
         <p class = 'right-it'>
             <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'AddCategory()'>
                 <span class="glyphicon glyphicon-ok-sign"></span> Dodaj
@@ -88,12 +88,13 @@
       <h4 class = 'color-it-gray bold-it'> Ukloni kategoriju </h4>
       <p class = 'bold-it color-it-gray'><span class = 'glyphicon glyphicon-warning-sign color-it'></span> Brisanjem kategorije obrisaće se i svi proizvodi koji joj pripadaju </p>
       <div class = 'form-group'>
-        <label for = 'sel1'>Ukloni kategoriju:</label>
-        <select class = 'form-control' id = 'sel1'>
+        <label for = 'sel1'>Izaberi kategoriju:</label>
+        <select class = 'form-control' id = 'sel1' ng-model='selectedCategory'>
           <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}">{{category.name}}</option>
         </select>
       </div>
-      <p class = 'warning'>{{info.errormsg}}</p>
+      <p class = 'warning'>{{catinfo.errormsg1}}</p>
+      <p class = 'color-it-gray bold-it'> {{catinfo.successmsg1}}</p>
       <p class = 'right-it'>
           <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'RemoveCategory()'>
               <span class="glyphicon glyphicon-ok-sign"></span> Ukloni

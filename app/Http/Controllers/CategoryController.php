@@ -82,8 +82,9 @@ class CategoryController extends Controller {
 
         if(!isset($data['name']))
             return response()->json(errorResponse($res, 'name is required', 'name'));
-        DB::table('Category')->insert(['name' => $data['name']]);
+        $id = DB::table('Category')->insertGetId(['name' => $data['name']]);
 
+        $res->category = DB::table('Category')->find($id);
         $res->status = 'success';
         return response()->json($res);
     }
