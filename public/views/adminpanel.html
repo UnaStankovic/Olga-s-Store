@@ -4,27 +4,89 @@
 
 <!--Show order and change user part -->
   <div class = 'row well well-md'>
-    <div class = 'col-sm-6'>
-      <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-duplicate'></i> Prikaz narudžbina
+    <div class = 'col-sm-12'>
+      <h3 class = 'color-it-gray bold-it center-it'><i class = 'glyphicon glyphicon-duplicate'></i> Prikaz narudžbina
          <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#orderShow'></span>
       </h3>
       <div class = 'collapse' id = "orderShow" >
               <!-- TODO : Here should be added some order filter -->
-      <p>
-        <label class = 'color-it-gray'>ID narudžbine: </label>
-        <i class = 'color-it bold-it' type = 'text' ng-model = 'orderinfo.name'> # 1919</i>
-      </p>
-      <!-- here goes one ng-repeat over proucts from order-->
-      <fieldset>
-        <p><label>ID proizvoda: </label> <i type = 'text' ng-model = 'orderinfo.id'> 29293</i></p>
-        <p><label>Ime proizvoda: </label> <i type = 'text' ng-model = 'orderinfo.name'>Razglednica Kalemegdan</i></p>
-        <p><label>Količina: </label> <i type = 'text' ng-model = 'orderinfo.quantity'>3</i></p>
-        <p><label>Cena: </label> <i type = 'text' ng-model = 'orderinfo.price'>30</i></p>
-      </fieldset>
-      <p><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> <input ng-model = 'orderinfo.price'> 90 </p>
+              <!--here should be ng-repeat over orders -->
+        <div style = 'border-bottom: 2px solid #E80C39'>
+          <p class = 'color-it-gray bold-it'> ID narudžbine: <i class = 'color-it bold-it' ng-model = 'orderinfo.id'>#2928</i>
+          <table id = 'ordertable' class = 'table table-bordred table-striped'>
+            <thead>
+              <th ng-model = 'orderinfo.user_id'>ID korisnika</th>
+              <th ng-model = 'orderinfo.name'>Proizvod</th>
+              <th ng-model = 'orderinfo.quantity'>Količina</th>
+              <th ng-model = 'orderinfo.price'>Cena</th>
+            </thead>
+            <tbody id="ordertable">
+                      <!--here should be ng-repeat over products -->
+              <tr>
+                <td>1122</td>
+                <td>Neki proizvod</td>
+                <td>1</td>
+                <td>100</td>
+              </tr>
+            </tbody>
+          </table>
+          <p><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> <input ng-model = 'orderinfo.price'>
+            <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'provideDiscount()'>
+                <span class="glyphicon glyphicon-piggy-bank"></span>
+            </button>
+            <div class = 'right-it'>
+              <i class = 'color-it-gray bold-it'>Odobri narudžbinu: </i>
+              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'acceptOrder()'>
+                  <span class="glyphicon glyphicon-ok"></span>
+              </button>
+              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'removeOrder()'>
+                  <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </div>
+          </p>
+        </div>
+
+        <div style = 'border-bottom: 2px solid #E80C39'>
+          <p class = 'color-it-gray bold-it'> ID narudžbine: <i class = 'color-it bold-it' ng-model = 'orderinfo.id'>#2928</i>
+          <table id = 'ordertable' class = 'table table-bordred table-striped'>
+            <thead>
+              <th ng-model = 'orderinfo.user_id'>ID korisnika</th>
+              <th ng-model = 'orderinfo.name'>Proizvod</th>
+              <th ng-model = 'orderinfo.quantity'>Količina</th>
+              <th ng-model = 'orderinfo.price'>Cena</th>
+            </thead>
+            <tbody id="ordertable">
+                      <!--here should be ng-repeat over products -->
+              <tr>
+                <td>1302</td>
+                <td>Neki novi proizvod</td>
+                <td>3</td>
+                <td>250</td>
+              </tr>
+            </tbody>
+          </table>
+          <p><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> <input ng-model = 'orderinfo.price'>
+            <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'provideDiscount()'>
+                <span class="glyphicon glyphicon-piggy-bank"></span>
+            </button>
+            <div class = 'right-it'>
+              <i class = 'color-it-gray bold-it'>Odobri narudžbinu: </i>
+              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'acceptOrder()'>
+                  <span class="glyphicon glyphicon-ok"></span>
+              </button>
+              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'removeOrder()'>
+                  <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </div>
+          </p>
+        </div>
+
       </div>
     </div>
+  </div>
 
+<!--Add product and add category part -->
+  <div class = 'row well well-md' ng-controller = 'CategoryController'>
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-user'></i> Izmeni korisnika
         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#changeUserShow'></span>
@@ -52,37 +114,6 @@
         </p>
       </div>
     </div>
-
-  </div>
-
-<!--Add product and add category part -->
-  <div class = 'row well well-md' ng-controller = 'CategoryController'>
-    <div class = 'col-sm-6'>
-      <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-plus'></i> Dodaj proizvod
-        <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#addProductShow' ></span></h3>
-      <div id = "addProductShow" class = 'collapse' ng-controller = 'aProductController'>
-       <fieldset>
-         <p><label>Ime proizvoda: </label> <input type = 'text' ng-model = 'product.name'></p>
-         <p><label>Opis proizvoda: </label> <input type = 'text' ng-model = 'product.description'></p>
-         <p><label>Na stanju: </label> <input type = 'text' ng-model = 'product.in_stock'></p>
-         <p><label>Cena po komadu: </label> <input type = 'text' ng-model = 'product.price_per_piece'></p>
-         <div class = 'form-group'>
-           <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
-           <select class = 'form-control' id = 'sel1' ng-model='product.Category_id'>
-             <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" >{{category.name}}</option>
-           </select>
-         </div>
-       </fieldset>
-       <p class = 'warning'>{{product.errormsg_product}}</p>
-       <p class = 'color-it-gray bold-it'> {{product.successmsg_product}}</p>
-       <p class = 'right-it'>
-           <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'AddProduct()'>
-               <span class="glyphicon glyphicon-ok-sign"></span> Potvrdi
-           </button>
-       </p>
-      </div>
-    </div>
-
     <div class = 'col-sm-6' ng-controller = 'aCategoryController'>
      <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-th-list'></i> Dodaj/Ukloni kategoriju
        <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#addCategoryShow' ></span></h3>
@@ -115,6 +146,66 @@
       </p>
      </div>
     </div>
+
+  </div>
+  <div class = 'row well well-md'>
+    <div class = 'col-sm-6'>
+      <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-plus'></i> Dodaj proizvod
+        <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#addProductShow' ></span></h3>
+      <div id = "addProductShow" class = 'collapse' ng-controller = 'aProductController'>
+       <fieldset>
+         <p><label>Ime proizvoda: </label> <input type = 'text' ng-model = 'product.name'></p>
+         <p><label>Opis proizvoda: </label> <input type = 'text' ng-model = 'product.description'></p>
+         <p><label>Na stanju: </label> <input type = 'text' ng-model = 'product.in_stock'></p>
+         <p><label>Cena po komadu: </label> <input type = 'text' ng-model = 'product.price_per_piece'></p>
+         <div class = 'form-group'>
+           <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
+           <select class = 'form-control' id = 'sel1' ng-model='product.Category_id'>
+             <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" >{{category.name}}</option>
+           </select>
+         </div>
+       </fieldset>
+       <p class = 'warning'>{{product.errormsg_product}}</p>
+       <p class = 'color-it-gray bold-it'> {{product.successmsg_product}}</p>
+       <p class = 'right-it'>
+           <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'AddProduct()'>
+               <span class="glyphicon glyphicon-ok-sign"></span> Potvrdi
+           </button>
+       </p>
+      </div>
+    </div>
+
+    <div class = 'col-sm-6'>
+      <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-wrench'></i> Izmeni proizvod
+        <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#changeProductShow' ></span></h3>
+      <div id = "changeProductShow" class = 'collapse' ng-controller = 'aProductController'>
+        <p class = 'color-it-gray'> <i class = 'glyphicon glyphicon-search'></i>Unesite korisnikov id ili email:</p> <input type = 'text' ng-model = 'info.field'>
+        <button class="btn btn-primary btn-xs color-it-g submit" ng-click = 'searchUser()'>
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+        <p class = 'warning'></span>{{info.errormsg}}</p>
+       <fieldset>
+         <p><label>Ime proizvoda: </label> <input type = 'text' ng-model = 'product.name'></p>
+         <p><label>Opis proizvoda: </label> <input type = 'text' ng-model = 'product.description'></p>
+         <p><label>Na stanju: </label> <input type = 'text' ng-model = 'product.in_stock'></p>
+         <p><label>Cena po komadu: </label> <input type = 'text' ng-model = 'product.price_per_piece'></p>
+         <div class = 'form-group'>
+           <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
+           <select class = 'form-control' id = 'sel1' ng-model='product.Category_id'>
+             <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" >{{category.name}}</option>
+           </select>
+         </div>
+       </fieldset>
+       <p class = 'warning'>{{product.errormsg_product}}</p>
+       <p class = 'color-it-gray bold-it'> {{product.successmsg_product}}</p>
+       <p class = 'right-it'>
+           <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'AddProduct()'>
+               <span class="glyphicon glyphicon-ok-sign"></span> Potvrdi
+           </button>
+       </p>
+      </div>
+    </div>
+
 
   </div>
 </div>
