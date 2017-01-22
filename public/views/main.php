@@ -31,6 +31,7 @@
     <script type = "text/javascript" src = "../app/controllers/ChangeinfoController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/adminUserController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/adminCategoryController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/adminProductController.js"></script>
     <script type = "text/javascript" src = "../app/directives/product.js"></script>
     <script type = "text/javascript" src = "../app/directives/carousel.js"></script>
 

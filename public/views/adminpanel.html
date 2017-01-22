@@ -48,22 +48,23 @@
     <div class = 'col-sm-6'>
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-plus'></i> Dodaj proizvod
         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#addProductShow' ></span></h3>
-      <div id = "addProductShow" class = 'collapse'>
+      <div id = "addProductShow" class = 'collapse' ng-controller = 'aProductController'>
        <fieldset>
-        <!-- TODO : create controller that adds new category-->
-         <p><label>Ime proizvoda: </label> <input type = 'text' ng-model = 'info.name'></p>
-         <p><label>Opis proizvoda: </label> <input type = 'text' ng-model = 'info.description'></p>
-         <p><label>Na stanju: </label> <input type = 'text' ng-model = 'info.in_stock'></p>
-         <p><label>Cena po komadu: </label> <input type = 'text' ng-model = 'info.price_per_piece'></p>
+         <p><label>Ime proizvoda: </label> <input type = 'text' ng-model = 'product.name'></p>
+         <p><label>Opis proizvoda: </label> <input type = 'text' ng-model = 'product.description'></p>
+         <p><label>Na stanju: </label> <input type = 'text' ng-model = 'product.in_stock'></p>
+         <p><label>Cena po komadu: </label> <input type = 'text' ng-model = 'product.price_per_piece'></p>
          <div class = 'form-group'>
            <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
-           <select class = 'form-control' id = 'sel1'>
+           <select class = 'form-control' id = 'sel1' ng-model='product.Category_id'>
              <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" >{{category.name}}</option>
            </select>
          </div>
        </fieldset>
+       <p class = 'warning'>{{product.errormsg_product}}</p>
+       <p class = 'color-it-gray bold-it'> {{product.successmsg_product}}</p>
        <p class = 'right-it'>
-           <button type = 'submit' class = 'btn btn-primary' data-title="Edit">
+           <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'AddProduct()'>
                <span class="glyphicon glyphicon-ok-sign"></span> Potvrdi
            </button>
        </p>
@@ -93,8 +94,8 @@
           <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}">{{category.name}}</option>
         </select>
       </div>
-      <p class = 'warning'>{{catinfo.errormsg1}}</p>
-      <p class = 'color-it-gray bold-it'> {{catinfo.successmsg1}}</p>
+      <p class = 'warning'>{{catinfo.errormsg2}}</p>
+      <p class = 'color-it-gray bold-it'> {{catinfo.successmsg2}}</p>
       <p class = 'right-it'>
           <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'RemoveCategory()'>
               <span class="glyphicon glyphicon-ok-sign"></span> Ukloni
