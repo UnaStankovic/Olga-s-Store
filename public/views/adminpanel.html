@@ -8,9 +8,21 @@
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-duplicate'></i> Prikaz narudžbina
          <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#orderShow'></span>
       </h3>
-      <div class = 'collapse' id = "orderShow" >   <h1> HELLO! </h1> </div>
-
-      <!-- TODO : Here should be added some order filter -->
+      <div class = 'collapse' id = "orderShow" >
+              <!-- TODO : Here should be added some order filter -->
+      <p>
+        <label class = 'color-it-gray'>ID narudžbine: </label>
+        <i class = 'color-it bold-it' type = 'text' ng-model = 'orderinfo.name'> # 1919</i>
+      </p>
+      <!-- here goes one ng-repeat over proucts from order-->
+      <fieldset>
+        <p><label>ID proizvoda: </label> <i type = 'text' ng-model = 'orderinfo.id'> 29293</i></p>
+        <p><label>Ime proizvoda: </label> <i type = 'text' ng-model = 'orderinfo.name'>Razglednica Kalemegdan</i></p>
+        <p><label>Količina: </label> <i type = 'text' ng-model = 'orderinfo.quantity'>3</i></p>
+        <p><label>Cena: </label> <i type = 'text' ng-model = 'orderinfo.price'>30</i></p>
+      </fieldset>
+      <p><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> <input ng-model = 'orderinfo.price'> 90 </p>
+      </div>
     </div>
 
     <div class = 'col-sm-6'>
