@@ -21,6 +21,8 @@
 
 
     <!--- routes,services, directives and controllers -->
+    <script type = "text/javascript" src = "../app/filters/TotalPriceFilter.js"></script>
+    <script type = "text/javascript" src = "../app/services/ShoppingCartService.js"></script>
     <script type = "text/javascript" src = "../app/controllers/routes.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LoginController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/LogoutController.js"></script>
@@ -31,6 +33,7 @@
     <script type = "text/javascript" src = "../app/controllers/ChangeinfoController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/adminUserController.js"></script>
     <script type = "text/javascript" src = "../app/controllers/adminCategoryController.js"></script>
+    <script type = "text/javascript" src = "../app/controllers/ShoppingCartController.js"></script>
     <script type = "text/javascript" src = "../app/directives/product.js"></script>
     <script type = "text/javascript" src = "../app/directives/carousel.js"></script>
 

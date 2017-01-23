@@ -1,8 +1,9 @@
-angular.module("Store").controller('StoreController', function($scope, $http, $routeParams, $rootScope){
+angular.module("Store").controller('StoreController', function($scope, $http, $routeParams, $rootScope, shoppingCart){
   $scope.products = {};
   $scope.pages = [];
   $scope.Math = window.Math;
-    $rootScope.selectedProduct = 10;
+  $rootScope.selectedProduct = 10;
+  $scope.shoppingCart = shoppingCart;
 
   $scope.range = function(min, max) {
       var arr = [];
@@ -10,6 +11,15 @@ angular.module("Store").controller('StoreController', function($scope, $http, $r
           arr.push(i);
       return arr;
   }
+
+  $scope.toggleShoppingCart = function(product) {
+      if(shoppingCart.find(product.id)) {
+          shoppingCart.remove(product.id);
+      }
+      else {
+          shoppingCart.add(product);
+      }
+  };
 
   $scope.initializePageIndexes = function(response) {
     var numOfPages = Math.ceil(response.data.count * 1.0 / response.data.pageSize);
