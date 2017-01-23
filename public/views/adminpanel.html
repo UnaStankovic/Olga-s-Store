@@ -176,6 +176,9 @@
              <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" >{{category.name}}</option>
            </select>
          </div>
+         <label class="control-label">Odaberite sliku:</label>
+         <input id="input-1" type="file" class="file" file-model = "image">
+         <input id="input-2" type="file" class="file">
        </fieldset>
        <p class = 'warning'>{{product.errormsg_product}}</p>
        <p class = 'color-it-gray bold-it'> {{product.successmsg_product}}</p>

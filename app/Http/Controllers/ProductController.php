@@ -100,7 +100,7 @@ class ProductController extends Controller {
         $id = DB::table('Product')->insertGetId($data);
         $response->status = 'success';
         $response->product = DB::table('Product')->where('id', $id)->get()[0];
-        $response->product->images = 'api/products/' . $response->product->id . '/images';;
+        $response->product->images = 'api/products/' . $response->product->id . '/images';
         return response()->json($response);
     }
 }
