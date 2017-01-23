@@ -40,7 +40,6 @@
 
     <!-- contains function written in js for love you on all languages part and shopping cart session-->
     <script type="text/javascript" src="../app/assets/js/loveYou.js"></script>
-    <script type="text/javascript" src="../app/assets/js/shoppingCartFunctions.js"></script>
 
     <script type="text/javascript">
       $(document).ready(function(){
