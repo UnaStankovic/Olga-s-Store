@@ -12,4 +12,18 @@ angular.module("Store").controller('orderController', function($scope, $http, $r
         });
       });
     }
+
+  $scope.changeStatus = function(orderid, status){
+    $http.put('../api/order/' + orderid, {status : status})
+      .then(function(response){
+        console.log(response.data);
+        for(var i = 0; i < $scope.orderinfo.length; i++) {
+          if($scope.orderinfo[i].id == orderid) {
+            $scope.orderinfo[i].status = response.data.order.status;
+            break;
+          }
+        }
+      });
+  }
+
 });

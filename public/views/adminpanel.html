@@ -33,14 +33,26 @@
             <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'provideDiscount(o.id)'>
                 <span class="glyphicon glyphicon-piggy-bank"></span>
             </button>
-            <div class = 'right-it'>
+            <div class = 'right-it' ng-show = 'o.status == "na cekanju"'>
               <i class = 'color-it-gray bold-it'>Odobri narudžbinu: </i>
-              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'acceptOrder()'>
+              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'changeStatus(o.id,"potvrdjena")'>
                   <span class="glyphicon glyphicon-ok"></span>
               </button>
-              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'removeOrder()'>
+              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'changeStatus(o.id,"odbijena")'>
                   <span class="glyphicon glyphicon-remove"></span>
               </button>
+            </div>
+            <div class = 'right-it' ng-show = 'o.status == "potvrdjena"'>
+              <i class = 'color-it-gray bold-it'> Potvrđena</i>
+              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'changeStatus(o.id,"spremna")'>
+                  <span class="glyphicon glyphicon-road"></span> Spremna
+              </button>
+            </div>
+            <div class = 'right-it' ng-show = 'o.status == "odbijena"'>
+              <i class = 'color-it-gray bold-it'> Otkazana</i>
+            </div>
+            <div class = 'right-it' ng-show = 'o.status == "spremna"'>
+              <i class = 'color-it-gray bold-it'> Spremna</i>
             </div>
           </p>
         </div>
