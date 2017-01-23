@@ -191,27 +191,21 @@
       <h3 class = 'color-it-gray bold-it'><i class = 'glyphicon glyphicon-wrench'></i> Izmeni proizvod
         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#changeProductShow' ></span></h3>
       <div id = "changeProductShow" class = 'collapse' ng-controller = 'aProductController'>
-        <p class = 'color-it-gray'> <i class = 'glyphicon glyphicon-search'></i>Unesite korisnikov id ili email:</p> <input type = 'text' ng-model = 'info.field'>
-        <button class="btn btn-primary btn-xs color-it-g submit" ng-click = 'searchUser()'>
+        <p class = 'color-it-gray'> <i class = 'glyphicon glyphicon-search'></i>Unesite id ili naziv proizvoda:</p> <input type = 'text' ng-model = 'product.id'>
+        <button class="btn btn-primary btn-xs color-it-g submit" ng-click = 'searchProduct()'>
           <span class="glyphicon glyphicon-search"></span>
         </button>
-        <p class = 'warning'></span>{{info.errormsg}}</p>
+        <p class = 'warning'></span>{{info.errormsg_searchproduct}}</p>
        <fieldset>
          <p><label>Ime proizvoda: </label> <input type = 'text' ng-model = 'product.name'></p>
          <p><label>Opis proizvoda: </label> <input type = 'text' ng-model = 'product.description'></p>
          <p><label>Na stanju: </label> <input type = 'text' ng-model = 'product.in_stock'></p>
          <p><label>Cena po komadu: </label> <input type = 'text' ng-model = 'product.price_per_piece'></p>
-         <div class = 'form-group'>
-           <label for = 'sel1'>Odaberite kategoriju proizvoda:</label>
-           <select class = 'form-control' id = 'sel1' ng-model='product.Category_id'>
-             <option ng-repeat='category in categories.slice(1, categories.length)' value="{{category.id}}" >{{category.name}}</option>
-           </select>
-         </div>
        </fieldset>
-       <p class = 'warning'>{{product.errormsg_product}}</p>
-       <p class = 'color-it-gray bold-it'> {{product.successmsg_product}}</p>
+       <p class = 'warning'>{{product.errormsg_chproduct}}</p>
+       <p class = 'color-it-gray bold-it'> {{product.successmsg_chproduct}}</p>
        <p class = 'right-it'>
-           <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'AddProduct()'>
+           <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'ChangeProduct()'>
                <span class="glyphicon glyphicon-pencil"></span> Izmeni
            </button>
        </p>
