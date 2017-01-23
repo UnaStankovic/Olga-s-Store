@@ -4,81 +4,33 @@
 
 <!--Show order and change user part -->
   <div class = 'row well well-md'>
-    <div class = 'col-sm-12'>
+    <div class = 'col-sm-12' ng-controller = 'orderController'>
       <h3 class = 'color-it-gray bold-it center-it'><i class = 'glyphicon glyphicon-duplicate'></i> Prikaz narudžbina
-         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#orderShow'></span>
+         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#orderShow' ng-click = 'getOrders()'></span>
       </h3>
-      <div class = 'collapse' id = "orderShow" >
+      <div class = 'collapse' id = "orderShow">
               <!-- TODO : Here should be added some order filter -->
               <!--here should be ng-repeat over orders -->
-        <div style = 'border-bottom: 2px solid #E80C39'>
-          <p class = 'color-it-gray bold-it'> ID narudžbine: <i class = 'color-it bold-it' ng-model = 'orderinfo.id'>#2928</i>
+        <div style = 'border-bottom: 2px solid #E80C39' ng-repeat = 'o in orderinfo'>
+          <p class = 'color-it-gray bold-it'> ID narudžbine: <i class = 'color-it bold-it'>#{{o.id}}</i>
+          <p class = 'color-it-gray bold-it'> ID korisnika: <i class = 'color-it bold-it'>{{o.User_id}}</i></p>
           <table id = 'ordertable' class = 'table table-bordred table-striped'>
             <thead>
-              <th ng-model = 'orderinfo.user_id'>ID korisnika</th>
-              <th ng-model = 'orderinfo.name'>Proizvod</th>
-              <th ng-model = 'orderinfo.quantity'>Količina</th>
-              <th ng-model = 'orderinfo.price'>Cena</th>
+              <th>Proizvod</th>
+              <th>Količina</th>
+              <th>Cena</th>
             </thead>
             <tbody id="ordertable">
                       <!--here should be ng-repeat over products -->
-              <tr>
-                <td>1122</td>
-                <td>Neki proizvod</td>
-                <td>1</td>
-                <td>100</td>
+              <tr ng-repeat = 'product in o.products'>
+                <td ng-bind = 'product.name'></td>
+                <td ng-bind = 'product.quantity'></td>
+                <td  ng-bind = 'product.price_per_piece'></td>
               </tr>
             </tbody>
           </table>
-          <p><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> <input ng-model = 'orderinfo.price'>
-            <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'provideDiscount()'>
-                <span class="glyphicon glyphicon-piggy-bank"></span>
-            </button>
-            <div class = 'right-it'>
-              <i class = 'color-it-gray bold-it'>Odobri narudžbinu: </i>
-              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'acceptOrder()'>
-                  <span class="glyphicon glyphicon-ok"></span>
-              </button>
-              <button type = 'submit' class = 'btn btn-sm btn-primary' data-title="Edit" ng-click = 'removeOrder()'>
-                  <span class="glyphicon glyphicon-remove"></span>
-              </button>
-            </div>
-          </p>
-        </div>
-
-        <div style = 'border-bottom: 2px solid #E80C39'>
-          <p class = 'color-it-gray bold-it'> ID narudžbine: <i class = 'color-it bold-it' ng-model = 'orderinfo.id'>#2928</i>
-          <table id = 'ordertable' class = 'table table-bordred table-striped'>
-            <thead>
-              <th ng-model = 'orderinfo.user_id'>ID korisnika</th>
-              <th ng-model = 'orderinfo.name'>Proizvod</th>
-              <th ng-model = 'orderinfo.quantity'>Količina</th>
-              <th ng-model = 'orderinfo.price'>Cena</th>
-            </thead>
-            <tbody id="ordertable">
-                      <!--here should be ng-repeat over products -->
-              <tr>
-                <td>1302</td>
-                <td>Neki novi proizvod</td>
-                <td>3</td>
-                <td>250</td>
-              </tr>
-              <tr>
-                <td>1303</td>
-                <td>Neki proizvod</td>
-                <td>2</td>
-                <td>200</td>
-              </tr>
-              <tr>
-                <td>1320</td>
-                <td>Neki drugi proizvod</td>
-                <td>4</td>
-                <td>2000</td>
-              </tr>
-            </tbody>
-          </table>
-          <p><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> <input ng-model = 'orderinfo.price'>
-            <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'provideDiscount()'>
+          <p><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> <input ng-model = 'o.amount'>
+            <button type = 'submit' class = 'btn btn-primary' data-title="Edit" ng-click = 'provideDiscount(o.id)'>
                 <span class="glyphicon glyphicon-piggy-bank"></span>
             </button>
             <div class = 'right-it'>

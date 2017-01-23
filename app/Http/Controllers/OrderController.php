@@ -25,17 +25,17 @@ class OrderController extends Controller {
         $res = new \stdClass();
 
         $order = DB::table('Order')->where('id', intval($id))->get();
- 
+
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $order[0]->User_id)) {
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
-        
+
         if(count($order) == 0) {
             return response()->json(errorResponse($res, 'There is no such order', 'id'));
         }
-        
+
         $products = DB::table('Contains')->join('Product', 'Product_id', '=', 'id')
-                    ->select('Contains.Product_id AS id', 'Product.name', 'Product.price_per_piece AS price', 'Contains.quantity')->where('Order_id', intval($id))->get();
+                    ->select('Contains.Product_id', 'Product.name', 'Product.price_per_piece', 'Contains.quantity')->where('Order_id', intval($id))->get();
         $res->status = 'success';
         $res->order = $order[0];
         $res->order->products = $products;
@@ -44,19 +44,19 @@ class OrderController extends Controller {
     }
 
     public function updateOrder(Request $request, $id) {
-        
+
         $res = new \stdClass();
 
         $data = $request->all();
-       
+
         if(isset($data['id']) || isset($data['date_of_creation']) || isset($data['User_id'])) {
             return response()->json(errorResponse($res, 'There is one or more columns that can\'t be changed', 'illegal_update'));
         }
 
-        $order = DB::table('Order')->where('id', intval($id)); 
+        $order = DB::table('Order')->where('id', intval($id));
         $tmp = DB::table('Order')->where('id', intval($id))->get();
-        
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $tmp[0]->User_id)) {
+
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A')) {
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
         if(count($order->get()) == 0) {
@@ -69,12 +69,12 @@ class OrderController extends Controller {
         $res->order = $order[0];
         return response()->json($res);
     }
-    
+
     public function deleteOrder($id) {
 
         $res = new \stdClass();
-            
-        $order = DB::table('Order')->where('id', intval($id));  
+
+        $order = DB::table('Order')->where('id', intval($id));
         $tmp = DB::table('Order')->where('id', intval($id))->get();
         if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $tmp[0]->User_id))
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
