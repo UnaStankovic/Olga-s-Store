@@ -88,28 +88,57 @@ class OrderController extends Controller {
     }
 
     public function createOrder(Request $request) {
-
+        $available_fields = array('User_id', 'contains');
+        $mandatory_fields = array('User_id');
         $res = new \stdClass();
         $data = $request->all();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|^', $_SESSION['userId']))
+        foreach($data as $key => $value)
+            if (array_search($key, $available_fields) === FALSE)
+                unset($data[$key]);
+
+        if(mandatoryFields($data, $mandatory_fields) === FALSE)
+            return response()->json(errorResponse($res, 'User_id is required', 'bad_request'));
+
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|C^', $data['User_id']))
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
-        
-        $product_price = DB::table('Product')->where('id', $data['Product_id'])->select('Product.price_per_piece')->get();
-        $order_amount = $data['quantity'] * $product_price[0]->price_per_piece;
-        
-        if(!isset($data['date_of_creation']) || !isset($data['status']) || !isset($_SESSION['userId'])) {
-            return response()->json(errorResponse($res, 'date_of_creation, status, amount and User_id are required', 'date_of_creation, status, amount, User_id'));
+
+        $contains = isset($data['contains']) && is_array($data['contains']) ? $data['contains'] : null;
+        unset($data['contains']);
+        if(count(DB::table('User')->where('id', $data['User_id'])->get()) == 0)
+            return response()->json(errorResponse($res, 'User doesn\'t exist', 'not_found'));
+
+        $amount = 0;
+        if($contains !== null) {
+            $available_fields = array('Product_id', 'quantity');
+            $mandatory_fields = array('Product_id', 'quantity');
+
+            foreach($contains as $pid => $product) {
+                foreach($product as $key => $value)
+                    if (array_search($key, $available_fields) === FALSE)
+                        unset($contains[$pid][$key]);
+
+                if(mandatoryFields($product, $mandatory_fields) === FALSE)
+                    return response()->json(errorResponse($res, 'Product_id and quantity are required', 'bad_request'));
+
+                $productInfo = DB::table('Product')->where('id', $product['Product_id'])->where('in_stock', 1)->get();
+                if(count($productInfo) == 1)
+                    $amount += $productInfo[0]->price_per_piece * $product['quantity'];
+                else
+                    unset($contains[$pid]);
+            }
         }
-        DB::table('Order')->insert(['date_of_creation' => $data['date_of_creation'], 'status' => $data['status'], 'amount' => $order_amount, 'User_id' => $_SESSION['userId']]);
-        
-        $order_id = DB::table('Order')->max('id');
-        if(!isset($data['Product_id']) || !isset($data['quantity'])) {
-            return response()->json(errorResponse($res, 'Product_id and quantity are required', 'Product_id, quantity'));
+        $order_id = DB::table('Order')->insertGetId(['date_of_creation' => date('Y-m-d'), 'status' => 'na cekanju', 'amount' => $amount, 'User_id' => $data['User_id']]);
+        $res->order = DB::table('Order')->find($order_id);
+
+        if($contains !== null) {
+            foreach($contains as $key => $value)
+                $contains[$key]['Order_id'] = $order_id;
+
+            Db::table('Contains')->insert($contains);
+            $res->order->contains = $contains;
         }
-        
-        DB::table('Contains')->insert(['quantity' => $data['quantity'], 'Product_id' => $data['Product_id'], 'Order_id' => $order_id]);
-        
+
         $res->status = 'success';
         return response()->json($res);
     }
