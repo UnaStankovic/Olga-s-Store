@@ -1,7 +1,7 @@
 angular.module("Store").controller('LoginController', function($scope, $http, $location,$window,$rootScope){
   $scope.info = {};
   $scope.loginUser = function() {
-    console.log($scope.info);
+  //  console.log($scope.info);
     $http.post('../api/login',$scope.info)
    .then(function(response) {
        if(response.data.status == "error"){
