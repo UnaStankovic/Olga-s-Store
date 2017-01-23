@@ -1,7 +1,7 @@
 <h1 class = 'maintitle'>Vaše narudžbine </h1>
 <div class = 'row well well-md'>
 
-    <div class = 'col-sm-6' ng-controller = 'orderController'>
+    <div class = 'col-sm-12' ng-controller = 'orderController'>
       <h3 class = 'color-it-gray bold-it center-it'><i class = 'glyphicon glyphicon-duplicate'></i> Prikaz narudžbina
          <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#orderShow' ng-click = 'getOrders()'></span>
       </h3>
@@ -14,11 +14,11 @@
             <a data-toggle="tooltip" data-placement="top" title="Na osnovu ID narudžbine, u slučaju problema možete se obratiti preko mejla">
               <span class = 'glyphicon glyphicon-info-sign color-it-gray'></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Kada ikonica postane roze,vaša narudžbina je spremna">
-              <span class = 'color-it glyphicon glyphicon-road'></span>
+            <a data-toggle="tooltip" data-placement="top" title="Kada ikonica postane roze,vaša narudžbina je spremna" ng-hide = 'order.status == "odbijena"'>
+              <span ng-class = '{"color-it" : order.status == "spremna", "color-it-gray" : order.status != "spremna", "glyphicon" : true, "glyphicon-road" : true}'></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Vaša narudžbina je prihvaćena i više je ne možete otkazati.">
-              <span class = 'glyphicon glyphicon-ok-circle' style = 'color: green;'></span>
+            <a data-toggle="tooltip" data-placement="top" title="Zelena : Vaša narudžbina je prihvaćena i više je ne možete otkazati. Crvena : Vaša narudžbina je otkazana. Siva: Vaša narudžbina je na čekanju " ng-hide = 'order.status == "spremna"'>
+              <span ng-class = '{"glyphicon" : true, "glyphicon-ok-circle" : order.status != "odbijena", "glyphicon-remove-circle warning" : order.status == "odbijena", "color-it-gray" : order.status == "na cekanju", "color-it-green" : order.status == "potvrdjena"}'></span>
             </a>
           </p>
             <table id = 'usertable' class = 'table table-bordred table-striped'>
@@ -40,13 +40,13 @@
 
     </div>
   </div>
-
+<!--
   <div class = 'col-sm-6'>
     <h3 class = 'color-it-gray center-it bold-it'> Filter narudžbina
       <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#showFilter'></span>
     </h3>
     <div class = 'collapse' id = 'showFilter'>
-      <!--
+
       <div class = 'form-group'>
         <div class="radio">
           <label><input type="radio" value="">Potvrđene</label>
@@ -64,7 +64,7 @@
           <label><input type="radio" value="">Preuzete</label>
         </div>
       </div>
-    -->
+
       <div class = 'form-group'>
         <label class = 'color-it-gray bold-it' for = 'sel2'>Filter prema narudžbinama koje su:</label>
         <select class = 'form-control' id = 'sel2' >
@@ -79,5 +79,5 @@
 
     </div>
   </div>
-
+-->
 </div>
