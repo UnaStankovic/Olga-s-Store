@@ -39,6 +39,11 @@
     <script type="text/javascript" src="../app/assets/js/loveYou.js"></script>
     <script type="text/javascript" src="../app/assets/js/shoppingCartFunctions.js"></script>
 
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
   </head>
 
   <body onload = "loveYou()" ng-app="Store" ng-init="loggedin=<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>;
