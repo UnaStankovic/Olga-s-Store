@@ -1,122 +1,85 @@
-<!--
+<div class = "col-sm-12" ng-controller="ShoppingCartController">
+    <h1 class = 'maintitle'> Vaša korpa </h1>
+    <table class = 'table table-bordred table-striped'>
+        <thead>
+        <th>Proizvod</th>
+        <th>Količina</th>
+        <th>Cena</th>
+        <th>Obriši</th>
+        </thead>
+        <tbody>
+        <tr ng-show = "shoppingCartService.isEmpty()">
+            <td colspan="4" class="center-it">Nema proizvoda u korpi!</td>
+        </tr>
+        <tr ng-repeat = "product in shoppingCart">
+            <td>{{product.name}}</td>
+            <td><input type = "number" min = "1" ng-model = "product.quantity"></td>
+            <td>{{product.quantity * product.price_per_piece}}</td>
+            <td>
+                <button class="btn btn-primary btn-xs" ng-click="shoppingCartService.remove(product.id)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" class = 'right-it color-it bold-it'>Ukupna cena: {{shoppingCart | totalPrice | currency : "RSD " : 2}}</td>
+        </tr>
+        </tbody>
+    </table>
 
-This small script under is for loading a cart, i think it should stay here so it happenes when we start a page
+    <div ng-controller="UserController" ng-show="loggedin">
+        <h1 class = 'maintitle'> Vaše informacije za slanje </h1>
+        <table id = 'myinfo' class = 'table table-bordred table-striped'>
+            <thead>
+            <th>Adresa</th>
+            <th>Grad</th>
+            <th>Država</th>
+            <th>Kontakt</th>
+            <th>Promeni</th>
+            </thead>
+            <tbody>
+            <td>{{info.address}}</td>
+            <td>{{info.city}}</td>
+            <td>{{info.country}}</td>
+            <td>{{info.telephone}}</td>
+            <td>
+                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                    <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </p>
+            </td>
+            </tbody>
+        </table>
 
--->
-
-<script type="text/javascript">
-  showCart();
-</script>
-
-<div class = "col-sm-12" ng-controller = 'UserController'>
-  <h1 class = 'maintitle'> Vaša korpa </h1>
-  <table id = 'mytable' class = 'table table-bordred table-striped'>
-    <thead>
-      <th></th>
-      <th>Proizvod</th>
-      <th>Količina</th>
-    <!--  <th>Cena </th>-->
-      <th>Obriši</th>
-    </thead>
-    <tbody id="tabela">
-      <tr>
-        <td></td>
-        <td>Neki proizvod</td>
-        <td> <input type = 'number' min = '1' ></td>
-        <td>
-          <p data-placement="top" data-toggle="tooltip" title="Delete">
-          <button class="btn btn-primary btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
-            <span class="glyphicon glyphicon-trash"></span>
-          </button>
-          </p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2 class = 'maintitle'> Vaše informacije za slanje </h1>
-  <table id = 'myinfo' class = 'table table-bordred table-striped'>
-    <thead>
-      <th>Adresa</th>
-      <th>Grad</th>
-      <th>Država</th>
-      <th>Kontakt</th>
-      <th>Promeni</th>
-    </thead>
-    <tbody>
-      <td>{{info.address}}</td>
-      <td>{{info.city}}</td>
-      <td>{{info.country}}</td>
-      <td>{{info.telephone}}</td>
-      <td>
-        <p data-placement="top" data-toggle="tooltip" title="Edit">
-          <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
-            <span class="glyphicon glyphicon-pencil"></span>
-          </button>
-        </p>
-      </td>
-    </tbody>
-  </table>
-
-  <p class = 'right-it'><button type = 'submit' class = 'btn btn-primary'><span class="glyphicon glyphicon-ok-sign"></span> Potvrdi narudžbinu </button></p>
-  <!-- If we want to change some data -->
-  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- Header -->
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          <h4 class="modal-title custom_align maintitle"> Izmenite željene podatke </h4>
+        <p class = 'right-it'><button type = 'submit' class = 'btn btn-primary'><span class="glyphicon glyphicon-ok-sign"></span> Potvrdi narudžbinu </button></p>
+        <!-- If we want to change some data -->
+        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title custom_align maintitle"> Izmenite željene podatke </h4>
+                    </div>
+                    <!-- Body -->
+                    <form ng-controller = 'ChangeinfoController'>
+                        <fieldset>
+                            <p><label>Adresa: </label> <input type = 'text' ng-model="info.address" ></p>
+                            <p><label>Grad: </label> <input type = 'text' ng-model="info.city" ></p>
+                            <p><label>Država: </label> <input type = 'text' ng-model="info.country" ></p>
+                            <p><label>Telefon: </label> <input type = 'text' ng-model="info.telephone" ></p>
+                        </fieldset>
+                        <p id = 'errormsg' class = 'warning'>{{info.errormsg}}</p>
+                        <!-- Footer -->
+                        <div class="modal-footer ">
+                            <button type="submit" class="btn btn-warning btn-lg" id = 'keepinfo' data-dismiss="modal" ng-click="changeInfo()">
+                                <span class="glyphicon glyphicon-ok-sign"></span>Sačuvaj
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-          <!-- Body -->
-        <form ng-controller = 'ChangeinfoController'>
-          <fieldset>
-            <p><label>Adresa: </label> <input type = 'text' ng-model="info.address" ></p>
-            <p><label>Grad: </label> <input type = 'text' ng-model="info.city" ></p>
-            <p><label>Država: </label> <input type = 'text' ng-model="info.country" ></p>
-            <p><label>Telefon: </label> <input type = 'text' ng-model="info.telephone" ></p>
-          </fieldset>
-          <p id = 'errormsg' class = 'warning'>{{info.errormsg}}</p>
-          <!-- Footer -->
-          <div class="modal-footer ">
-            <button type="submit" class="btn btn-warning btn-lg" id = 'keepinfo' data-dismiss="modal" ng-click="changeInfo()">
-              <span class="glyphicon glyphicon-ok-sign"></span>Sačuvaj
-            </button>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
-
-  <!-- If we want to delete some order -->
-  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!--Header-->
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </button>
-          <h4 class="modal-title custom_align maintitle"> Obrišite ovu porudžbinu </h4>
-        </div>
-
-        <!--Body-->
-        <div class="modal-body">
-          <div class="alert alert-danger">
-            <span class="glyphicon glyphicon-warning-sign"></span> Da li ste sigurni da želite da obrišete željenu porudžbinu?
-          </div>
-        </div>
-
-        <!--Footer-->
-        <div class="modal-footer ">
-          <button type="button" class="btn btn-success btn-primary" onclick = "deleteProduct()" data-dismiss="modal">
-            <span class="glyphicon glyphicon-ok-sign"></span> Da
-          </button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">
-            <span class="glyphicon glyphicon-remove"></span> Ne
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
