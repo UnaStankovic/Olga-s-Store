@@ -1,5 +1,6 @@
 angular.module('Store').service('shoppingCart', function() {
     this.shoppingCart = this.shoppingCart || [];
+    this.checkedProducts = this.checkedProducts || [];
 
     this.isEmpty = function() {
         if(this.shoppingCart.length == 0)
@@ -14,7 +15,7 @@ angular.module('Store').service('shoppingCart', function() {
             name : product.name,
             quantity : 1
         };
-
+        this.checkedProducts[product.id] = true;
         this.shoppingCart.push(obj);
     };
 
@@ -22,6 +23,7 @@ angular.module('Store').service('shoppingCart', function() {
         for(var i = 0; i < this.shoppingCart.length; i++) {
             if(this.shoppingCart[i].id == productId) {
                 this.shoppingCart.splice(i, 1);
+                this.checkedProducts[productId] = false;
                 break;
             }
         }
