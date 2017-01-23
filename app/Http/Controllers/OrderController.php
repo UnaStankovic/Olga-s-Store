@@ -10,13 +10,18 @@ class OrderController extends Controller {
 
         $res = new \stdClass();
 
-        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A')) {
+        if(!isAuthenticated() || !isAuthorized($_SESSION['userId'], 'A|C')) {
             return response()->json(errorResponse($res, 'Not authorized', 'permission'));
         }
 
-        $orders = DB::table('Order')->select('id', 'date_of_creation', 'status', 'amount', 'User_id', 'comment')->get();
+        $orders = DB::table('Order')->select('id', 'date_of_creation', 'status', 'amount', 'User_id', 'comment');
+
+        if(!$_SESSION['isAdmin']) {
+            $orders = $orders->where('User_id', $_SESSION['userId']);
+        }
+
         $res->status = 'success';
-        $res->orders = $orders;
+        $res->orders = $orders->get();
         return response()->json($res);
     }
 

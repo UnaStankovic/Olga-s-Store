@@ -1,16 +1,16 @@
 <h1 class = 'maintitle'>Vaše narudžbine </h1>
 <div class = 'row well well-md'>
 
-    <div class = 'col-sm-6'>
+    <div class = 'col-sm-6' ng-controller = 'orderController'>
       <h3 class = 'color-it-gray bold-it center-it'><i class = 'glyphicon glyphicon-duplicate'></i> Prikaz narudžbina
-         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#orderShow'></span>
+         <span class="glyphicon glyphicon-chevron-down" data-toggle = 'collapse' data-target = '#orderShow' ng-click = 'getOrders()'></span>
       </h3>
-      <div class = 'collapse' id = "orderShow" >
+      <div class = 'collapse' id = "orderShow">
               <!-- TODO : Here should be added some order filter -->
               <!--here should be ng-repeat over orders -->
-        <div style = 'border-bottom: 2px solid #E80C39'>
+        <div style = 'border-bottom: 2px solid #E80C39' ng-repeat = 'order in orderinfo'>
           <p class = 'color-it-gray bold-it'> ID narudžbine:
-            <i class = 'color-it bold-it' ng-model = 'orderinfo.id'>#2928</i>
+            <i class = 'color-it bold-it'>{{order.id}}</i>
             <a data-toggle="tooltip" data-placement="top" title="Na osnovu ID narudžbine, u slučaju problema možete se obratiti preko mejla">
               <span class = 'glyphicon glyphicon-info-sign color-it-gray'></span>
             </a>
@@ -23,82 +23,19 @@
           </p>
             <table id = 'usertable' class = 'table table-bordred table-striped'>
             <thead>
-              <th ng-model = 'orderinfo.name'>Proizvod</th>
-              <th ng-model = 'orderinfo.quantity'>Količina</th>
-              <th ng-model = 'orderinfo.price'>Cena</th>
+              <th>Proizvod</th>
+              <th>Količina</th>
+              <th>Cena</th>
             </thead>
             <tbody id="usertable">
-                      <!--here should be ng-repeat over products -->
-              <tr>
-                <td>Neki proizvod</td>
-                <td>1</td>
-                <td>100</td>
+              <tr ng-repeat = 'product in order.products'>
+                <td  ng-bind = 'product.name'></td>
+                <td ng-bind = 'product.quantity'></td>
+                <td ng-bind = 'product.price_per_piece'></td>
               </tr>
             </tbody>
           </table>
-          <p class = 'color-it bold-it right-it'><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> 2000 RSD</p>
-        </div>
-
-        <div style = 'border-bottom: 2px solid #E80C39'>
-          <p class = 'color-it-gray bold-it'> ID narudžbine:
-            <i class = 'color-it bold-it' ng-model = 'orderinfo.id'>#2928</i>
-            <a data-toggle="tooltip" data-placement="top" title="Na osnovu ID narudžbine, u slučaju problema možete se obratiti preko mejla">
-              <span class = 'glyphicon glyphicon-info-sign color-it-gray'></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Kada ikonica postane roze,vaša narudžbina je spremna">
-              <span class = 'color-it-gray glyphicon glyphicon-road'></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Vaša narudžbina je odbijena.">
-              <span class = 'glyphicon glyphicon-remove-circle' style = 'color: red;'></span>
-            </a>
-          </p>
-            <table id = 'usertable2' class = 'table table-bordred table-striped'>
-            <thead>
-              <th ng-model = 'orderinfo.name'>Proizvod</th>
-              <th ng-model = 'orderinfo.quantity'>Količina</th>
-              <th ng-model = 'orderinfo.price'>Cena</th>
-            </thead>
-            <tbody id="ordertable2">
-                      <!--here should be ng-repeat over products -->
-              <tr>
-                <td>Neki proizvod</td>
-                <td>1</td>
-                <td>100</td>
-              </tr>
-            </tbody>
-          </table>
-          <span class = 'color-it bold-it right-it'><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> 2000 RSD</span>
-        </div>
-
-        <div style = 'border-bottom: 2px solid #E80C39'>
-          <p class = 'color-it-gray bold-it'> ID narudžbine:
-            <i class = 'color-it bold-it' ng-model = 'orderinfo.id'>#2928</i>
-            <a data-toggle="tooltip" data-placement="top" title="Na osnovu ID narudžbine, u slučaju problema možete se obratiti preko mejla">
-              <span class = 'glyphicon glyphicon-info-sign color-it-gray'></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Kada ikonica postane roze,vaša narudžbina je spremna">
-              <span class = 'color-it-gray glyphicon glyphicon-road'></span>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" title="Vaša narudžbina je na čekanju.">
-              <span class = 'color-it-gray glyphicon glyphicon-ok-circle'></span>
-            </a>
-          </p>
-            <table id = 'usertable2' class = 'table table-bordred table-striped'>
-            <thead>
-              <th ng-model = 'orderinfo.name'>Proizvod</th>
-              <th ng-model = 'orderinfo.quantity'>Količina</th>
-              <th ng-model = 'orderinfo.price'>Cena</th>
-            </thead>
-            <tbody id="ordertable2">
-                      <!--here should be ng-repeat over products -->
-              <tr>
-                <td>Neki proizvod</td>
-                <td>1</td>
-                <td>100</td>
-              </tr>
-            </tbody>
-          </table>
-          <span class = 'color-it bold-it right-it'><label class = 'color-it-gray'> Ukupna cena porudžbine: </label> 2000 RSD</span>
+          <p class = 'color-it bold-it right-it'><label class = 'color-it-gray'> Ukupna cena porudžbine: </label>{{order.amount}} RSD</p>
         </div>
 
     </div>
